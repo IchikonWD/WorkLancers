@@ -71,7 +71,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ## Contacto
 
 Gurgen Baghdasarian - [Gugohh](https://github.com/gugohh) - gugbaghdasaryan@gmail.com
+
 Dragos Gabriel Tanase - [Drag0s98](https://github.com/Drag0s98) - dragostanase1698@gmail.com
+
 Ezequiel Migueles - [IchikonWD](https://github.com/IchikonWD) - info@ichicodes.com
 
 
