@@ -14,6 +14,7 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(express.static('public')) //Para que el pug coja el CSS e imagenes
 
 //View Engine
 
@@ -26,7 +27,7 @@ app.use("/", routes_users);
 app.use("/api", routes_api);
 
 app.get("*", (req, res) => {
-  res.status(404).render("404");
+  res.status(404).send("404");
 });
 
 app.listen(port, () => {

@@ -1,3 +1,4 @@
+
 const router = require("express").Router();
 
 // Search
@@ -20,3 +21,4 @@ router.post("/api/favorites");
 router.delete("/api/favorites");
 
 module.exports = router;
+
