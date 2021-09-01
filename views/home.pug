@@ -1,9 +1,58 @@
 doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet" href="../public/styles/style.css")
-        link(rel="stylesheet" href="../public/styles/home.css")
-        title Home - WorkLancers
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/style.css ')
+  title Home - WorkLancers
+//Falta el middleware para el buscador que funcione al darle enter
+header
+  nav.navBar
+    h2.titleNav WorkLancers
+    .burger =
+main
+  section.section1
+    article.description
+      | Explicacion de como funciona la p&aacute;gina y en que consistes. Lorem Ipsum is simply dummy text of the
+      | printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since
+      | the 1500s.
+  section.sectionForm
+    form.searchForm(name='searchForm' method='POST' action='//aqui va el middleware')
+      img.icon_search(src='/assets/img/buscador.png')
+      input#search.searchBox(type='text' name='search' placeholder='Web Developer')
+  section.section2
+    article.job1
+      .job_header
+        h2.jobTitle Se busca chapero por Chamartin
+        b.newAlert NEW
+      .separator
+      .job_body
+        img.job_img(src='/assets/img/default_img.jpg' alt='')
+        p.job_description
+          | Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          | Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s.s
+      .separator
+      .job_footer
+        p.job_price Fixed Price: 50&euro;
+        button.see_more_btn See More
+  section.section2
+    article.job1
+      .job_header
+        h2.jobTitle Se busca chapero por Chamartin
+        b.newAlert NEW
+      .separator
+      .job_body
+        img.job_img(src='/assets/img/default_img.jpg' alt='')
+        p.job_description
+          | Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          | Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s.s
+      .separator
+      .job_footer
+        p.job_price Fixed Price: 50&euro;
+        button.see_more_btn See More
+footer
+  .footerLinks
+    a.links_footer(href='#') Resources
+    a.links_footer(href='#') Api
+  a(href='https://github.com/IchikonWD/WorkLancers')
+    img.git_logo(src='/assets/img/GitHub_Logo_White.png' alt='')
