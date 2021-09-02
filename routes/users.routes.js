@@ -5,7 +5,7 @@ const pages = require ("../controllers/home") //Importamos el controlador de hom
 router.get("/", pages.home);
 router.get("/signup");
 router.get("/login");
-router.get("/favorites");
+router.get("/favorites", pages.favorites);
 router.get("/profile");
 router.get("/users");
 router.get("/dashboard");
