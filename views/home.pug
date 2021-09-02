@@ -35,6 +35,8 @@ main
       .job_footer
         p.job_price Fixed Price: 50&euro;
         button.see_more_btn See More
+        img.fav_img(src='/assets/img/favorite.png' ) 
+        //Hacer formulario para meter un checkbox al favorito
   section.section2
     article.job1
       .job_header
@@ -50,9 +52,6 @@ main
       .job_footer
         p.job_price Fixed Price: 50&euro;
         button.see_more_btn See More
-footer
-  .footerLinks
-    a.links_footer(href='#') Resources
-    a.links_footer(href='#') Api
-  a(href='https://github.com/IchikonWD/WorkLancers')
-    img.git_logo(src='/assets/img/GitHub_Logo_White.png' alt='')
+        img.fav_img(src='/assets/img/favorite.png') 
+        //Hacer formulario para meter un checkbox al favorito
+include ./footer.pug
