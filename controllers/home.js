@@ -8,6 +8,9 @@
 const pages = {
     home:(req, res) =>{
         res.status(200).render('home')
+    },
+    favorites: (req,res) => {
+        res.status(200).render('favorites')
     }
 }
 
