@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const pages = require ("../controllers/views") //Importamos el controlador de home
+const pages = require ("../controllers/views") //·Importamos el controlador de home
 
 
 // User routes
