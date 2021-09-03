@@ -11,7 +11,10 @@ const pages = {
     },
     favorites: (req,res) => {
         res.status(200).render('favorites')
-    }
+    },
+    login:(req, res) =>{
+        res.status(200).render('login')
+    },
 }
 
 module.exports = pages

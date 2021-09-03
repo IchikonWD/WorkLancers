@@ -8,21 +8,35 @@ html(lang="en")
         link(rel="stylesheet" href="../public/styles/login.css")
         title Login - WorkLancers
     body 
-           form(action='#' method='#')
-  .imgcontainer
-    img.avatar(src='#' alt='')
-  .container
-    label(for='uname')
-      b Username
-    input(type='text' placeholder='Enter Username' name='uname' required='')
-    label(for='psw')
-      b Password
-    input(type='password' placeholder='Enter Password' name='psw' required='')
-    input(type='submit' value="Login")
-    label
-      input(type='checkbox' checked='checked' name='remember')
-      |  Remember me
-  .container(style='background-color:#f1f1f1')
-    span.psw
-      | Forgot 
-      a(href='#') password?
+     
+    form#login-form(action='#')
+    .heading WorkLancers
+    h1 Log in to WorkLancers
+    .left
+      label(for='email') Email
+      br
+      input#email(type='email' name='email' value='Email')
+      br
+      label(for='password') Password
+      br
+      input#pass(type='password' name='password' value='Password')
+      br
+      // <input type="submit" value="Sign Up" />
+    .right
+      // <a href="" class="facebook">
+      // <span class="fontawesome-facebook"></span>
+      //
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a> <br />
+      // <a href="" class="twitter">
+      // <span class="fontawesome-twitter"></span>
+      //
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        </a> <br />
+      a.google-plus(href='')
+        // <span class="fontawesome-google-plus"></span>
+        p.fa.fa-google-plus(aria-hidden='true') Continue with Google
+      .connect Don&apos;t have an WorkLancers account ?
+      .signup
+        input(type='button' value='Sign Up')
+    .footer
