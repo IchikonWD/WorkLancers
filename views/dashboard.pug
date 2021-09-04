@@ -1,0 +1,30 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/header.css ')
+  link(rel='stylesheet' href='/css/footer.css ')
+  link(rel='stylesheet' href='/css/dashboard.css ')
+  title Document
+body
+  include ./header.pug
+  main
+    form(action="/dashboard" method='POST')
+      label(for='title') Write a headline for you job post
+      input(type='text' name='title')
+      label(for='category') What skills are you loking for?
+      input(type='text' name='category')
+      label(for='description') Write a discription 
+      input(type='text' name='description')
+      label(for='requirements') Requirements which you ask for your job
+      input(type='text' name='requirements')
+      label(for='salary') Salary that you are willing to offer
+      input(type='text' name='salary')
+      label(for='type') You want a remote or presencial 
+      select(name='type' id='')
+        option(value='Presencial') Presencial
+        option(value='Remote' ) Remote
+      br
+      input(type='submit' value='!Post It!')
+  include ./footer.pug
