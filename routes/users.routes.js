@@ -9,8 +9,7 @@ router.get("/favorites", pages.favorites);
 router.get("/login",pages.login);
 router.get("/profile");
 router.get("/users");
-router.get("/dashboard")
-router.get("/dashboard/upWork", pages.upWork);
+router.get("/dashboard", pages.dashboard)
 router.get("/recuperarpassword");
 router.get("/restablecerpassword");
 

@@ -10,21 +10,21 @@ head
 body
   include ./header.pug
   main
-    form(action="/dashboard" method='POST')
-      label(for='title') Write a headline for you job post
-      input(type='text' name='title')
-      label(for='category') What skills are you loking for?
-      input(type='text' name='category')
-      label(for='description') Write a discription 
-      input(type='text' name='description')
-      label(for='requirements') Requirements which you ask for your job
-      input(type='text' name='requirements')
-      label(for='salary') Salary that you are willing to offer
-      input(type='text' name='salary')
-      label(for='type') You want a remote or presencial 
-      select(name='type' id='')
-        option(value='Presencial') Presencial
-        option(value='Remote' ) Remote
-      br
-      input(type='submit' value='!Post It!')
+    section
+      article
+        h1.title Dashboard
+        button(type="button" class="postButton" onclick="mostrarForm()") !Post a Job!
+      article
+        div.hide_me(id="form")
+          include ./upWork.pug
+      article
+        div.mid
+          .separator
+          h2 My Postings
+          .separator
+      article
   include ./footer.pug
+  script.
+    function mostrarForm() {
+      document.getElementById('form').style.display = 'block'
+    }

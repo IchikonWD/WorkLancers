@@ -1,6 +1,98 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html{
+    min-height: 100%;
+    position: relative;
+}
+main{
+    width: 100%;
+    height: 110%;
+}
+article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.title{
+    width: 100%;
+    display: flex;
+    margin-top: 30px;
+    margin-left: 30px;
+    font-size: 30px;
+}
+.hide_me{
+    display: none;
+}
+.postButton{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 315px;
+    height: 70px;
+    border-radius: 26px;
+    border: 0px;
+    background-color: #78B0D4;
+    color: white;
+    font-size: 30px;
+}
+.postButton:active{
+    background-color: #5e89a5;
+}
 form{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+label{
+    font-size: 20px;
+    border-bottom: 3px inset rgb(161, 161, 161);
+    margin-bottom: 10px;
+}
+.boxInp{
+    height: 40px;
+    width: 300px;
+    border: 3px inset rgb(206, 206, 206);
+    border-radius: 5px;
+    font-size: 15px;
+}
+.boxInp:focus{
+    outline: none;
+    border-color: #78B0D4;
+}
+select{
+    width: 200px;
+    height: 40px;
+    font-size: 15px;
+    border: 1px inset rgb(206, 206, 206);
+
+}
+select:focus{
+    outline: none;
+    border-color: #78B0D4;
+}
+.submitBtn{
+    width: 250px;
+    height: 40px;
+    background-color: #78B0D4;
+    border-radius: 5px;
+    border: 0px;
+    color: white;
+    font-size: 20px;
+}
+.mid{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.separator {
+    display: flex;
+    background-color: black;
+    width: 100px;
+    height: 2px;
+    margin: 10px;
 }

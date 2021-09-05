@@ -18,21 +18,30 @@ const pages = {
     login:(req, res) =>{
         res.status(200).render('login')
     },
+    dashboard: (req, res) => {
+        res.status(200).render('dashboard')
+    },
     upWork: async(req,res)=>{
         try {
             if(req.method == 'GET'){
                 res.status(200).render('dashboard')
             }
             if(req.method == 'POST'){
-                let job = new Jobs(req.body)
-                const new_job = await job.save()
-                console.log(new_job);
-                let jobs = await Jobs.find()
-                let data = [new_job, {
-                    "jobs_before": jobs,
-                }]
-                console.log('******** JOB CREATED *********');
-                res.status(200).render('dashboard')
+                if(req.body.createJob != undefined){
+                    // let showForm = 1
+                    res.status(200).render('dashboard')
+                }
+                if(req.body.title != undefined){
+                    let job = new Jobs(req.body)
+                    const new_job = await job.save()
+                    console.log(new_job);
+                    let jobs = await Jobs.find()
+                    let data = [new_job, {
+                        "jobs_before": jobs,
+                    }]
+                    console.log('******** JOB CREATED *********');
+                    res.status(200).render('dashboard')
+                }
             }
         } catch (error) {
             res.status(400).send('A error has ocurred' + error)
