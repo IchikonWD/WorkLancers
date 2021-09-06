@@ -1,7 +1,6 @@
 //Aqui van los imports
 const Jobs = require('../models/models.jobs')
-
-
+const fetch = require('node-fetch')
 
 //Empezamos los pages
 
@@ -18,9 +17,12 @@ const pages = {
     login:(req, res) =>{
         res.status(200).render('login')
     },
-    dashboard: (req, res) => {
-        res.status(200).render('dashboard')
-    },
+    dashboard: async (req, res) => {
+        await fetch('http://localhost:3000/api/ads')
+            .then(res => res.json())
+            .then(payload => console.log(payload))
+        // res.status(200).render('dashboard')
+     },
     upWork: async(req,res)=>{
         try {
             if(req.method == 'GET'){

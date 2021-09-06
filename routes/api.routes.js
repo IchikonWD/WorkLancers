@@ -1,5 +1,5 @@
-
 const router = require("express").Router();
+const pages = require("../controllers/admin")
 
 // Search
 router.post("/api/user");
@@ -12,6 +12,7 @@ router.post("/api/logout");
 router.get("/api/search");
 
 // Admin
+router.get("/ads", pages.myJobs)
 router.post("/api/ads");
 router.put("/api/ads");
 router.delete("/api/ads");
