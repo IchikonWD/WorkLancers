@@ -2,9 +2,12 @@ const mongoose = require('mongoose')
 
 let jobsSchema = new mongoose.Schema({
 
-    tittle:String,
+    title:String,
     category:String,
-    date:String,
+    date: {
+        type: Date,
+        default: Date.now()
+    },
     description:String,
     requirements:String,
     duration:String,
