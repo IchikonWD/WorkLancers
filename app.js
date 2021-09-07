@@ -1,6 +1,7 @@
 const express = require("express");
 require("dotenv").config();
-require("./utils/db");
+require("./utils/mongo-db");
+require("./utils/sql-db");
 const routes_users = require("./routes/users.routes");
 const routes_api = require("./routes/api.routes");
 const morgan = require('morgan')
@@ -34,5 +35,3 @@ app.get("*", (req, res) => {
 app.listen(port, () => {
   console.log(`Server working on: http://localhost:${port}`);
 });
-
-
