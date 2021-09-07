@@ -14,7 +14,7 @@ router.get("/recuperarpassword");
 router.get("/restablecerpassword");
 
 router.post('/dashboard', pages.upWork) //Formulario para postular trabajos siendo admin
-router.post('/register', )
+router.post('/register', passport.register)
 router.post('/login, ')
 
 

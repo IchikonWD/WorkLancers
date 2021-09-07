@@ -1,18 +1,23 @@
 const { Client } = require("pg");
 
 const client = new Client({
-  host: process.env.SQL_HOST,
-  user: process.env.BBDD_USER,
-  database: process.env.BBDD_USER,
-  password: process.env.SQL_PASSWORD,
-  port: process.env.SQL_PORT,
+  connectionString: process.env.SQL_URL
+});
+client.connect()
+client.on('connect', () => {
+  console.log('Connection to SQL established');
 });
 
-
+/*
 (async function main() {
   await client.connect();
   console.log("Connection to SQL established")
   const per = await client.query("SELECT * FROM users");
-  console.log(per.rows);
+  // console.log(per.rows);
   await client.end();
 })();
+*/
+
+module.exports = {
+  query: (text, params) => client.query(text, params),
+};
