@@ -4,6 +4,45 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        link(rel="stylesheet" href="../public/styles/style.css")
-        link(rel="stylesheet" href="../public/styles/favorites.css")
+        link(rel='stylesheet' href='/css/header.css ')
+        link(rel='stylesheet' href='/css/footer.css ')
+        link(rel="stylesheet" href="/css/favorites.css")
         title Favorites - WorkLancers
+    body
+        include ./header.pug    
+        main
+            section.section1
+                article.tittle
+                    h1 My Jobs
+            section.section2
+                article.options
+                    //Aqui iria una especie de boton que imprimiera las tarjetas con las candidaturas y los trabajos favoritos
+                    h2 Candidaturas
+                    h2 Favoritos
+                article.trabajo
+                    div.topCard
+                        img.job_img(src='/assets/img/default_img.jpg' alt='')
+                        div.topCardText
+                            h2 Se busca chapero por Chamartin
+                            p Category: AAAAAA
+                        div.topCardIcons
+                            img.fav_img(src='/assets/img/favorite.png') 
+                            button.see_more_btn See More
+                    .separator
+                    div.botCard
+                        p Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                article.trabajo
+                    div.topCard
+                        img.job_img(src='/assets/img/default_img.jpg' alt='')
+                        div.topCardText
+                            h2 Se busca chapero por Chamartin
+                            p Category: AAAAAA
+                        div.topCardIcons
+                            img.fav_img(src='/assets/img/favorite.png') 
+                            button.see_more_btn See More
+                    .separator
+                    div.botCard
+                        p Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
+                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+        include ./footer.pug

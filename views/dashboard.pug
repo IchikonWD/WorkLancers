@@ -1,0 +1,43 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/header.css ')
+  link(rel='stylesheet' href='/css/footer.css ')
+  link(rel='stylesheet' href='/css/dashboard.css ')
+  title Document
+body
+  include ./header.pug
+  main
+    section.top
+      article
+        h1.title Dashboard
+        button(type="button" class="postButton" onclick="mostrarForm()") !Post a Job!
+      article
+        div.hide_me(id="form")
+          include ./upWork.pug
+      article
+        div.mid
+          .separator
+          h2 My Postings
+          .separator
+        br
+    section.bot
+      each val in data
+        article.card 
+          div.insideCard
+            div.topCard 
+              h2.titleCard=val.title
+              a(href="#") 
+                img(src="/assets/img/choices.png" class="choicesImg")
+            div.midCard  
+              p.categoryCard=val.category
+            div.botCard
+              p Duration:&nbsp; 
+                p.durationCard=val.duration
+              p.salaryCard=val.salary
+      article
+  include ./footer.pug
+  script
+    include ../public/scripts/scripts.js

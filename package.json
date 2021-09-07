@@ -2,13 +2,13 @@
   "name": "worklancers",
   "version": "1.0.0",
   "description": "Worklancers - Freelance Work Platform",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js"
   },
   "repository": {
-    "type": "git",
+    "type": "module",
     "url": "git+https://github.com/IchikonWD/WorkLancers.git"
   },
   "author": "Gugohh, Drag0s98, IchikonWD",
@@ -24,9 +24,11 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.1.1",
-    "mongoose": "^6.0.3",
+    "mongoose": "^6.0.4",
+    "node-fetch": "2.6.1",
     "node-mailer": "^0.1.1",
     "pug": "^3.0.2",
+    "puppeteer": "^10.2.0",
     "sequelize": "^6.6.5",
     "serve-favicon": "^2.5.0"
   }

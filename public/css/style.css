@@ -1,7 +1,143 @@
-:root {
+*{
     margin: 0;
     padding: 0;
-    font-size: 100%;
-    color: #333;
-    background-color: #fff;
+    font-family: sans-serif;
 }
+body{
+    width: 100%;
+}
+main{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+.section1{
+    background-color: #dce4de9b;
+    margin-top: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    width: 345px;
+    height: 143px;
+}
+.description{
+    margin: 10px;
+}
+.sectionForm{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.searchForm{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #0000002d;
+    border-radius: 12px;
+    width: 256PX;
+    height: 38px;
+}
+.searchBox{
+    width: 85%;
+    height: 40px;
+    border-radius: 5px;
+    background-color: #00000000;
+    font-size: 20px;
+    border: 0;
+}
+.searchBox:active{
+    background-color: #00000000;
+    border: 0px;
+}
+.icon_search{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.job_img{
+    width: 100px;
+    height: 100px;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+.section2{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+
+}
+.job1{
+    width: 90%;
+    background-color: #dce4de9b;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    border: 1px groove #22577A;
+    box-shadow: 1px 1px 2px;
+}
+.job_header{
+    display: flex;
+    margin: 8px;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+
+}
+.jobTitle{
+    font-size: 15px;
+    margin-left: 5px;
+}
+
+.newAlert{
+    font-size: 10px;
+    background-color: #418F6A;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    width: 43px;
+    height: 20px;
+    color: white;
+}
+.separator{
+    display: flex;
+    background-color: #22577A;
+    width: 95%;
+    height: 2px;
+}
+.job_body{
+    display: flex;
+    margin-top: 10px;
+    flex-direction: row;
+    margin-bottom: 10px;
+}
+.job_description{
+    margin-left: 10px;
+}
+.job_footer{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.see_more_btn{
+    color: white;
+    background-color: #418F6A;
+    border-radius: 12px;
+    font-size: 10px;
+    border: 0;
+    width: 64px;
+    height: 25px;
+}
+.fav_img{
+    width: 25px;
+    height: 30px;
+}       
