@@ -3,6 +3,7 @@ require("dotenv").config();
 require("./utils/db");
 const routes_users = require("./routes/users.routes");
 const routes_api = require("./routes/api.routes");
+const morgan = require('morgan')
 
 const app = express();
 const port = process.env.PORT || 5000;
