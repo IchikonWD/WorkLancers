@@ -4,9 +4,11 @@ head
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   link(rel='stylesheet' href='/css/register.css ')
+  link(rel='stylesheet' href='/css/footer.css ')
+
   title Register - WorkLancers
 body 
-  form#register-form(action='#')
+  form#register-form(action='/register2' method="POST")
     .heading WorkLancers
     h1 Get your free account
     main
@@ -21,6 +23,5 @@ body
         br
         .emailbox
           a(href='#')
-            p.em-email(aria-hidden='true') Continue with Email
-    .footer
-      <button class="see_more_btn">See More</button>
+            input.em-email(type="submit" value="Continue with Email") 
+    include ./footer.pug
