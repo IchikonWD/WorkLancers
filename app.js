@@ -2,10 +2,12 @@ const express = require("express");
 require("dotenv").config();
 require("./utils/mongo-db");
 require("./utils/sql-db");
+require ('./middleware/passport.midd')
 const routes_users = require("./routes/users.routes");
 const routes_api = require("./routes/api.routes");
 const cors = require('cors')
-const morgan = require('morgan')
+const session = require('express-session')
+const passport = require('passport')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -19,7 +21,13 @@ app.use(
 app.use(express.json());
 app.use(cors())
 app.use(express.static('public')) //Para que el pug coja el CSS e imagenes
-
+app.use(session({
+  secret: 'secret',
+  resave: true,
+  saveUninitialized: true
+}))
+app.use(passport.initialize());
+app.use(passport.session());
 
 //View Engine
 
@@ -38,3 +46,6 @@ app.get("*", (req, res) => {
 app.listen(port, () => {
   console.log(`Server working on: http://localhost:${port}`);
 });
+
+
+
