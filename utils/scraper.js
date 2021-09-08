@@ -21,6 +21,10 @@ const extractJobs = (link, browser) => new Promise (async (resolve, reject) => {
                 return e.innerText
             })
         })
+        jobData['jobBudget'] = await page.$eval('#main > div > header > div > div > div.Grid-col.Grid-col--tablet-4 > p ', (payment) => payment.innerText)
+
+        jobData['jobTimer'] = await page.$eval('#main > div > div > div > div.Grid-col.Grid-col--desktopSmall-8 > section:nth-child(1) > div > div.Card-footer > div.Grid.Grid--verticalCenter > div.Grid-col.Grid-col--tablet-3 > div > div > span ', (timer) => timer.innerText)
+
         resolve(jobData)
     } catch (err) {
         console.log(err);

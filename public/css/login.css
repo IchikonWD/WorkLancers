@@ -5,12 +5,13 @@
 }
 
 body {
-  background-color: #000;
-  font-family: sans-serif;
   box-sizing: border-box;
-  margin: 0, auto;
   width: 100%;
-
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  min-height: 100vh;
 }
 
 h1{
@@ -26,11 +27,10 @@ form#login-form {
   align-content: center;
   justify-content: center;
   background: #fff;
-  height:100%;
-  width: 100%;
-  margin: 2em auto;
+  min-height: 100vh;
+  width: 39%;
+  margin-top: auto;
   overflow: hidden;
-  position: relative;
   -moz-border-radius: 0.3em;
   -webkit-border-radius: 0.3em;
   border-radius: 0.3em;
@@ -154,12 +154,13 @@ div.signup {
 .signup:hover{
 color: white;
 }
+
 .footer{
   height: 50px;
   background-color: #22577A;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px ;
-  margin-top: 30px;
+  margin-top: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
