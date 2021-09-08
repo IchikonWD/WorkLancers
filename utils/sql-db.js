@@ -8,15 +8,6 @@ client.on('connect', () => {
   console.log('Connection to SQL established');
 });
 
-/*
-(async function main() {
-  await client.connect();
-  console.log("Connection to SQL established")
-  const per = await client.query("SELECT * FROM users");
-  // console.log(per.rows);
-  await client.end();
-})();
-*/
 
 module.exports = {
   query: (text, params) => client.query(text, params),

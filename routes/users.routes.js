@@ -5,6 +5,7 @@ const passport = require("../controllers/passport") //Importamos el controller q
 // User routes
 router.get("/", pages.home);
 router.get("/register", pages.register);
+router.get("/register/email", pages.register2);
 router.get("/favorites", pages.favorites);
 router.get("/login",pages.login);
 router.get("/profile");
@@ -14,7 +15,7 @@ router.get("/recuperarpassword");
 router.get("/restablecerpassword");
 
 router.post('/dashboard', pages.upWork) //Formulario para postular trabajos siendo admin
-router.post('/register', passport.register)
+router.post('/register/email', passport.register)
 router.post('/login, ')
 
 

@@ -8,7 +8,6 @@ head
 
   title Register - WorkLancers
 body 
-  form#register-form(action='/register2' method="POST")
     .heading WorkLancers
     h1 Get your free account
     main
@@ -19,9 +18,8 @@ body
       .left
         label(for='email')
         br
-        input#email(type='email' name='email' value='Work email addrees')
-        br
         .emailbox
-          a(href='#')
-            input.em-email(type="submit" value="Continue with Email") 
+          a(href='register/email')
+            input.em-email(type="button" value="Continue with Email") 
+      
     include ./footer.pug
