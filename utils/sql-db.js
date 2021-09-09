@@ -1,14 +1,10 @@
-const { Client } = require("pg");
+const { Pool } = require("pg");
 
-const client = new Client({
+const pool = new Pool({
   connectionString: process.env.SQL_URL,
 });
-
-client.connect();
-client.on("connect", () => {
+pool.on("connect", () => {
   console.log("Connection to SQL established");
 });
 
-module.exports = {
-  query: (text, params) => client.query(text, params),
-};
+module.exports = pool;
