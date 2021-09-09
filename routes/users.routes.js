@@ -5,6 +5,7 @@ const pages = require ("../controllers/views") //·Importamos el controlador de 
 // User routes
 router.get("/", pages.home);
 router.get("/register", pages.register);
+router.get("/register2", pages.register2);
 router.get("/favorites", pages.favorites);
 router.get("/login",pages.login);
 router.get("/profile");
