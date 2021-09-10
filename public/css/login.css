@@ -7,11 +7,15 @@
 body {
   box-sizing: border-box;
   width: 100%;
-  display: flex;
+  min-height: 100vh;
+}
+.container{
   flex-direction: column;
   flex-wrap: wrap;
   align-content: center;
-  min-height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 h1{
@@ -28,7 +32,7 @@ form#login-form {
   justify-content: center;
   background: #fff;
   min-height: 100vh;
-  width: 39%;
+  width: 100%;
   margin-top: auto;
   overflow: hidden;
   -moz-border-radius: 0.3em;
@@ -38,7 +42,7 @@ form#login-form {
   -webkit-box-shadow: 0 0 0.2em #000;
   box-shadow: 0 0 0.2em #000;
 }
-form#login-form div.heading {
+.heading {
   background-color: #22577A;
   color: white;
   width: 100%;
@@ -49,30 +53,35 @@ form#login-form div.heading {
   justify-content:center;
   align-items: center;
 }
-form#login-form div.left {
+.left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
   width: 100%;
-  float: left;
-  padding: 1.7em 1.5em 2.5em 1.5em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  padding: 1.7em 1.5em 1.7em 1.5em;
   box-sizing: border-box;
 }
-form#login-form div.right {
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
   width: 100%;
   padding: 1.7em 1.5em 2.5em 1.5em;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-div.left label {
+.left label {
   display: inline-block;
   color: gray;
   font-size: 1.1em;
-  margin-top: 0.6em;
+  margin-top: auto;
 }
-div.left input[type="email"],
-div.left input[type="password"] {
+.left input[type="email"],
+.left input[type="password"] {
   border: 0.1em solid #dfdfdf;
   padding: 1em;
   margin: 0.6em 0;
@@ -88,19 +97,19 @@ div.left input[type="password"] {
   -webkit-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
 }
-div.left input[type="email"]:focus,
-div.left input[type="password"]:focus {
+.left input[type="email"]:focus,
+.left input[type="password"]:focus {
   outline: none;
   border: 0.1em solid #919191;
 }
 
-div.right div.connect{
+.right .connect{
   color: gray;
   font-size: 1em;
   text-align: center;
   width:95%;
 }
-div.right a {
+.right a {
   display: inline-block;
   font-size: 1em;
   text-decoration: none;
@@ -116,35 +125,29 @@ div.right a {
 }
 
 
-div.right a.google-plus {
+.right a.google-plus {
   background: #78B0D4;
   -moz-transition: all 0.15s ease-in-out;
   -o-transition: all 0.15s ease-in-out;
   -webkit-transition: all 0.15s ease-in-out;
   transition: all 0.15s ease-in-out;
 }
-div.right a.google-plus:hover {
+.right a.google-plus:hover {
   background: rgba(233, 84, 79, 0.8);
 }
 
-div.signup {
-  justify-content: center;
-}
-.signup input[type=button] {
+
+.signup input[type=submit] {
   text-align: center;
   background-color: white; 
   color: black; 
   border: 2px solid #4CAF50;
   text-decoration: none;
+  width: 100%;
   margin: 4px 2px;
   cursor: pointer;
-  width: 93%;
-  margin: 0.5em 0.1em;
-  padding: 0.55em 0.3em;
   clear: both;
   text-align: center;
-  -moz-border-radius: 0.3em;
-  -webkit-border-radius: 0.3em;
   border-radius: 0.3em;
   font-size: 1.5em;
   cursor: pointer;
@@ -166,53 +169,6 @@ color: white;
   justify-content: space-between;
 }
 
-/*@media only screen and (max-device-width: 375px){
-form#login-form{
-  height:100%;
-  width: 100%;
-}
-form#login-form div.heading{
-  width: 87%;
-}
-
-div.left input[type="email"],
-div.left input[type="password"]{
-  width: 90%;
-}
-div.right div.connect{
-  width: 90%;
-}
-div.right a{
-  width: 90%;
-}
-signup input[type=button] {
-  width: 91%;
-}*/
-
-
-/* @media only screen and (max-device-width: 1051px){
-form#login-form{
-  height:100%;
-  width: 100%;
-}
-form#login-form div.heading{
-  width: 95%;
-}
-
-div.left input[type="email"],
-div.left input[type="password"]{
-  width: 90%;
-}
-div.right div.connect{
-  width: 90%;
-}
-div.right a{
-  width: 90%;
-}
-signup input[type=button] {
-  width: 91%;
-}
-} */
 
 
 

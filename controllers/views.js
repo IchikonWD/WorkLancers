@@ -11,7 +11,12 @@ const pages = {
     register: (req, res) => {
         res.status(200).render('register')
     },
+
+    register2:(req,res) => {
+        res.status(200).render('register2')
+    },
     favorites: (req, res) => {
+
         res.status(200).render('favorites')
     },
     login: (req, res) => {

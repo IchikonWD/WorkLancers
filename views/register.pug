@@ -1,27 +1,30 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(http-equiv='X-UA-Compatible' content='IE=edge')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  link(rel='stylesheet' href='/css/register.css ')
-  link(rel='stylesheet' href='/css/footer.css ')
-
-  title Register - WorkLancers
-body 
-  form#register-form(action='/register2' method="POST")
-    .heading WorkLancers
-    h1 Get your free account
-    main
-      .right
-        a.google-plus(href='#')
-          p.fa.fa-google-plus(aria-hidden='true') Continue with Google
-        .connect or
-      .left
-        label(for='email')
-        br
-        input#email(type='email' name='email' value='Work email addrees')
-        br
-        .emailbox
-          a(href='#')
-            input.em-email(type="submit" value="Continue with Email") 
-    include ./footer.pug
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/css/register.css')
+    title Register
+  body
+    .container
+      form#register-form(action='#')
+        .heading WorkLancers
+        h1 Get your free account
+        .right
+          a.google-plus(href='#')
+            p.fa.fa-google-plus(aria-hidden='true') Continue with Google
+          main
+            .separator
+            .connect or
+            .separator
+        .left
+          label(for='email')
+          br
+          input#email(type='email' name='email' value='Work email addrees')
+          br
+          .emailbox
+            a(href='#')
+              p.emailp(aria-hidden='true') Continue with Email
+        .footer
+          // <button class="see_more_btn">See More</button>
