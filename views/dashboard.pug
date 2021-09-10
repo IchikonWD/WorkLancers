@@ -10,7 +10,7 @@ head
 body
   include ./header.pug
   main
-    section
+    section.top
       article
         h1.title Dashboard
         button(type="button" class="postButton" onclick="mostrarForm()") !Post a Job!
@@ -22,6 +22,21 @@ body
           .separator
           h2 My Postings
           .separator
+        br
+    section.bot
+      each val in data
+        article.card 
+          div.insideCard
+            div.topCard 
+              h2.titleCard=val.title
+              a(href="#") 
+                img(src="/assets/img/choices.png" class="choicesImg")
+            div.midCard  
+              p.categoryCard=val.category
+            div.botCard
+              p Duration:&nbsp; 
+                p.durationCard=val.duration
+              p.salaryCard=val.salary
       article
   include ./footer.pug
   script

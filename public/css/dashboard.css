@@ -9,6 +9,10 @@ html{
 main{
     width: 100%;
     height: 110%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 article{
     display: flex;
@@ -95,4 +99,48 @@ select:focus{
     width: 100px;
     height: 2px;
     margin: 10px;
+}
+.bot{
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    flex-direction: column;
+    align-items: center;
+}
+.card{
+    width: 351px;
+    border-radius: 22px;
+    background-color: #DCE4DE;
+    margin-top: 30px;
+    height: 123px;
+    display: flex;
+    align-items: flex-start;
+}
+.insideCard{
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+.titleCard{
+    font-size: 18px;
+}
+.topCard{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 320px;
+}
+.midCard{
+    margin-top: 5px;
+}
+.botCard{
+    display: flex;
+    margin-top: 5px;
+    flex-direction: row;
+}
+.salaryCard{
+    margin-left: 10px;
+}
+.choicesImg{
+    width: 22px;
+    height: 22px;
 }
