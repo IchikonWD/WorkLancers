@@ -26,10 +26,8 @@ const register = {
             const { email, password } = req.body
             const getUser_byEmail = await Users.getUser_email(email)
             if (getUser_byEmail.rows[0].email == email) {
-                console.log('email valido');
                 const encryptPass= getUser_byEmail.rows[0].password
                 encrypt.compare(password, encryptPass ,(err,result) => {
-                    console.log(result);
                     if(err){
                         throw new Error(err)
                     }

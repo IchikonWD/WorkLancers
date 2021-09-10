@@ -10,19 +10,19 @@ html(lang='en')
       .heading WorkLancers
       h1  Complete your free account setup 
       .underline
-      form(action='#' method='post' id='contact_form')
+      form(method='post' id='contact_form')
         .name
           label(for='username')
           input(type='text' placeholder='Username' name='username' id='name_input' required)
         .lastname
           label(for='email')
-          input(type='text' placeholder='email' name='email' id='email_input' required)
+          input(type='email' placeholder='email' name='email' id='email_input' required)
         .password
           label(for='password')
-          input(type='text' placeholder='Creat a password' name='password' id='password_input' required)
+          input(type='password' placeholder='Creat a password' name='password' id='password_input' required)
         .email
           label(for='age')
-          input(type='email' placeholder='Birthdate' name='age' id='email_input' required)
+          input(type='text' placeholder='Birthdate' name='age' id='email_input' required)
         .subject
           label(for='location')
           select(placeholder='Select a country' name='location' id='subject_input' required)
@@ -48,7 +48,6 @@ html(lang='en')
             input#vehicle2(type='checkbox' name='vehicle2' value='Car')
             label(for='vehicle2') I have read and accept the privacy policy
             br
-        .submit
           input(type='submit' value='Create My Account' id='form_button')
       // // End form
       .footer
