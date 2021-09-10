@@ -2,13 +2,15 @@ const User = require('../models/entries')
 const bcrypt = require('bcryptjs')
 const { MongoDriverError } = require('mongodb')
 
-const encryp_password = async(password) => {
-    const salt = await bcrypt.genSalt(10)
-    return await bcrypt.hash(password, salt)
+const algo = {
+    encryptPassword: async password => {
+        const salt = await bcrypt.genSalt(10)
+        return await bcrypt.hash(password, salt)
+    },
+    matchPassword: async (password) => {
+        return await bcrypt.compare(password, this.password)
+    }
 }
 
-const matchPassword = async (password) => {
-    return await bcrypt.compare(password, this.password)
-}
 
-module.exports = encryp_password, matchPassword; 
+module.exports = algo;

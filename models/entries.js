@@ -7,8 +7,8 @@ const entries = {
         let client, result;
         try {
             client = await pool.connect();
-            const sql_query = await pool.query(`
-                SELECT email FROM users WHERE email=$1
+            const sql_query = (`
+                SELECT email, password FROM users WHERE email=$1
             `)
             result = await pool.query(sql_query, [email])
         } catch (err) {
@@ -20,7 +20,7 @@ const entries = {
         let client, result
         try {
             client = await pool.connect();
-            const sql_query = await pool.query(`
+            const sql_query = (`
                 SELECT password FROM users WHERE password=$1
             `)
             result = await pool.query(sql_query, [password])
@@ -34,7 +34,7 @@ const entries = {
     getUser_id: async (id) => {
         let result
         try {
-            const sql_query = await pool.query(`
+            const sql_query = (`
                 SELECT user_id FROM users WHERE user_id=$1
             `)
             result = await pool.query(sql_query, [user_id])
@@ -51,9 +51,7 @@ const entries = {
             client = await pool.connect();
             const sql_query =
                 "INSERT INTO users (username, email, password, age, occupation, location, skills) VALUES ($1, $2, $3, $4 ,$5, $6, $7)"
-            console.log("ssssssssssssssss")
             result = await pool.query(sql_query, [username, email, password, age, occupation, location, skills])
-        console.log("wwwwwwwwwwwwww")
         } catch (error) {
             console.log('Error al registrarse ----> ' + error);
         } finally {
