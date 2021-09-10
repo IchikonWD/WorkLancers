@@ -1,23 +1,55 @@
-doctype html
-head
-  meta(charset='UTF-8')
-  meta(http-equiv='X-UA-Compatible' content='IE=edge')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title Register - WorkLancers
-body 
-    form(action='#' method='POST')
-        label(for="username") Username
-        input(type="text" name="username")
-        label(for='email') Email
-        input(type='text' name='email' id='')
-        label(for='password') Password
-        input(type='text' name='password' id='')
-        label(for='age') Birthday
-        input(type='text' name='age' id='')
-        label(for='occupation') Occupation
-        input(type='text' name='occupation' id='')
-        label(for='location') Location
-        input(type='text' name='location')
-        label(for='skills') Skills
-        input(type='text' name='skills')
-        input(type='submit' value='Enviar')
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet' href='/css/register2.css')
+    title Register2
+  body
+    #container
+      .heading WorkLancers
+      h1  Complete your free account setup 
+      .underline
+      form(action='#' method='post' id='contact_form')
+        .name
+          label(for='username')
+          input(type='text' placeholder='Username' name='username' id='name_input' required)
+        .lastname
+          label(for='email')
+          input(type='text' placeholder='email' name='email' id='email_input' required)
+        .password
+          label(for='password')
+          input(type='text' placeholder='Creat a password' name='password' id='password_input' required)
+        .email
+          label(for='age')
+          input(type='email' placeholder='Birthdate' name='age' id='email_input' required)
+        .subject
+          label(for='location')
+          select(placeholder='Select a country' name='location' id='subject_input' required)
+            option(disabled hidden selected) Select a country
+            option Spain
+            option USA
+            option CCCP
+        .message
+          p I want to:
+        #box-job
+          .project
+            label(for='occupation')
+            input(type='text' placeholder='Your ocupation' name='occupation' id='project_input' required)
+          .freelancer
+            label(for='skills')
+            input(type='text' placeholder='Your skills' name='skills' id='freelancer_input' required)
+        .box-check
+          div(class='checkbox_a')
+            input#vehicle1(type='checkbox' name='vehicle1' value='Bike')
+            label(for='vehicle1') Yes! send me genuinely useful emails every now
+            br
+          div(class='checkbox_b')
+            input#vehicle2(type='checkbox' name='vehicle2' value='Car')
+            label(for='vehicle2') I have read and accept the privacy policy
+            br
+        .submit
+          input(type='submit' value='Create My Account' id='form_button')
+      // // End form
+      .footer
+    // // End #container

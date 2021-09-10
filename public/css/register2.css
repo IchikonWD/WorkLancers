@@ -1,0 +1,248 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+body {
+  font-family: 'Montserrat', Arial, sans-serif;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+button {
+  overflow: visible;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button, input, select, textarea {
+  color: #5A5A5A;
+  font: inherit;
+  margin: 0;
+}
+
+input {
+  justify-content: center;
+  text-align: left;
+  line-height: normal;
+  border-radius: 3px;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  flex-wrap: nowrap;
+  min-height: 100vh;
+  width: 100%;
+}
+
+form {
+  padding: 37.5px;
+}
+
+h1 {
+  color: #474544;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+.heading{
+    background-color: #22577A;
+    color: white;
+    width: 100%;
+    height: 70.5px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+/*.underline {
+  border-bottom: solid 2px #474544;
+  margin: -0.512em auto;
+  width: 80px;
+}*/
+
+/* .icon_wrapper {
+  margin: 50px auto 0;
+  width: 100%;
+  display: flex;
+  
+} */
+
+.icon {
+  fill: #474544;
+  height: 50px;
+  margin: 0 auto;
+  width: 50px;
+}
+
+.lastname {
+	float: right;
+	width: 45%;
+}
+
+input[type='text'], [type='text'],[type='email'], select, textarea {
+	background: none;
+  border: 0.1em solid #dfdfdf;
+	color: #474544;
+	font-size: 1.000em;
+  font-weight: 400;
+  letter-spacing: 1px;
+	margin: 0em 0 1.875em 0;
+	padding: 0 0 0.875em 0;
+	width: 100%;
+  box-sizing: border-box;
+	transition: all 0.3s;
+}
+
+input[type='text']:focus, [type='text']:focus,[type='email']:focus textarea:focus {
+	outline: none;
+	padding: 0 0 0.875em 0;
+}
+
+#box-job{
+display: flex;
+flex-direction:row ;
+justify-content: center;
+width: 100%;
+border-radius: 4px;
+}
+
+.freelancer{
+border-radius: 4px;
+}
+
+.project{
+border-radius: 4px;
+}
+
+.message {
+	float: none;
+}
+
+.name {
+	float: left;
+	width: 45%;
+}
+
+select {
+  background: url('https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-ios7-arrow-down-32.png') no-repeat right;
+  outline: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.subject {
+  width: 100%;
+}
+
+.password {
+  width: 100%;
+}
+.email{
+  width: 100%;
+}
+
+.box-check{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+}
+.checkbox_a{
+
+}
+.checkbox_b{
+float: left;
+}
+
+#form_button {
+  width: 100%;
+  text-align: center;
+  background: #4caf50;
+      color: #ffffff;
+  border-radius: 37px;
+  border: 2px solid #4CAF50;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-family: 'Helvetica', Arial, sans-serif;
+  font-size: 0.875em;
+  font-weight: bold;
+  outline: none;
+  padding: 20px 35px;
+  -webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+#form_button:hover {
+  
+}
+
+.footer{
+    height: 50px;
+    width: 100%;
+    background-color: #22577A;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px ;
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/*@media screen and (max-width: 768px) {
+  #container {
+    margin: 20px auto;
+    width: 95%;
+  }
+}*/
+
+/*@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 26px;
+  }
+  
+  .underline {
+    width: 68px;
+  }
+  
+  #form_button {
+    padding: 15px 25px;
+  }
+}*/
+/*
+@media screen and (max-width: 420px) {
+  h1 {
+    font-size: 18px;
+  }
+  
+  .icon {
+    height: 35px;
+    width: 35px;
+  }
+  
+  .underline {
+    width: 53px;
+  }
+  
+  input[type='text'], [type='email'], select, textarea {
+    font-size: 0.875em;
+  }
+}*/
