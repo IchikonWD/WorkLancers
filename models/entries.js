@@ -1,4 +1,5 @@
 const { response } = require('express');
+const { post } = require('../routes/users.routes');
 const pool = require('../utils/sql-db')
 
 
@@ -87,6 +88,33 @@ const entries = {
             client.release();
         }
         return result;
+    },
+    getInfo_allUsers: async () => {
+        let client, result;
+        try {
+            client = await pool.connect();
+            const sql_query = 
+                "SELECT user_id,username, email, age, occupation, location, skills, favorites FROM users"
+                result = await pool.query(sql_query)
+        } catch (error) {
+            console.log('Error al sacar informacion de los usesr --> ' + error);
+        }finally{
+            client.release();
+        }
+        return result;
+    },
+    delete_user: async(user_id) => {
+        let client, result;
+        try {
+            client = await pool.connect();
+            const sql_query = 
+                "DELETE FROM users WHERE user_id=$1"
+                result = await pool.query(sql_query, [user_id])
+        } catch (error) {
+            console.log('Error al borrar el user --> ' + error);
+        }finally{
+            client.release();
+        }
     }
 
 }
