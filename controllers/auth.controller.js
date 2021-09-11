@@ -12,7 +12,8 @@ const register = {
             const result = await auth_schema.validateAsync(req.body)
             const { username, email, password, age, occupation, location, skills } = result;
             const salt = await encrypt.genSalt(10)
-            let encryptPass = encrypt.hash(password, salt)
+            let encryptPass = await encrypt.hash(password, salt)
+            console.log(encryptPass);
             try { //Pruebo que no exista el email primero para que no se mezcle con los creados con Google
                 let user_email = await Users.getUser_email(email)
                 if (user_email.rows.length === 0) { 
