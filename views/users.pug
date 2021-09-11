@@ -1,8 +1,33 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(http-equiv='X-UA-Compatible' content='IE=edge')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    link(rel="stylesheet" href="../public/styles/style.css")
-    link(rel="stylesheet" href="../public/styles/users.css")
-  title Users - WorkLancers
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet' href='/css/header.css ')
+        link(rel='stylesheet' href='/css/footer.css ')
+        link(rel="stylesheet" href="/css/users.css")
+        title Favorites - WorkLancers
+    body
+      include ./header
+      p Hola desde pug
+      each val in hola
+        form(method="POST" )
+          div.card
+            p Username 
+              label(for=val.user_id)=val.Username
+            p Email: 
+              label(for=val.user_id)=val.email
+            p Birthdate: 
+              label(for=val.user_id)=val.age
+            p Occupation:
+              label(for=val.user_id)=val.occupation
+            p Location: 
+              label(for=val.user_id)=val.location
+            p Skills:
+              label(for=val.user_id)=val.skills
+              input(type="hidden" value=val.user_id name='user_id')
+              input(type="submit" class="deleteBtn" value="Delete", user_id=val.user_id)
+
+
+      include ./footer
