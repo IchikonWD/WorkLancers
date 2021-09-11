@@ -18,13 +18,13 @@ passport.use(new GoogleStrategy({
             if(exist_user.rows.length === 0 ){
                 let newUser = await Users.setNewGoogle_user(profile._json.name, profile._json.email, profile._json.sub, profile._json.locale) // Por aqui meto el usuario de google en SQL 
                 if(newUser != undefined ){
-                    return done(null, newUser);
+                    return done(null, newUser, profile);
                 }else{
                     request.flash('error')
                 }
             }else{
                 console.log('EL usuario ya existe ************');
-                return done(null, false, { message: 'The email already exists'})
+                return done(null, profile)
             }
         } catch (error) {
             console.log(error);
