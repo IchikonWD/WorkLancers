@@ -7,11 +7,11 @@ html(lang='en')
     title Register
   body
     .container
-      form#register-form(action='#')
+      form#register-form()
         .heading WorkLancers
         h1 Get your free account
         .right
-          a.google-plus(href='#')
+          a.google-plus(href='/auth/google')
             p.fa.fa-google-plus(aria-hidden='true') Continue with Google
           main
             .separator
@@ -20,10 +20,11 @@ html(lang='en')
         .left
           label(for='email')
           br
+          // Este input text hay que quitarlo y poner un boton que lleve al formulario de registro
           input#email(type='email' name='email' value='Work email addrees')
           br
           .emailbox
-            a(href='register/email')
+            a(href='/register/email')
               p.emailp(aria-hidden='true') Continue with Email
         .footer
           // <button class="see_more_btn">See More</button>
