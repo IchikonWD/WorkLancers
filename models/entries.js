@@ -1,3 +1,4 @@
+const { response } = require('express');
 const pool = require('../utils/sql-db')
 
 
@@ -58,8 +59,21 @@ const entries = {
             client.release();
         }
         return result;
+    },
+    setNewGoogle_user: async (username, email, password, location) => {
+        let client, result
+        try {
+            client = await pool.connect();
+            const sql_query =
+                "INSERT INTO users (username, email, password, location) VALUES ($1, $2, $3, $4)"
+            result = await pool.query(sql_query, [username, email, password, location])
+        } catch (error) {
+            console.log('Error al registrarse con google----> ' + error);
+        } finally {
+            client.release();
+        }
+        return result;
     }
-
 
 }
 
