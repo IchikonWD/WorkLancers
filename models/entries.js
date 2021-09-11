@@ -73,6 +73,20 @@ const entries = {
             client.release();
         }
         return result;
+    },
+    isAdmin: async (email) => {
+        let client, result; 
+        try {
+            client = await pool.connect();
+            const sql_query = 
+                "SELECT admin FROM users WHERE email=$1"
+            result = await pool.query(sql_query, [email])
+        } catch (error) {
+            console.log('Error al comprabar si es admin ---> ' + error );
+        }finally {
+            client.release();
+        }
+        return result;
     }
 
 }
