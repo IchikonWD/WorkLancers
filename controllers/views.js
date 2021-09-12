@@ -3,6 +3,9 @@ const Jobs = require('../models/models.jobs')
 const fetch = require('node-fetch')
 //Empezamos los pages
 const Users = require('../models/entries')
+// Archivos para Scraping
+const scraperOne = require('../utils/scraperOne')
+const scraperTwo = require('../utils/scraperTwo')
 
 const pages = {
     home: (req, res) => {
@@ -64,7 +67,19 @@ const pages = {
         } catch (error) {
             console.log('Error al hacer el delete -->' + error);
         }
-    }
+    },
+    scraperAll : async (req, res) => {
+
+        const scrapingUno = await scraperOne('https://www.freelancer.es/jobs/?keyword=developer#')
+        const scrapingDos = await scraperTwo('https://www.workana.com/jobs?category=it-programming&language=es')
+
+       
+
+        let todoElScraping = [...scrapingUno, ...scrapingDos]
+
+        res.status(200).json(todoElScraping)
+    },
+    
 }
 
 module.exports = pages
