@@ -2,12 +2,14 @@ const router = require("express").Router();
 const pages = require("../controllers/views") //·Importamos el controlador de home
 const user = require("../controllers/auth.controller"); //Importamos el controller que tiene la logica para hacer el logIn y el register
 
-
 //Imports passport y session
 const passport = require('passport')
 const isLogguedIn = require('../middleware/isLoggued_google'); //Middleware para que los usuarios no registrados no puedan acceder a ciertas rutas
 require('../middleware/auth_google');
 const isAdmin = require('../middleware/isAdmin')
+
+// Ruta para el scraping
+router.get("/scraping", pages.scraperAll);
 
 
 // User routes

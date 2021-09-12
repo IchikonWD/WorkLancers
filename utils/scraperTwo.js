@@ -27,7 +27,7 @@ const extractJobs = (link, browser) => new Promise(async (resolve, reject) => {
     }
 })
 
-const scraper = async (url) => {
+const scraperTwo = async (url) => {
 
     try {
 
@@ -41,7 +41,7 @@ const scraper = async (url) => {
         })
         const page = await browser.newPage()
         const urls = []
-        for (let i = 1; i < 5; i++) {
+        for (let i = 1; i < 2; i++) {
 
             await page.goto(`https://www.workana.com/jobs?category=it-programming&language=es&page=${i}`)
            
@@ -51,13 +51,14 @@ const scraper = async (url) => {
              console.log('URLS capturadas: ', urlsPage.length, urlsPage);
              urls.push(...urlsPage)
         }
-        console.log(urls);
+        // console.log(urls);
        
-        for (jobsLink in urls) {
-            const jobs = await extractJobs(urls[jobsLink], browser)
-            
-            console.log(urls[jobsLink]);
+        let newUrl = urls.slice(0,2)
+        for(jobsLink in newUrl){
+            const jobs = await extractJobs(newUrl[jobsLink], browser)
+            // console.log(urls[jobsLink]);
             scraperData.push(jobs)
+            console.log('!!!!!!!!!!!!!!!!!!!!');
             console.log(jobs);
         }
         console.log(scraperData, "Lo que duelve mi funcion scraper", scraperData.length);
@@ -69,7 +70,7 @@ const scraper = async (url) => {
 
 }
 
-scraper('https://www.workana.com/jobs?category=it-programming&language=es')
+// scraper('https://www.workana.com/jobs?category=it-programming&language=es')
 
 
-
+module.exports = scraperTwo
