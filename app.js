@@ -1,15 +1,14 @@
 const express = require("express");
-const cookieParser = require('cookie-parser');
 const favicon = require('serve-favicon');
 require("dotenv").config();
 require("./utils/mongo-db");
 require("./utils/sql-db");
-const routes_users = require("./routes/users.routes");
-const routes_api = require("./routes/api.routes");
 const cors = require('cors')
 const session = require('express-session')
-const passport = require('passport')
 const flash = require('connect-flash')
+const routes_users = require("./routes/users.routes");
+const routes_api = require("./routes/api.routes");
+const passport = require('passport')
 const path = require('path');
 
 const app = express();
