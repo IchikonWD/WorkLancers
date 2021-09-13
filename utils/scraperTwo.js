@@ -41,7 +41,7 @@ const scraperTwo = async (url) => {
         const urls = []
         for (let i = 1; i < 2; i++) {
 
-            await page.goto(`https://www.workana.com/jobs?category=it-programming&language=es&page=${i}`)
+            await page.goto(`https://www.workana.com/jobs?language=es&query=sql&page=${i}`)
             
              const urlsPage = await page.$$eval('#projects > div > div.project-header > h2 > a', (link) => link.map(link => link.href))
             // console.log('URLS capturadas: ', urlsPage.length, urlsPage);

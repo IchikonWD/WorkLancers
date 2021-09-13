@@ -70,8 +70,8 @@ const pages = {
     },
     scraperAll: async (req, res) => {
 
-        const scrapingDos = await scraperTwo('https://www.workana.com/jobs?category=it-programming&language=es')
-        const scrapingUno = await scraperThree('https://www.flexjobs.com/remote-jobs/web-design.html?category=Web+Design&catset%5B%5D=Web+Design&jobtypes%5B%5D=Freelance')
+        const scrapingDos = await scraperTwo(`https://www.workana.com/jobs?language=es&query=sql`)
+        const scrapingUno = await scraperThree(`https://www.flexjobs.com/search?jobtypes%5B%5D=Freelance&location=&search=sql`)
         let todoElScraping = [...scrapingUno, ...scrapingDos]
 
         res.status(200).json(todoElScraping)
