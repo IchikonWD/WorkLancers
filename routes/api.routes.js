@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const pages = require("../controllers/admin")
+const pages = require("../controllers/api.controller")
 
 // const checkRolesExisted = require('../middlewares/verifySignUp');
 // const checkEmailAndPassword = require('../middlewares/verifySignIn');
@@ -9,8 +9,10 @@ const pages = require("../controllers/admin")
 // } = require('../middlewares/authJwt');
 
 // Search
-router.post("/api/user");
-router.put("/api/user");
+router.post("/user", pages.postRegister);
+router.post("/login", pages.postLogin);
+router.post("/logout", pages.postLogout);
+router.put("/api/user" );
 router.delete("/api/user");
 
 // Login
@@ -19,7 +21,7 @@ router.post("/api/logout");
 router.get("/api/search");
 
 // Admin
-router.get("/ads", pages.myJobs)
+router.get("/ads")
 router.post("/api/ads");
 router.put("/api/ads");
 router.delete("/api/ads");

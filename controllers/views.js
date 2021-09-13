@@ -68,17 +68,17 @@ const pages = {
             console.log('Error al hacer el delete -->' + error);
         }
     },
-    scraperAll : async (req, res) => {
+     scraperAll : async (req, res) => {
 
-        const scrapingUno = await scraperOne('https://www.freelancer.es/jobs/?keyword=developer#')
-        const scrapingDos = await scraperTwo('https://www.workana.com/jobs?category=it-programming&language=es')
+        //  const scrapingUno = await scraperOne('https://www.freelancer.es/jobs/?keyword=developer#')
+        //  const scrapingDos = await scraperTwo('https://www.workana.com/jobs?category=it-programming&language=es')
 
        
 
-        let todoElScraping = [...scrapingUno, ...scrapingDos]
+        // let todoElScraping = [...scrapingUno, ...scrapingDos]
 
-        res.status(200).json(todoElScraping)
-    },
+        //  res.status(200).json(todoElScraping)
+     },
     
 }
 
