@@ -32,7 +32,7 @@ const extractJobs = (link, browser) => new Promise(async (resolve, reject) => {
 const scraper = async (url) => {
     try {
         const scraperData = []
-        console.log("Opening the browser......");
+        console.log("Taking info page 1...");
 
         const browser = await puppeteer.launch({
             headless: true
@@ -47,7 +47,7 @@ const scraper = async (url) => {
             urls.push(...urlsPage)
         }
         // console.log(urls);
-        let newUrl = urls.slice(0,10)
+        let newUrl = urls.slice(0,5)
         for (jobsLink in newUrl) {
             const jobs = await extractJobs(newUrl[jobsLink], browser)
 

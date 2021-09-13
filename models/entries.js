@@ -33,13 +33,14 @@ const entries = {
         }
         return result;
     },
-    getUser_id: async (id) => {
-        let result
+    getUser_id: async (email) => {
+        let client, result
         try {
+            client = await pool.connect();
             const sql_query = (`
-                SELECT user_id FROM users WHERE user_id=$1
+                SELECT user_id FROM users WHERE email=$1
             `)
-            result = await pool.query(sql_query, [user_id])
+            result = await pool.query(sql_query, [email])
         } catch (error) {
             console.log('Error al coger el id ---> ' + error);
         } finally {

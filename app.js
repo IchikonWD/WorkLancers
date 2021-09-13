@@ -10,6 +10,8 @@ const routes_users = require("./routes/users.routes");
 const routes_api = require("./routes/api.routes");
 const passport = require('passport')
 const path = require('path');
+const cookieParser = require('cookie-parser')
+
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -21,9 +23,10 @@ app.use(
   })
 );
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 app.use(express.static('public')) //Para que el pug coja el CSS e imagenes
-app.use(flash())
+app.use(flash());
+app.use(cookieParser());
 
 //Passport
 app.use(session({ secret: process.env.SECRET_SESSION,

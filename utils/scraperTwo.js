@@ -24,12 +24,11 @@ const extractJobs = (link, browser) => new Promise(async (resolve, reject) => {
         reject("Error: ", err)
     }
 })
-
 const scraperTwo = async (url) => {
     try {
 
         const scraperData = []
-        console.log("Preparando el Json......");
+        console.log("Taking info page 2...");
 
         const browser = await puppeteer.launch({
 
@@ -48,12 +47,11 @@ const scraperTwo = async (url) => {
         }
         // console.log(urls);
        
-        let newUrl = urls.slice(0,10)
+        let newUrl = urls.slice(0,5)
         for(jobsLink in newUrl){
             const jobs = await extractJobs(newUrl[jobsLink], browser)
             // console.log(urls[jobsLink]);
             scraperData.push(jobs)
-            console.log('!!!!!!!!!!!!!!!!!!!!');
            // console.log(jobs);
         }
         //console.log(scraperData, "Lo que duelve mi funcion scraper", scraperData.length);
