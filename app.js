@@ -1,11 +1,11 @@
 const express = require("express");
+const cookieParser = require('cookie-parser');
 require("dotenv").config();
 require("./utils/mongo-db");
 require("./utils/sql-db");
 const routes_users = require("./routes/users.routes");
 const routes_api = require("./routes/api.routes");
 const cors = require('cors')
-const morgan = require('morgan')
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -19,6 +19,7 @@ app.use(
 app.use(express.json());
 app.use(cors())
 app.use(express.static('public')) //Para que el pug coja el CSS e imagenes
+app.use(cookieParser());
 
 
 //View Engine

@@ -2,6 +2,14 @@ const router = require("express").Router();
 const pages = require ("../controllers/views") //·Importamos el controlador de home
 const passport = require("../controllers/passport") //Importamos el controller que tiene la logica para hacer el logIn y el register
 
+const checkRolesExisted = require('../middlewares/verifySignUp');
+const checkEmailAndPassword = require('../middlewares/verifySignIn');
+const {
+    verifyToken,
+    isAdmin
+} = require('../middlewares/authJwt');
+
+
 // User routes
 router.get("/", pages.home);
 router.get("/register", pages.register);
