@@ -3,11 +3,11 @@ const box = document.querySelector('main')
 // http://localhost:3000/scraping
 
 fetch('http://localhost:3000/scraping')
-        .then((Data)=> Data.json())
-        .then(scrapData => {
-            
-                scrapData.map(offer => {
-                    box.innerHTML += `
+    .then((Data) => Data.json())
+    .then(scrapData => {
+
+        scrapData.map(offer => {
+            box.innerHTML += `
                     <section class="section2">
                         <article class="job1">
                             <div class="job_header">
@@ -25,6 +25,12 @@ fetch('http://localhost:3000/scraping')
                         </article>
                     </section>
                     `
-                })
+        })
 
-})
+
+    }).catch((error) => {console.log(error);})
+    .finally(() => {
+        var contenedor = document.getElementById('contenedor_carga');
+        contenedor.style.visibility = 'hidden';
+        contenedor.style.opacity = '0';
+    })
