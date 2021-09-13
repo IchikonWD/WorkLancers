@@ -76,7 +76,6 @@ const pages = {
 
         res.status(200).json(todoElScraping)
     },
-
 }
 
 module.exports = pages
