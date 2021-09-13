@@ -30,7 +30,6 @@ const extractJobs = (link, browser) => new Promise(async (resolve, reject) => {
 })
 
 const scraper = async (url) => {
-
     try {
         const scraperData = []
         console.log("Opening the browser......");
@@ -41,7 +40,7 @@ const scraper = async (url) => {
         const page = await browser.newPage()
         const urls = []
         for (let i = 1; i < 2; i++) {
-            await page.goto(`https://www.flexjobs.com/search?jobtypes%5B%5D=Freelance&location=&page=${i}&search=sql`)
+            await page.goto(`${url}&page=${i}`)
 
             const urlsPage = await page.$$eval('#job-list > li > div > div > div.col.text-nowrap.pr-0 > a', (link) => link.map(link => link.href))
           //  console.log('URLS capturadas: ', urlsPage.length, urlsPage);
