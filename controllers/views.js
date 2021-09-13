@@ -6,6 +6,7 @@ const Users = require('../models/entries')
 // Archivos para Scraping
 const scraperTwo = require('../utils/scraperTwo')
 const scraperThree = require('../utils/scraperOne')
+const { object } = require('joi')
 
 const pages = {
     home: (req, res) => {
@@ -69,12 +70,18 @@ const pages = {
         }
     },
     scraperAll: async (req, res) => {
-
-        const scrapingDos = await scraperTwo(`https://www.workana.com/jobs?language=es&query=sql`)
-        const scrapingUno = await scraperThree(`https://www.flexjobs.com/search?jobtypes%5B%5D=Freelance&location=&search=sql`)
+        const searchInput = await req.body.search
+        console.log(searchInput);
+        if (searchInput === undefined) {
+            res.status(200).render('home')
+        }
+        else {
+        const scrapingDos = await scraperTwo(`https://www.workana.com/jobs?language=es&query=${searchInput}`)
+        const scrapingUno = await scraperThree(`https://www.flexjobs.com/search?jobtypes%5B%5D=Freelance&location=&search=${searchInput}`)
         let todoElScraping = [...scrapingUno, ...scrapingDos]
 
-        res.status(200).json(todoElScraping)
+         res.status(200).json(todoElScraping)
+        }
     },
 }
 

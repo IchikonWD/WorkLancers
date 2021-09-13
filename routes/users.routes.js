@@ -9,9 +9,8 @@ require('../middleware/auth_google');
 const isAdmin = require('../middleware/isAdmin')
 
 // Ruta para el scraping
-router.get("/scraping", pages.scraperAll);
-
-
+// router.get("/scraping", pages.scraperAll);
+router.post('/scraping', pages.scraperAll);
 // const checkRolesExisted = require('../middlewares/verifySignUp');
 // const checkEmailAndPassword = require('../middlewares/verifySignIn');
 // const {

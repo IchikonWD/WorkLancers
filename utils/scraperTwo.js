@@ -26,11 +26,10 @@ const extractJobs = (link, browser) => new Promise(async (resolve, reject) => {
 })
 
 const scraperTwo = async (url) => {
-
     try {
 
         const scraperData = []
-        console.log("Opening the browser......");
+        console.log("Preparando el Json......");
 
         const browser = await puppeteer.launch({
 
@@ -41,7 +40,7 @@ const scraperTwo = async (url) => {
         const urls = []
         for (let i = 1; i < 2; i++) {
 
-            await page.goto(`https://www.workana.com/jobs?language=es&query=sql&page=${i}`)
+            await page.goto(`${url}&page=${i}`)
             
              const urlsPage = await page.$$eval('#projects > div > div.project-header > h2 > a', (link) => link.map(link => link.href))
             // console.log('URLS capturadas: ', urlsPage.length, urlsPage);

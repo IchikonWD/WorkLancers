@@ -20,9 +20,10 @@ main
       | printing and typesetting industry. Lorem Ipsum has been the industry&apos;s standard dummy text ever since
       | the 1500s.
   section.sectionForm
-    form.searchForm(name='searchForm' method='POST' action='//aqui va el middleware')
+    form.searchForm(name='searchForm')
       img.icon_search(src='/assets/img/buscador.png')
       input#search.searchBox(type='text' name='search' placeholder='Web Developer')
+  section#cagando
 //Hacer formulario para meter un checkbox al favorito
 include ./footer.pug
 script(src='./scripts/home.js')
