@@ -1,6 +1,6 @@
 // const { Json } = require("sequelize/types/lib/utils");
 
-const box = document.getElementById('cagando');
+const box = document.getElementById('boxes');
 
 document.querySelector("form").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -15,7 +15,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
     })
       .then((Data) => Data.json())
       .then((scrapData) => {
-        document.getElementById("cagando").innerHTML = ''
+        document.getElementById("boxes").innerHTML = ''
         scrapData.map((offer) => {
             box.innerHTML += `
                           <section class="section2">
