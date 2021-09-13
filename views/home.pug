@@ -10,6 +10,7 @@ head
 //Falta el middleware para el buscador que funcione al darle enter
 include ./header.pug
 main
+  p=unauthorized
   section.section1
     article.description
       | Explicacion de como funciona la p&aacute;gina y en que consistes. Lorem Ipsum is simply dummy text of the
@@ -54,3 +55,4 @@ main
         img.fav_img(src='/assets/img/favorite.png') 
         //Hacer formulario para meter un checkbox al favorito
 include ./footer.pug
+script(src='./scripts/home.js')
