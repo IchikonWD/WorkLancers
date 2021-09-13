@@ -97,7 +97,7 @@ const entries = {
                 "SELECT user_id,username, email, age, occupation, location, skills, favorites FROM users"
                 result = await pool.query(sql_query)
         } catch (error) {
-            console.log('Error al sacar informacion de los usesr --> ' + error);
+            console.log('Error al sacar informacion de los users --> ' + error);
         }finally{
             client.release();
         }
