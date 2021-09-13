@@ -38,7 +38,7 @@ const scraperOne = async (url) => {
         const scraperData = []
         console.log("Opening the browser......");
 
-        const browser = await puppeteer.launch({ headless: false})
+        const browser = await puppeteer.launch({ headless: true})
 
         const page = await browser.newPage()
         await page.goto(url)
