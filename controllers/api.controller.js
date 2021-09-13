@@ -1,6 +1,6 @@
 const encrypt = require('bcryptjs')
 const Users = require('../models/entries')
-
+const Jobs = require('../models/models.jobs')
 
 const pages = {
 
@@ -10,34 +10,29 @@ const pages = {
             const { username, email, password, age, occupation, location, skills } = response
             const salt = await encrypt.genSalt(10)
             let encryptPass = await encrypt.hash(password, salt)
-
             try {
-                 let hay_email = await Users.getUser_email(email)
-                 console.log(hay_email)
-                 if (hay_email.rows.length === 0) {
-                     await Users.setNew_user(username, email, encryptPass, age, occupation, location, skillsills)
-                     console.log('***Register created, user on DB added***');
-                     res.status(201).redirect('/')
-                 } else {
+                let hay_email = await Users.getUser_email(email)
+                console.log(hay_email)
+                if (hay_email.rows.length === 0) {
+                    await Users.setNew_user(username, email, encryptPass, age, occupation, location, skillsills)
+                    console.log('***Register created, user on DB added***');
+                    res.status(201).redirect('/')
+                } else {
                     console.log('entramos *******');
                     res.status(201).redirect('/register/email')
-                 }
-
+                }
             } catch (error) {
                 console.log(error);
                 res.status(201).json({ error: error })
             }
-
             res.status(200).json({ message: response })
-
-
         } catch (error) {
             console.log("entrada");
             res.status(201).json({ error: error })
         }
     },
-    postLogin: async (req, res) =>{
-        try{
+    postLogin: async (req, res) => {
+        try {
             const { email, password } = req.body
             const getbyEmail = await Users.getUser_email(email)
             if (getbyEmail.rows[0].email == email) {
@@ -54,11 +49,9 @@ const pages = {
                 })
             }
         }
-        catch(error) {
+        catch (error) {
             res.status(201).json({ error: error })
         }
-
- 
     },
     postLogout: async (req, res) => {
         req.logout();
@@ -66,12 +59,6 @@ const pages = {
         res.json('Goodbye!');
     },
 
-
-
-
-
-
 }
-
 
 module.exports = pages;

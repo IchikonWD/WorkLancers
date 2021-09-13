@@ -28,15 +28,15 @@ body
         article.card 
           div.insideCard
             div.topCard 
-              h2.titleCard=val.title
+              h2.titleCard=val.jobTitle
               a(href="#") 
                 img(src="/assets/img/choices.png" class="choicesImg")
             div.midCard  
-              p.categoryCard=val.category
+            
             div.botCard
               p Duration:&nbsp; 
-                p.durationCard=val.duration
-              p.salaryCard=val.salary
+                p.durationCard=val.jobTimer
+              p.salaryCard=val.jobBudget
       article
   include ./footer.pug
   script

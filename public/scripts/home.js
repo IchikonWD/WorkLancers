@@ -3,6 +3,11 @@
 const box = document.getElementById('boxes');
 
 document.querySelector("form").addEventListener("submit", (event) => {
+  box.innerHTML = ` 
+                <div id="contenedor_carga">
+                      <div id="carga"></div>
+                </div>
+  `; //Se genera el spinner cada vez que llamamos al formulario 
   event.preventDefault();
 
   const paintResults = () => {
@@ -17,7 +22,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
       .then((scrapData) => {
         document.getElementById("boxes").innerHTML = ''
         scrapData.map((offer) => {
-            box.innerHTML += `
+          box.innerHTML += `
                           <section class="section2">
                               <article class="job1">
                                   <div class="job_header">
@@ -40,11 +45,6 @@ document.querySelector("form").addEventListener("submit", (event) => {
       .catch((error) => {
         console.log(error);
       })
-      .finally(() => {
-        var contenedor = document.getElementById("contenedor_carga");
-        contenedor.style.visibility = "hidden";
-        contenedor.style.opacity = "0";
-      });
   };
   paintResults();
 });
