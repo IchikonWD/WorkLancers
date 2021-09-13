@@ -4,8 +4,9 @@ const fetch = require('node-fetch')
 //Empezamos los pages
 const Users = require('../models/entries')
 // Archivos para Scraping
-const scraperOne = require('../utils/scraperOne')
+// const scraperOne = require('../utils/scraperOne')
 const scraperTwo = require('../utils/scraperTwo')
+const scraperThree = require('../utils/scraperOne1')
 
 const pages = {
     home: (req, res) => {
@@ -70,9 +71,9 @@ const pages = {
     },
     scraperAll : async (req, res) => {
 
-        const scrapingUno = await scraperOne('https://www.freelancer.es/jobs/?keyword=developer#')
+        // const scrapingUno = await scraperOne('https://www.freelancer.es/jobs/?keyword=developer#')
         const scrapingDos = await scraperTwo('https://www.workana.com/jobs?category=it-programming&language=es')
-
+        const scrapingUno = await scraperThree('https://www.flexjobs.com/remote-jobs/web-design.html?category=Web+Design&catset%5B%5D=Web+Design&jobtypes%5B%5D=Freelance')
        
 
         let todoElScraping = [...scrapingUno, ...scrapingDos]

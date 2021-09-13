@@ -11,10 +11,8 @@ const extractJobs = (link, browser) => new Promise(async (resolve, reject) => {
         await page.waitForSelector('h1')
 
         jobData['jobTitle'] = await page.$eval('h2', (title) => title.innerText)
-
         
         jobData['jobDescription'] = await page.$eval('#app > div > div.container.main > section > section.box-common.block-project > div > section > article:nth-child(1) > div.expander.js-expander-passed', (description) => description.innerText)
-
 
          jobData['jobBudget'] = await page.$eval('#app > div > div.container.main > section > section.box-common.block-project > div > section > article:nth-child(1) > div.row > div:nth-child(2) > h4', (payment) => payment.innerText)
 
@@ -44,9 +42,7 @@ const scraperTwo = async (url) => {
         for (let i = 1; i < 2; i++) {
 
             await page.goto(`https://www.workana.com/jobs?category=it-programming&language=es&page=${i}`)
-           
-           
-    
+            
              const urlsPage = await page.$$eval('#projects > div > div.project-header > h2 > a', (link) => link.map(link => link.href))
              console.log('URLS capturadas: ', urlsPage.length, urlsPage);
              urls.push(...urlsPage)
