@@ -4,9 +4,8 @@ const fetch = require('node-fetch')
 //Empezamos los pages
 const Users = require('../models/entries')
 // Archivos para Scraping
-// const scraperOne = require('../utils/scraperOne')
 const scraperTwo = require('../utils/scraperTwo')
-const scraperThree = require('../utils/scraperOne1')
+const scraperThree = require('../utils/scraperOne')
 
 const pages = {
     home: (req, res) => {
@@ -54,12 +53,12 @@ const pages = {
         try {
             const result = await Users.getInfo_allUsers()
             let hola = result.rows
-            res.status(200).render('users', {hola})
+            res.status(200).render('users', { hola })
         } catch (error) {
             console.log(error);
         }
     },
-    delete: async (req,res) => {
+    delete: async (req, res) => {
         try {
             let id = req.body.user_id
             await Users.delete_user(id)
@@ -69,18 +68,15 @@ const pages = {
             console.log('Error al hacer el delete -->' + error);
         }
     },
-    scraperAll : async (req, res) => {
+    scraperAll: async (req, res) => {
 
-        // const scrapingUno = await scraperOne('https://www.freelancer.es/jobs/?keyword=developer#')
         const scrapingDos = await scraperTwo('https://www.workana.com/jobs?category=it-programming&language=es')
         const scrapingUno = await scraperThree('https://www.flexjobs.com/remote-jobs/web-design.html?category=Web+Design&catset%5B%5D=Web+Design&jobtypes%5B%5D=Freelance')
-       
-
         let todoElScraping = [...scrapingUno, ...scrapingDos]
 
         res.status(200).json(todoElScraping)
     },
-    
+
 }
 
 module.exports = pages

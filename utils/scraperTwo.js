@@ -44,21 +44,21 @@ const scraperTwo = async (url) => {
             await page.goto(`https://www.workana.com/jobs?category=it-programming&language=es&page=${i}`)
             
              const urlsPage = await page.$$eval('#projects > div > div.project-header > h2 > a', (link) => link.map(link => link.href))
-             console.log('URLS capturadas: ', urlsPage.length, urlsPage);
+            // console.log('URLS capturadas: ', urlsPage.length, urlsPage);
              urls.push(...urlsPage)
         }
         // console.log(urls);
        
-        let newUrl = urls.slice(0,2)
+        let newUrl = urls.slice(0,10)
         for(jobsLink in newUrl){
             const jobs = await extractJobs(newUrl[jobsLink], browser)
             // console.log(urls[jobsLink]);
             scraperData.push(jobs)
             console.log('!!!!!!!!!!!!!!!!!!!!');
-            console.log(jobs);
+           // console.log(jobs);
         }
-        console.log(scraperData, "Lo que duelve mi funcion scraper", scraperData.length);
-        // browser.close()
+        //console.log(scraperData, "Lo que duelve mi funcion scraper", scraperData.length);
+        browser.close()
         return scraperData
     } catch (err) {
         console.log("Error:", err);
