@@ -12,12 +12,12 @@ const isAdmin = require('../middleware/isAdmin')
 router.get("/scraping", pages.scraperAll);
 
 
-const checkRolesExisted = require('../middlewares/verifySignUp');
-const checkEmailAndPassword = require('../middlewares/verifySignIn');
-const {
-    verifyToken,
-    isAdmin
-} = require('../middlewares/authJwt');
+// const checkRolesExisted = require('../middlewares/verifySignUp');
+// const checkEmailAndPassword = require('../middlewares/verifySignIn');
+// const {
+//     verifyToken,
+//     isAdminJwt
+// } = require('../middlewares/authJwt');
 
 
 // User routes

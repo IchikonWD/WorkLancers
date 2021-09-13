@@ -14,9 +14,12 @@ header{
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-left: 20px;
-    margin-right: 30px;
+    margin-left: 1em;
+    margin-right: 1.2em;
 }
 .burger{
     font-size: 30px;
+}
+.icon {
+    width: 2em;
 }

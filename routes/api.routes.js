@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const pages = require("../controllers/admin")
 
-const checkRolesExisted = require('../middlewares/verifySignUp');
-const checkEmailAndPassword = require('../middlewares/verifySignIn');
-const {
-    verifyToken,
-    isAdmin
-} = require('../middlewares/authJwt');
+// const checkRolesExisted = require('../middlewares/verifySignUp');
+// const checkEmailAndPassword = require('../middlewares/verifySignIn');
+// const {
+//     verifyToken,
+//     isAdmin
+// } = require('../middlewares/authJwt');
 
 // Search
 router.post("/api/user");

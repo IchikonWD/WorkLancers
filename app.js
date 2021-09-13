@@ -1,5 +1,6 @@
 const express = require("express");
 const cookieParser = require('cookie-parser');
+const favicon = require('serve-favicon');
 require("dotenv").config();
 require("./utils/mongo-db");
 require("./utils/sql-db");
@@ -9,6 +10,7 @@ const cors = require('cors')
 const session = require('express-session')
 const passport = require('passport')
 const flash = require('connect-flash')
+const path = require('path');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -39,7 +41,8 @@ app.use((req, res, next) => {
   next();
 })
 
-
+app.use("/public", express.static(path.join(__dirname, 'public')));
+app.use(favicon(__dirname + '/public/assets/img/lance.png'));
 
 //View Engine
 
