@@ -21,7 +21,7 @@ const register = {
                     console.log('***Register created, user on DB added***');
                     res.status(201).redirect('/')
                 }else{ //Aqui faltaria enviarle un mensaje de error para sacarlo en el pug, pero me da problemas el .render()
-                    console.log('entramos *******');
+                    console.log('Email Repetido');
                     res.status(201).redirect('/register/email')
                 }
             } catch (error) {
