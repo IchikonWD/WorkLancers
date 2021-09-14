@@ -27,7 +27,8 @@ router.put("/api/ads");
 router.delete("/api/ads");
 
 // Favorites
-router.post("/api/favorites");
+router.get("/addFav", pages.getFavs)
+router.post("/addFav", pages.postFavJobs);
 router.delete("/api/favorites");
 
 module.exports = router;
