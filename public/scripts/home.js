@@ -1,13 +1,13 @@
 // const { Json } = require("sequelize/types/lib/utils");
 
-const box = document.getElementById('boxes');
+const box = document.getElementById("cards");
 
 document.querySelector("form").addEventListener("submit", (event) => {
   box.innerHTML = ` 
                 <div id="contenedor_carga">
                       <div id="carga"></div>
                 </div>
-  `; //Se genera el spinner cada vez que llamamos al formulario 
+  `; //Se genera el spinner cada vez que llamamos al formulario
   event.preventDefault();
 
   const paintResults = () => {
@@ -20,7 +20,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
     })
       .then((Data) => Data.json())
       .then((scrapData) => {
-        document.getElementById("boxes").innerHTML = ''
+        document.getElementById("cards").innerHTML = "";
         scrapData.map((offer) => {
           box.innerHTML += `
                           <section class="section2">
@@ -34,7 +34,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
                                   </div>
                                   <div class="separator"></div>
                                   <div class="job_footer">
-                                      <p class="job_price">${offer.jobBudget}</p><button class="see_more_btn">See More</button><img
+                                      <p class="job_price">${offer.jobBudget}</p><button class="see_more_btn" onclick='pillarcajas()'>See More</button><img
                                           class="fav_img" src="/assets/img/favorite.png">
                                   </div>
                               </article>
@@ -44,7 +44,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
       })
       .catch((error) => {
         console.log(error);
-      })
+      });
   };
   paintResults();
 });
