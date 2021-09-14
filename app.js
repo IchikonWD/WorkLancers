@@ -37,6 +37,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 //Global variables (para pasar mensajes a cualquier lado con el flash)
+
 app.use((req, res, next) => {
   res.locals.fail_login = req.flash('fail_login')
   res.locals.unauthorized = req.flash('unauthorized')

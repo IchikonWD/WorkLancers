@@ -93,6 +93,16 @@ const pages = {
             res.status(200).json(todoElScraping)
         }
     },
+    profile: async (req,res) => {
+        try {
+            const take_info = await Users.getInfo_allUsers()
+            let info = take_info.rows
+            console.log(info);
+            res.status(200).render('profile', { info })
+        } catch (error) {
+            res.status(400).send('A error has ocurred ---> ' + error )
+        }
+    }
 }
 
 module.exports = pages
