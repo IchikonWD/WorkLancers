@@ -27,7 +27,7 @@ router.get("/register", pages.register);
 router.get("/register/email", pages.register2);
 router.get("/favorites", pages.favorites);
 router.get("/login", pages.login);
-router.get("/profile", isLogguedIn,  pages.profile);
+router.get("/profile", isLogguedIn, pages.profile);
 router.get("/users", isAdmin, pages.users);
 router.get("/dashboard", isAdmin, pages.dashboard)
 router.get("/recuperarpassword");
@@ -36,19 +36,25 @@ router.get("/restablecerpassword");
 //Rutas para google
 router.get('/auth/google', passport.authenticate('google', { scope: ['email', 'profile'] }))
 router.get('/google/callback', passport.authenticate('google', {
-    successRedirect: '/',
-    failureRedirect: '/login'
-}))
+    failureRedirect: '/login',
+}), (req,res) =>{
+    res.cookie('email', req.user.email)
+    res.status(200).redirect('/')
+});
 router.get('/auth/failure', user.fail)
 router.get('/logout', user.logout)
 
 router.post('/dashboard', pages.upWork) //Formulario para postular trabajos siendo admin
 router.post('/register/email', user.register)
 router.post('/login', passport.authenticate('login', {
-    successRedirect: '/profile',
+    successRedirect: '/',
     session: true,
     failureRedirect: '/login'
-}));
+}), async (req, res) => {
+    let email = req.body.email
+    req.cookies('email', email)
+})
+router.post('/profile', pages.editUser)
 router.post('/users', pages.delete)
 
 
