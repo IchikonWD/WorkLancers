@@ -44,7 +44,7 @@ const entries = {
         } finally {
             client.release();
         }
-        return result;
+        return result.rows[0].user_id;
     },
     setNew_user: async (username, email, password, age, occupation, location, skills) => {
         let client, result

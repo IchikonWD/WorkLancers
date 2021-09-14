@@ -6,10 +6,18 @@ const Users = require('../models/entries')
 // Archivos para Scraping
 const scraperTwo = require('../utils/scraperTwo')
 const scraperThree = require('../utils/scraperOne')
+const jsStringify  = require('js-stringify')
 
 const pages = {
-    home: (req, res) => {
-        res.status(200).render('home')
+    home: async (req, res) => {
+        let email = req.cookies.email;
+        if(email != undefined){
+            let algo = await Users.getUser_id(email)
+            console.log(algo);
+            res.status(200).render('home', { algo , jsStringify })
+        }else{
+            res.status(200).render('home')
+        }
     },
     register: (req, res) => {
         res.status(200).render('register')

@@ -2,6 +2,7 @@
 
 const box = document.getElementById("cards");
 
+
 document.querySelector("form").addEventListener("submit", (event) => {
   box.innerHTML = ` 
                 <div id="contenedor_carga">
@@ -42,11 +43,12 @@ document.querySelector("form").addEventListener("submit", (event) => {
                           </section>
                           `;
         });
-      }).then(() => {
+      })
+      .then(() => {
         document.querySelectorAll('.see_more_btn').forEach(item => {
           item.addEventListener('click', () => {
-            
             /*
+            console.log(item);
             console.log(item.parentNode.parentNode);
             console.log(item.parentNode.parentNode.childNodes[1].childNodes[1].innerText); // titlte
             console.log(item.parentNode.parentNode.childNodes[5].childNodes[0].currentSrc); //Imagen empresa
@@ -60,7 +62,6 @@ document.querySelector("form").addEventListener("submit", (event) => {
             let moreInfo = item.parentNode.parentNode.childNodes[9].childNodes[1].innerText
 
             const objJob = { title , img , description, moreInfo }
-
             fetch('/api/addFav', {
               method: 'POST',
               headers: {

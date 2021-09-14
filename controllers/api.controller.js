@@ -61,6 +61,7 @@ const pages = {
     postFavJobs: async (req,res) =>{
         try {
             let addFav = req.body
+            console.log('POST');
             res.status(201).json(addFav)
         } catch (error) {
             res.status(400).send(error)
