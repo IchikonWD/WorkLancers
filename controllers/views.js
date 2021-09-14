@@ -6,8 +6,6 @@ const Users = require('../models/entries')
 // Archivos para Scraping
 const scraperTwo = require('../utils/scraperTwo')
 const scraperThree = require('../utils/scraperOne')
-const { object } = require('joi')
-const { param } = require('../routes/users.routes')
 
 const pages = {
     home: (req, res) => {
@@ -20,7 +18,6 @@ const pages = {
         res.status(200).render('register2')
     },
     favorites: (req, res) => {
-
         res.status(200).render('favorites')
     },
     login: (req, res) => {
@@ -28,7 +25,7 @@ const pages = {
     },
     dashboard: async (req, res) => {
         let cookie = req.cookies.email
-        let data = await Jobs.find({ email: cookie}) //Saco los trabajos por el email que viene por la cookie
+        let data = await Jobs.find({ email: cookie }) //Saco los trabajos por el email que viene por la cookie
         res.status(200).render('dashboard', { data })
     },
     upWork: async (req, res) => {
@@ -44,9 +41,9 @@ const pages = {
                 console.log(req.body);
                 const new_job = {
                     jobTitle: req.body.jobTitle,
-                    jobDescription : req.body.jobDescription,
+                    jobDescription: req.body.jobDescription,
                     jobTimer: req.body.jobTimer,
-                    jobBudget: req.body.jobBudget, 
+                    jobBudget: req.body.jobBudget,
                     email: cookie //Le meto el email como id unico para unir mongo con los usuarios de SQL
                 }
                 let job = new Jobs(new_job)
@@ -93,14 +90,45 @@ const pages = {
             res.status(200).json(todoElScraping)
         }
     },
-    profile: async (req,res) => {
+    profile: async (req, res) => {
         try {
-            const take_info = await Users.getInfo_allUsers()
-            let info = take_info.rows
-            console.log(info);
-            res.status(200).render('profile', { info })
+            let cookie = req.cookies.email
+            Users.getInfo_byEmail(cookie)
+                .then(data => {
+                    let user = data.rows[0];
+                    res.status(200).render('profile', { user })
+                })
         } catch (error) {
-            res.status(400).send('A error has ocurred ---> ' + error )
+            res.status(400).send('You need to LogIn first')
+        }
+    },
+    editUser: async (req, res) => {
+        try {
+            if (req.body.username == ""
+                || req.body.age == ""
+                || req.body.occupation == ""
+                || req.body.location == ""
+                || req.body.skills == ""
+                || req.body.image == "") {
+                res.status(200).redirect('profile')
+            }
+            else {
+                let cookie = req.cookies.email
+                console.log(cookie);
+                let username = req.body.username
+                let age = req.body.age
+                let occupation = req.body.occupation
+                let location = req.body.location
+                let skills = req.body.skills
+                let image = req.body.image
+
+                await Users.update_user(cookie, username, age, occupation, location, skills, image)
+                console.log('*** Profile Updated ***');
+                res.status(200).redirect('profile')
+            }
+        } catch (error) {
+            res.status(400).send('A error has ocurred --> ' + error)
+
         }
     }
 }

@@ -9,15 +9,23 @@ head
   title Profile - WorkLancers
 body
   include ./header.pug
-
-  each val in info
-    p=val
-
-
-
-
-
-
-
+  main
+    section.top
+      article
+        h1.title Profile
+        button(type="button" class="postButton" onclick="mostrarForm()") ! Edit your profile !
+      article
+        div.hide_me(id="form")
+          include ./userForm.pug
+  p=user.username
+  p=user.email
+  p=user.password
+  p=user.age
+  p=user.occupation
+  p=user.location
+  p=user.skills
+  img(src=user.image)
 
   include ./footer.pug
+  script
+    include ../public/scripts/scripts.js
