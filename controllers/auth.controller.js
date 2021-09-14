@@ -4,7 +4,7 @@ const encrypt = require('bcryptjs')
 const { response } = require('express')
 const passport = require('passport')
 const { auth_schema } = require('../middleware/regex_mid')
-
+const { getUser_id } = require('../models/entries')
 
 const register = {
     register: async (req, res) => {

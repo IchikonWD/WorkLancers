@@ -7,6 +7,7 @@ const Users = require('../models/entries')
 const scraperTwo = require('../utils/scraperTwo')
 const scraperThree = require('../utils/scraperOne')
 const { object } = require('joi')
+const { param } = require('../routes/users.routes')
 
 const pages = {
     home: (req, res) => {
@@ -26,23 +27,30 @@ const pages = {
         res.status(200).render('login')
     },
     dashboard: async (req, res) => {
-        let response = await fetch('http://localhost:3000/api/ads')
-        let data = await response.json()
+        let cookie = req.cookies.email
+        let data = await Jobs.find({ email: cookie}) //Saco los trabajos por el email que viene por la cookie
         res.status(200).render('dashboard', { data })
     },
     upWork: async (req, res) => {
         try {
-            if (req.body.title == ""
-                || req.body.category == ""
-                || req.body.description == ""
-                || req.body.requirements == ""
-                || req.body.duration == ""
-                || req.body.salary === '') {
+            if (req.body.jobTitle == ""
+                || req.body.jobDescription == ""
+                || req.body.jobTimer == ""
+                || req.body.jobBudget == "") {
                 res.status(200).redirect('dashboard')
             }
             else {
-                let job = new Jobs(req.body)
-                const new_job = await job.save()
+                let cookie = req.cookies.email
+                console.log(req.body);
+                const new_job = {
+                    jobTitle: req.body.jobTitle,
+                    jobDescription : req.body.jobDescription,
+                    jobTimer: req.body.jobTimer,
+                    jobBudget: req.body.jobBudget, 
+                    email: cookie //Le meto el email como id unico para unir mongo con los usuarios de SQL
+                }
+                let job = new Jobs(new_job)
+                await job.save()
                 console.log('******** JOB CREATED *********');
                 res.status(200).redirect('dashboard')
             }
@@ -71,18 +79,30 @@ const pages = {
     },
     scraperAll: async (req, res) => {
         const searchInput = await req.body.search
-        console.log(searchInput);
         if (searchInput === undefined) {
             res.status(200).render('home')
         }
         else {
-        const scrapingDos = await scraperTwo(`https://www.workana.com/jobs?language=es&query=${searchInput}`)
-        const scrapingUno = await scraperThree(`https://www.flexjobs.com/search?jobtypes%5B%5D=Freelance&location=&search=${searchInput}`)
-        let todoElScraping = [...scrapingUno, ...scrapingDos]
-
-         res.status(200).json(todoElScraping)
+            let mongoJobs = await Jobs.find();
+            let extractMongo_jobs = mongoJobs.map((param) => {
+                return param;
+            })
+            const scrapingUno = await scraperThree(`https://www.flexjobs.com/search?jobtypes%5B%5D=Freelance&location=&search=${searchInput}`)
+            const scrapingDos = await scraperTwo(`https://www.workana.com/jobs?language=es&query=${searchInput}`)
+            let todoElScraping = [...scrapingUno, ...scrapingDos, ...extractMongo_jobs]
+            res.status(200).json(todoElScraping)
         }
     },
+    profile: async (req,res) => {
+        try {
+            const take_info = await Users.getInfo_allUsers()
+            let info = take_info.rows
+            console.log(info);
+            res.status(200).render('profile', { info })
+        } catch (error) {
+            res.status(400).send('A error has ocurred ---> ' + error )
+        }
+    }
 }
 
 module.exports = pages

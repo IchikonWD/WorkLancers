@@ -18,12 +18,12 @@ const entries = {
         }
         return result;
     },
-    getUser_password: async (password) => {
+    getUser_password: async (email) => {
         let client, result
         try {
             client = await pool.connect();
             const sql_query = (`
-                SELECT password FROM users WHERE password=$1
+                SELECT password FROM users WHERE email=$1
             `)
             result = await pool.query(sql_query, [password])
         } catch (error) {
@@ -33,13 +33,14 @@ const entries = {
         }
         return result;
     },
-    getUser_id: async (id) => {
-        let result
+    getUser_id: async (email) => {
+        let client, result
         try {
+            client = await pool.connect();
             const sql_query = (`
-                SELECT user_id FROM users WHERE user_id=$1
+                SELECT user_id FROM users WHERE email=$1
             `)
-            result = await pool.query(sql_query, [user_id])
+            result = await pool.query(sql_query, [email])
         } catch (error) {
             console.log('Error al coger el id ---> ' + error);
         } finally {
@@ -94,7 +95,7 @@ const entries = {
         try {
             client = await pool.connect();
             const sql_query = 
-                "SELECT user_id,username, email, age, occupation, location, skills, favorites FROM users"
+                "SELECT username, email, age, occupation, location, skills, favorites FROM users"
                 result = await pool.query(sql_query)
         } catch (error) {
             console.log('Error al sacar informacion de los users --> ' + error);
