@@ -69,7 +69,7 @@ const pages = {
             res.status(201).json({ error: error })
         }
     
-    } 
+    }, 
     postFavJobs: async (req,res) =>{
         try {
             let addFav = req.body
