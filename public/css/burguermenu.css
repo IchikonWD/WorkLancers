@@ -1,5 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
 /* .mobile-container {
   max-width: 480px;
   margin: auto;
@@ -10,10 +8,11 @@
 
 .topnav {
   overflow: hidden;
-  background-color: rgb(42, 157, 143);
+  background: linear-gradient(to right,rgb(41, 139, 130),rgb(42, 157, 143));
   position: absolute;
   top: 4em;
   right: 0em;
+  border-radius: 0em 0em 0em 1em;
 }
 
 .topnav #myLinks {
@@ -38,19 +37,14 @@
 }
 
 .topnav a:hover {
-  background-color: rgb(38, 70, 83);
-  color: white;
-}
-
-.active {
-  background-color: #04aa6d;
-  color: white;
+  color: rgb(231, 111, 81);
 }
 
 @media screen and (min-width: 768px) {
   .topnav {
     top: 0em;
     right: 4em;
+    background: none;
   }
 
   .topnav a {
@@ -63,6 +57,7 @@
   .topnav {
     top: 0em;
     right: 4em;
+    background: none;
   }
 
   .topnav a {

@@ -1,16 +1,22 @@
-@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-* {
-  font-family: "Montserrat", Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+
+h2 {
+  font-family: 'Pattaya', sans-serif;
+  font-size: 2.5rem;
 }
 header {
-  background-color: rgb(42, 157, 143);
+  background: linear-gradient(to right, rgb(38, 70, 83), rgb(42, 157, 143));
   color: white;
   width: 100%;
   height: 4em;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 0 0 30% 30%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  box-shadow: 0em 0em 0.5em 0em rgba(0, 0, 0, 0.75);
 }
 .navBar {
   display: flex;
@@ -19,16 +25,14 @@ header {
   width: 100%;
   margin-left: 1em;
   margin-right: 1.2em;
+
 }
 .icon {
   color: white;
   font-size: 1.5em;
-  margin-right: 1em;
+  margin-right: 0.8em;
   text-decoration: none;
 }
-
-@media screen and (min-width: 768px) {
-}
-
-@media (min-width: 1200px) {
+.icon:hover {
+  color: rgb(231, 111, 81);
 }
