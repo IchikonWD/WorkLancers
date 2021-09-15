@@ -1,6 +1,23 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="/public/css/burguermenu.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+
 header
   nav.navBar
-    img.icon(src="/public/assets/img/lance.png", alt="WorkLancers")
+    img.icon(src="/public/assets/img/lance.png" alt="WorkLancers")
     h2.titleNav WorkLancers
-    nav.burger
-      nav#menu ☰
+  div(class='mobile-container')
+    div.topnav
+      div#myLinks
+        a(href='#') Login
+        a(href='#') Register
+        a(href='#') Favorites
+        a(href='#') About Us
+  a(href="javascript:void(0);" class="icon" onclick="menuBurguer()")
+    i(class='fa fa-bars') 
+script(src='/scripts/scripts.js')

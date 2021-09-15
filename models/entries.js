@@ -1,5 +1,3 @@
-const { response } = require('express');
-const { post } = require('../routes/users.routes');
 const pool = require('../utils/sql-db')
 
 
@@ -62,13 +60,13 @@ const entries = {
         }
         return result;
     },
-    setNewGoogle_user: async (username, email, password, location) => {
+    setNewGoogle_user: async (username, email, password, location, image) => {
         let client, result
         try {
             client = await pool.connect();
             const sql_query =
-                "INSERT INTO users (username, email, password, location) VALUES ($1, $2, $3, $4)"
-            result = await pool.query(sql_query, [username, email, password, location])
+                "INSERT INTO users (username, email, password, location, image) VALUES ($1, $2, $3, $4, $5)"
+            result = await pool.query(sql_query, [username, email, password, location, image])
         } catch (error) {
             console.log('Error al registrarse con google----> ' + error);
         } finally {
@@ -77,15 +75,15 @@ const entries = {
         return result;
     },
     isAdmin: async (email) => {
-        let client, result; 
+        let client, result;
         try {
             client = await pool.connect();
-            const sql_query = 
+            const sql_query =
                 "SELECT admin FROM users WHERE email=$1"
             result = await pool.query(sql_query, [email])
         } catch (error) {
-            console.log('Error al comprabar si es admin ---> ' + error );
-        }finally {
+            console.log('Error al comprabar si es admin ---> ' + error);
+        } finally {
             client.release();
         }
         return result;
@@ -94,26 +92,40 @@ const entries = {
         let client, result;
         try {
             client = await pool.connect();
-            const sql_query = 
+            const sql_query =
                 "SELECT username, email, age, occupation, location, skills, favorites FROM users"
-                result = await pool.query(sql_query)
+            result = await pool.query(sql_query)
         } catch (error) {
             console.log('Error al sacar informacion de los users --> ' + error);
-        }finally{
+        } finally {
             client.release();
         }
         return result;
     },
-    delete_user: async(user_id) => {
+    delete_user: async (user_id) => {
         let client, result;
         try {
             client = await pool.connect();
-            const sql_query = 
+            const sql_query =
                 "DELETE FROM users WHERE user_id=$1"
-                result = await pool.query(sql_query, [user_id])
+            result = await pool.query(sql_query, [user_id])
         } catch (error) {
             console.log('Error al borrar el user --> ' + error);
-        }finally{
+        } finally {
+            client.release();
+        }
+    },
+    getInfo_byEmail: async (email) => {
+        let client, result
+        try {
+            client = await pool.connect();
+            const sql_query = (`
+            SELECT username, email, age, occupation, location, skills, favorites, image FROM users WHERE email=$1
+            `)
+            result = await pool.query(sql_query, [email])
+        } catch (error) {
+            console.log('Error al coger el id ---> ' + error);
+        } finally {
             client.release();
         }
     },
@@ -129,6 +141,22 @@ const entries = {
         }finally{
             client.release();
         }
+        return result;
+    },
+    update_user: async (email, username, age, occupation, location, skills, image) => {
+        let client, result; 
+        try {
+            client = await pool.connect();
+            const sql_query = (`
+            UPDATE users
+	            SET username=$2, age=$3, occupation=$4, location=$5, skills=$6, image=$7
+	            WHERE email=$1;
+            `)
+            result = await pool.query(sql_query, [email, username, age, occupation, location, skills, image])
+        } catch (error) {
+            console.log('Error al editar el usuario --> ' + error );
+        }
+        return result;
     }
 
 }

@@ -12,7 +12,6 @@ const passport = require('passport')
 const path = require('path');
 const cookieParser = require('cookie-parser')
 
-
 const app = express();
 const port = process.env.PORT || 5000;
 

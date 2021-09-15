@@ -70,7 +70,21 @@ const pages = {
         }
     
     } 
-
+    postFavJobs: async (req,res) =>{
+        try {
+            let addFav = req.body
+            res.status(201).json(addFav)
+        } catch (error) {
+            res.status(400).send(error)
+        }
+    },
+    getFavs: async (req,res) => {
+        try {
+            res.status(200).json()
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }
 
 module.exports = pages;

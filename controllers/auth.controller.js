@@ -1,10 +1,6 @@
-const db = require('../utils/sql-db')
 const Users = require('../models/entries')
 const encrypt = require('bcryptjs')
-const { response } = require('express')
-const passport = require('passport')
 const { auth_schema } = require('../middleware/regex_mid')
-const { getUser_id } = require('../models/entries')
 
 const register = {
     register: async (req, res) => {
@@ -33,28 +29,6 @@ const register = {
             res.status(201).render("register2", error)
         }
     },
-    login: async (req, res) => {
-        try {
-            const { email, password } = req.body
-            const getUser_byEmail = await Users.getUser_email(email)
-            if (getUser_byEmail.rows[0].email == email) {
-                const encryptPass = getUser_byEmail.rows[0].password
-                encrypt.compare(password, encryptPass, (err, result) => {
-                    if (err) {
-                        throw new Error(err)
-                    }
-                    if (result) {
-                        // POR AQUI LE PASAS EL TOKEN CON JWT Y LAS COOKIES O POR DONDE QUIERAS BB
-                        return res.status(200).redirect('/')
-                    } else {
-                        return res.status(401).send(' Invalid password ')
-                    }
-                })
-            }
-        } catch (error) {
-            res.status(200).send("Email invalido, pruebe de nuevo" + error)
-        }
-    },
     fail: async (req, res) => {
         let errMsj = 'The email already exist or something went wrong' 
         req.flash('fail_login', errMsj) 
@@ -63,6 +37,7 @@ const register = {
     },
     logout: async (req, res) => {
         req.logout();
+        res.clearCookie('email');
         req.session.destroy();
         res.send('Goodbye!');
     },
