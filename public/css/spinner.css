@@ -1,41 +1,82 @@
-*,*:after, *:before{
-    margin: 0;
-    padding: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-#contenedor_carga{
-    background-color: rgba(250, 240, 245, 0.9);
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    -webkit-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    transition: all 1s ease;
-    z-index: 10000;
+#contenedor_carga {
+  background-color: rgb(42, 157, 143);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+  z-index: 10000;
 }
 
-#carga{
-    border: 15px solid #ccc;
-    border-top-color: #F4266a;
-    border-top-style: groove;
-    height: 100px;
-    width: 100px;
-    border-radius: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    -webkit-animation: girar 1.5s linear infinite;
-        -o-animation: girar 1.5s linear infinite;;
-        animation: girar 1.5s linear infinite;
+#loadingText {
+  font-family: "Montserrat", Arial, sans-serif;
+  color: #fff;
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20%;
+}
+
+#carga {
+  border: 0.8em solid #fff;
+  border-top-color: rgb(244, 162, 97);
+  /* border-top-style: groove; */
+  height: 7em;
+  width: 7em;
+  border-radius: 100%;
+  margin: auto;
+  margin-top: 50%;
+  -webkit-animation: girar 1.5s linear infinite;
+  -o-animation: girar 1.5s linear infinite;
+  animation: girar 1.5s linear infinite;
 }
 
 @keyframes girar {
-    from { transform: rotate(0deg);}
-    to { transform: rotate(360deg);}
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #loadingText {
+    font-size: 5em;
+    margin-top: 10%;
+  }
+  #carga {
+    height: 15em;
+    width: 15em;
+    margin-top: 40%;
+  }
+}
+
+@media (min-width: 1200px) {
+  #loadingText {
+    font-size: 6em;
+    margin-top: 5%;
+  }
+  #carga {
+    height: 15em;
+    width: 15em;
+    margin-top: 10%;
+  }
 }

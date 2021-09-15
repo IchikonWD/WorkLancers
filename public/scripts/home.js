@@ -5,6 +5,7 @@ const box = document.getElementById("cards");
 document.querySelector("form").addEventListener("submit", (event) => {
   box.innerHTML = ` 
                 <div id="contenedor_carga">
+                      <h2 id="loadingText">Cargando...</h2>
                       <div id="carga"></div>
                 </div>
   `; //Se genera el spinner cada vez que llamamos al formulario

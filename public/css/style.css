@@ -5,25 +5,26 @@
 }
 body{
     width: 100%;
+    height: 100%;
 }
 main{
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
+    align-content: center;
+    align-items: center;
 }
 .section1{
-    background-color: #dce4de9b;
-    margin-top: 25px;
-    margin-left: 10px;
-    margin-right: 10px;
-    font-size: 18px;
-    border-radius: 5px;
-    width: 345px;
-    height: 143px;
+    display: flex;
+    align-items: center;
+    background-color: #f5f5f5;
+    font-size: 1.2em;
+    width: 100%;
+    margin: 1em;
 }
 .description{
-    margin: 10px;
+    margin-top: 1em;
 }
 .sectionForm{
     margin-top: 30px;
@@ -35,22 +36,35 @@ main{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: #0000002d;
-    border-radius: 12px;
+    background-color: FFFFFF;
+    border-radius: 1em;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
     width: 256PX;
     height: 38px;
 }
 .searchBox{
     width: 85%;
-    height: 40px;
-    border-radius: 5px;
-    background-color: #00000000;
-    font-size: 20px;
-    border: 0;
+    font-size: 1.5em;
+    border: none;
+    outline:none;
+    background-color: transparent;
+    resize: none;
 }
 .searchBox:active{
-    background-color: #00000000;
-    border: 0px;
+    border: none;
+    outline:none;
+    background-color: transparent;
+    resize: none;
+}
+#cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
 }
 .icon_search{
     width: 20px;
