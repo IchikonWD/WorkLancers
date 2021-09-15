@@ -13,7 +13,7 @@ router.post("/user", pages.postRegister);
 router.post("/login", pages.postLogin);
 router.post("/logout", pages.postLogout);
 router.put("/api/user" );
-router.delete("/api/user");
+router.delete("/user", pages.deleteUser);
 
 // Login
 router.post("/api/login");

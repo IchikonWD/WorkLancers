@@ -116,6 +116,19 @@ const entries = {
         }finally{
             client.release();
         }
+    },
+    delete_user_byEmail: async(email) => {
+        let client, result;
+        try {
+            client = await pool.connect();
+            const sql_query = 
+                "DELETE FROM users WHERE email=$1"
+                result = await pool.query(sql_query, [email])
+        } catch (error) {
+            console.log('Error al borrar el user by email--> ' + error);
+        }finally{
+            client.release();
+        }
     }
 
 }

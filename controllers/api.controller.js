@@ -58,6 +58,18 @@ const pages = {
         req.session.destroy();
         res.json('Goodbye!');
     },
+    deleteUser: async (req,res) => {
+        
+        try {
+            let byEmail = req.body.email
+            await Users.delete_user(email)
+            await res.status(201).redirect('/users')
+            console.log('Usuario borrado ');
+        } catch (error) {
+            res.status(201).json({ error: error })
+        }
+    
+    } 
 
 }
 
