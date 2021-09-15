@@ -47,15 +47,16 @@ router.get('/logout', user.logout)
 router.post('/dashboard', pages.upWork) //Formulario para postular trabajos siendo admin
 router.post('/register/email', user.register)
 router.post('/login', passport.authenticate('login', {
-    successRedirect: '/',
-    session: true,
     failureRedirect: '/login'
-}), async (req, res) => {
+}), (req, res) => {
     let email = req.body.email
-    req.cookies('email', email)
+    console.log(email);
+    res.cookie('email', email)
+    res.status(200).redirect('/')
 })
 router.post('/profile', pages.editUser)
 router.post('/users', pages.delete)
+router.post('/favorites', pages.deleteFavJob);
 
 
 module.exports = router;

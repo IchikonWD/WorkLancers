@@ -8,7 +8,6 @@ head
   link(rel='stylesheet' href='/css/footer.css ')
   link(rel='stylesheet' href='/css/style.css ')
   title Home - WorkLancers
-//Falta el middleware para el buscador que funcione al darle enter
 include ./header.pug
 main
   p=unauthorized
@@ -22,7 +21,8 @@ main
       img.icon_search(src='/assets/img/buscador.png')
       input#search.searchBox(type='text' name='search' placeholder='Web Developer')
   section#cards
-//Hacer formulario para meter un checkbox al favorito
 include ./footer.pug
+script. 
+  const userApp=!{JSON.stringify(algo)}
 script(src='./scripts/home.js')
 script(src='./scripts/test3.js')
