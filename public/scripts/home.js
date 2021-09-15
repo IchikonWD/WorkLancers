@@ -2,6 +2,7 @@
 
 const box = document.getElementById("cards");
 
+console.log(userApp);
 
 document.querySelector("form").addEventListener("submit", (event) => {
   box.innerHTML = ` 
@@ -24,6 +25,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
         document.getElementById("cards").innerHTML = "";
         scrapData.map((offer) => {
 
+
           box.innerHTML += `
                           <section class="section2">
                               <article class="job1">
@@ -40,6 +42,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
                                           class="fav_img" id="fav_btn_empty" src="/assets/img/favorite.png">
                                   </div>
                               </article>
+                              <input type="hidden" value=${offer._id} class="hiddenInp">
                           </section>
                           `;
         });
@@ -60,8 +63,12 @@ document.querySelector("form").addEventListener("submit", (event) => {
             let img = item.parentNode.parentNode.childNodes[5].childNodes[0].currentSrc
             let description = item.parentNode.parentNode.childNodes[5].childNodes[2].innerText
             let moreInfo = item.parentNode.parentNode.childNodes[9].childNodes[1].innerText
+            let user_id = userApp;
+            
+            const objJob = { title , img , description, moreInfo, user_id }
 
-            const objJob = { title , img , description, moreInfo }
+            console.log(objJob);
+
             fetch('/api/addFav', {
               method: 'POST',
               headers: {

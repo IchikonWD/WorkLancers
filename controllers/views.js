@@ -25,8 +25,11 @@ const pages = {
     register2: (req, res) => {
         res.status(200).render('register2')
     },
-    favorites: (req, res) => {
-        res.status(200).render('favorites')
+    favorites: async (req, res) => {
+        let cookies = req.cookies.email
+        let id = await Users.getUser_id(cookies);
+        let data = await Users.getFav_jobs(id)
+        res.status(200).render('favorites', { data })
     },
     login: (req, res) => {
         res.status(200).render('login')
@@ -34,6 +37,7 @@ const pages = {
     dashboard: async (req, res) => {
         let cookie = req.cookies.email
         let data = await Jobs.find({ email: cookie }) //Saco los trabajos por el email que viene por la cookie
+        console.log(data);
         res.status(200).render('dashboard', { data })
     },
     upWork: async (req, res) => {
@@ -137,6 +141,16 @@ const pages = {
         } catch (error) {
             res.status(400).send('A error has ocurred --> ' + error)
 
+        }
+    },
+    deleteFavJob: async (req, res) => {
+        try {
+            let id = req.body.job_id
+            await Users.delete_favJob(id)
+            await res.status(201).redirect('/favorites')
+            console.log('Trabajo borrado ');
+        } catch (error) {
+            console.log('Error al hacer el delete -->' + error);
         }
     }
 }
