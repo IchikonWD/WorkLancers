@@ -58,7 +58,19 @@ const pages = {
         req.session.destroy();
         res.json('Goodbye!');
     },
-    postFavJobs: async (req, res) => {
+    deleteUser: async (req,res) => {
+        
+        try {
+            let byEmail = req.body.email
+            await Users.delete_user(email)
+            await res.status(201).redirect('/users')
+            console.log('Usuario borrado ');
+        } catch (error) {
+            res.status(201).json({ error: error })
+        }
+    
+    }, 
+    postFavJobs: async (req,res) =>{
         try {
             console.log('Job added to favorite');
             const { title, img, description, moreInfo, user_id } = req.body
@@ -76,7 +88,6 @@ const pages = {
             console.log(error);
         }
     }
-
 }
 
 module.exports = pages;
