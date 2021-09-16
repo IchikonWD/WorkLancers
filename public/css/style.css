@@ -42,7 +42,7 @@ main {
   justify-content: flex-end;
   align-items: center;
   background-color: transparent;
-  border: 0.3em solid gray;
+  border: 0.3em solid rgb(42, 157, 143);
   border-radius: 0.3em;
   width: 18em;
   height: 3em;
@@ -61,15 +61,9 @@ main {
   background-color: transparent;
   resize: none;
 }
-#cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
+
 i.icon_search {
+  color: rgb(231, 111, 81);
   width: 1em;
   height: 1em;
   margin-right: 0.7em;
@@ -85,215 +79,130 @@ i.icon_search {
 .bottomDescription {
   text-align: start;
 }
-
-.job_img {
-  width: 100px;
-  height: 100px;
-  margin-left: 10px;
-  border-radius: 10px;
-}
-.section2 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 2em;
-}
-.job1 {
-  justify-content: center;
-  width: 90%;
-  background-color: rgb(42, 157, 143);
-  border-radius: 1em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px groove #22577a;
-  box-shadow: 1px 1px 2px;
-}
-.job_header {
-  display: flex;
-  margin: 8px;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-around;
-}
-.jobTitle {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1em;
-  margin-left: 1em;
-}
-
-.newAlert {
-  font-size: 10px;
-  background-color: #418f6a;
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10px;
-  width: 43px;
-  height: 20px;
-  color: white;
-}
-.separator {
-  display: flex;
-  background-color: #22577a;
-  width: 95%;
-  height: 2px;
-}
-.job_body {
-  display: flex;
-  margin-top: 10px;
-  flex-direction: row;
-  margin-bottom: 10px;
-}
-.job_description {
-  margin-left: 10px;
-}
-.job_price {
-  font-family: "Montserrat", sans-serif;
-}
-.job_footer {
-  margin-top: 10px;
-  margin-bottom: 5px;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-.see_more_btn {
-  background-color: rgb(244, 162, 97);
-  border-radius: 0.3em;
-  border: 0;
-  width: 8em;
-  height: 1.5em;
-}
-.see_more_btn:hover {
-    background-color: rgb(231, 111, 81);
-  }
-.see_more_btn a {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.2em;
-  font-weight: 600;
-  text-decoration: none;
-  color: white;
-}
-
-
 * {
-    font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
+    "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
+    "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
+    monospace;
 }
 a {
-    text-decoration: none;
-    color: #9ccc65;
+  text-decoration: none;
+  color: #9ccc65;
 }
 .blue {
-    color: #29b6f6;
+  color: #29b6f6;
 }
 .green {
-    color: #9ccc65;
+  color: #9ccc65;
 }
 .purple {
-    color: #ba68c8;
+  color: #ba68c8;
 }
 .cyan {
-    color: #4dd0e1;
+  color: #4dd0e1;
 }
 .red {
-    color: #ef5350;
+  color: #ef5350;
+}
+#cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  flex-direction: column;
+  align-content: space-between;
+  margin-right: 20em;
 }
 .content {
-    height: 100vh;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
 }
 .card {
-    perspective: 150rem;
-    height: 20rem;
-    width: 30rem;
-    margin: 0 auto;
+  perspective: 150rem;
+  height: 20rem;
+  width: 100%;
+  margin: 1em;
+  margin-bottom: -4em;
 }
 .card__side {
-    height: 15rem;
-    transition: all 0.8s ease;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: auto;
-    width: 30rem;
-    backface-visibility: hidden;
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.4);
+  height: 15rem;
+  transition: all 0.8s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+  width: 20rem;
+  backface-visibility: hidden;
+  border-radius: 3px;
+  overflow: hidden;
+  border-radius: 1em;
 }
 .card__side--front {
-    background-color: #1c1c1c;
+  background-color: #1c1c1c;
 }
 .card__side--back {
-    transform: rotateY(180deg);
-    background-color: #1c1c1c;
+  transform: rotateY(180deg);
+  background-color: rgb(38, 70, 83);
 }
 .card:hover .card__side--front {
-    transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
 }
 .card:hover .card__side--back {
-    transform: rotateY(0deg);
+  transform: rotateY(0deg);
 }
 .card__cont {
-    height: 15rem;
-    background-color: #1c1c1c;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 15rem;
+  background-color: rgb(38, 70, 83);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .card__cta {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    color: white;
-    font-size: 0.8em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  color: white;
+  font-size: 0.65em;
 }
 .card__cta p {
-    margin-left: 1rem;
+  margin-left: 1rem;
 }
 .card__cta p > .space {
-    margin-left: 2rem;
+  margin-left: 2rem;
 }
-#fav_btn_empty{
+#fav_btn_empty {
+  font-size: 2em;
+  color: rgb(244, 162, 97);
+  position: absolute;
+  top: -0.5em;
+  right: 0;
+  z-index: 1;
+}
+#fav_btn_empty:hover {
+  font-size: 2.5em;
+  color: rgb(231, 111, 81);
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media (min-width: 1200px) {
+  .card__side {
+    width: 30rem;
+  }
+  .card__cta {
+    font-size: 0.8em;
+  }
+  #fav_btn_empty {
     font-size: 3em;
     color: rgb(244, 162, 97);
     position: absolute;
     top: 0;
     right: 0;
     z-index: 1;
-}
-#fav_btn_empty:hover{
-    font-size: 3.5em;
-    color: rgb(231, 111, 81);
-
-}
-
-
-
-
-
-@media screen and (min-width: 768px) {
-  i.icon_search {
-    margin-right: 1.3em;
-  }
-  .searchForm {
-    width: 24em;
-  }
-  .description {
-    font-size: 1.5em;
-  }
-}
-
-@media (min-width: 1200px) {
-  .description {
-    font-size: 1.2em;
   }
 }

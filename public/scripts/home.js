@@ -25,31 +25,36 @@ document.querySelector("form").addEventListener("submit", (event) => {
       .then((scrapData) => {
         document.getElementById("cards").innerHTML = "";
         scrapData.map((offer) => {
-
-
           box.innerHTML += `
-                          <section class="section2">
-                              <article class="job1">
-                                  <div class="job_header">
-                                      <h2 class="jobTitle">${offer.jobTitle}</h2><i class="fa fa-heart" id="fav_btn_empty"></i>
-                                  </div>
-                                  <div class="separator"></div>
-                                  <div class="job_body"><img class="job_img" src="/assets/img/default_img.jpg" alt="">
-                                      <p class="job_description">${offer.jobDescription}</p>
-                                  </div>
-                                  <div class="separator"></div>
-                                  <div class="job_footer">
-                                      <p class="job_price">${offer.jobBudget}</p><button class="see_more_btn"><a class="link_btn" href="${offer.jobUrl}">See Offer</a></button>
-                                  </div>
-                              </article>
-                              <input type="hidden" value=${offer._id} class="hiddenInp">
-                          </section>
+          <div class="content">
+          <div class="card">
+              <div class="card__side card__side--front">
+                  <!-- Front Content -->
+                  <div class="card__cont"><span class="blue">alert</span><span>(<span class="green">'New
+                              Job!'</span>)</span></div>
+              </div>
+              <div class="card__side card__side--back">
+                  <!-- Back Content -->
+                  <div class="card__cta"><a class="icon_heart"><i class="fa fa-heart"
+                              id="fav_btn_empty"></i></a>
+                      <p><span class="purple">const</span> NewJob <span class="cyan">=</span> {<br /><span
+                              class="space red">Job Title</span><span class="cyan">:</span> <span
+                              class="green">'${offer.jobTitle}'</span>,<br /><span class="space red">Description</span><span
+                              class="cyan">:</span> <span class="green">'${offer.jobDescription}</span>',<br /><span
+                              class="space red">Job Budget</span><span class="cyan">:</span><span
+                              class="green">'${offer.jobBudget}'</span>,<br /><span
+                              class="space red">website</span><span class="cyan">:</span> <span class="green"><a
+                                  href="${offer.jobUrl}">'Haz click Aqui!'</a></span><br /> };</p>
+                  </div>
+              </div>
+              <input type="hidden" value=${offer._id} class="hiddenInp">
+          </div>
                           `;
         });
       })
       .then(() => {
-        document.querySelectorAll('#fav_btn_empty').forEach(item => {
-          item.addEventListener('click', () => {
+        document.querySelectorAll("#fav_btn_empty").forEach((item) => {
+          item.addEventListener("click", () => {
             /*
             console.log(item);
             console.log(item.parentNode.parentNode);
@@ -59,26 +64,29 @@ document.querySelector("form").addEventListener("submit", (event) => {
             console.log(item.parentNode.parentNode.childNodes[9].childNodes[1].innerText); //more info
             */
 
-            let title = item.parentNode.parentNode.childNodes[1].childNodes[1].innerText;
-            let img = item.parentNode.parentNode.childNodes[5].childNodes[0].currentSrc
-            let description = item.parentNode.parentNode.childNodes[5].childNodes[2].innerText
-            let moreInfo = item.parentNode.parentNode.childNodes[9].childNodes[1].innerText
+            let title =
+              item.parentNode.parentNode.childNodes[1].childNodes[1].innerText;
+            let img =
+              item.parentNode.parentNode.childNodes[5].childNodes[0].currentSrc;
+            let description =
+              item.parentNode.parentNode.childNodes[5].childNodes[2].innerText;
+            let moreInfo =
+              item.parentNode.parentNode.childNodes[9].childNodes[1].innerText;
             let user_id = userApp;
-            
-            const objJob = { title , img , description, moreInfo, user_id }
+
+            const objJob = { title, img, description, moreInfo, user_id };
 
             console.log(objJob);
 
-            fetch('/api/addFav', {
-              method: 'POST',
+            fetch("/api/addFav", {
+              method: "POST",
               headers: {
-                'Content-Type': 'application/json'
+                "Content-Type": "application/json",
               },
-              body: JSON.stringify(objJob)
-            })
-            
-          })
-        })
+              body: JSON.stringify(objJob),
+            });
+          });
+        });
       })
       .catch((error) => {
         console.log(error);
