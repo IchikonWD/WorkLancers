@@ -132,7 +132,7 @@ a.title {
 .card {
   perspective: 45em;
   margin-top: 7em;
-  margin-left: 2em;
+  margin-left: 1.6em;
   margin-bottom: 9em;
 }
 .card__side {
@@ -198,7 +198,7 @@ a.title {
 
 @media screen and (min-width: 768px) {
   main {
-    margin-top: 6em;
+    margin-top: 5em;
   }
   .topDescription {
     font-size: 1.5em;
@@ -251,64 +251,34 @@ a.title {
 }
 
 @media (min-width: 1200px) {
-  main {
-    margin-top: 12em;
-  }
-  .topDescription {
-    font-size: 4em;
-  }
-  .title {
-    font-size: 8em;
-  }
-  .bottomDescription {
-    font-size: 4em;
-    margin-bottom: 0.8em;
-  }
-  .searchForm {
-    width: 140em;
-    height: 7em;
-    border: 0.6em solid rgb(42, 157, 143);
-    margin-top: 0.8em;
-  }
-  .searchBox {
-    font-size: 4em;
-    font-weight: 600;
-    width: 89%;
-  }
-  i.icon_search {
-    font-size: 4em;
-    margin-right: 1em;
-  }
-  #cards {
+    #cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-top: -5em;
     align-content: center;
     height: 100%;
     width: 100%;
     flex-direction: row;
-    padding-bottom: 8em;
+    padding-bottom: 10em;
   }
   .card {
     display: inline-block;
-    perspective: 150em;
-    margin-top: 10em;
-    margin-left: 8em;
-    margin-right: 127em;
-    margin-bottom: 47em;
+    margin-top: 8em;
+    margin-left: 1em;
+    align-items: center;
+    margin-bottom: 11em;
   }
   .card__side {
-    width: 120rem;
-    height: 50rem;
+    width: 30rem;
+    height: 16rem;
   }
   .card__cta {
-    font-size: 3em;
+    font-size: 0.95em;
   }
   .card__cont {
-    width: 120rem;
-    height: 50rem;
-    font-size: 5em;
+    width: 30rem;
+    height: 16rem;
+    font-size: 1em;
   }
 }

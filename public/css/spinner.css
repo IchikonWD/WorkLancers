@@ -71,12 +71,9 @@
 
 @media (min-width: 1200px) {
   #loadingText {
-    font-size: 6em;
     margin-top: 5%;
   }
   #carga {
-    height: 15em;
-    width: 15em;
     margin-top: 10%;
   }
 }
