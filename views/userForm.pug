@@ -1,16 +1,16 @@
 form(action="/profile"  method='POST')
         label(for='username') Change your username
-        input(type='text' class='boxInp' name='username')
+        input(type='text' class='boxInp' name='username' required)
         label(for='age') Change your birthdate
-        input(type='text' name='age' class='boxInp')
+        input(type='text' name='age' class='boxInp' required)
         label(for='occupation') What is your occupation?
-        input(type='text' name='occupation' class='boxInp')
+        input(type='text' name='occupation' class='boxInp' required)
         label(for='location') Change Location
-        input(type='text' name='location' class='boxInp')
+        input(type='text' name='location' class='boxInp' required)
         label(for='skills') Add your skills!
-        input(type='text' name='skills' class='boxInp')
+        input(type='text' name='skills' class='boxInp' required)
         label(for='image') Change image
-        input(type='text' name='image' class='boxInp' placeholder="url")
+        input(type='text' name='image' class='boxInp' placeholder="url" required)
         
         br
         input(type='submit' class='submitBtn' value='Update Info')
