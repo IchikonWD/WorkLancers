@@ -56,14 +56,5 @@ header {
 }
 
 @media (min-width: 1200px) {
-  header {
-    height: 12em;
-  
-   }
-   h2 {
-     font-size: 7em;
-   }
-   .icon {
-    font-size: 6em;
-   }
+
 }

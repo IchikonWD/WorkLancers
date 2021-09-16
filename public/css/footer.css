@@ -46,14 +46,5 @@ footer {
  }
  
  @media (min-width: 1200px) {
-  footer {
-    height: 10em;
-   }
-   .footerLinks {
-     font-size: 4em;
-   }
-   .git_logo {
-     width: 8em;
-     height: 3em;
-   }
+
  }
