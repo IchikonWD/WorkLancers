@@ -7,45 +7,39 @@ head
   link(rel='stylesheet' href='/css/profile.css ')
   link(rel='stylesheet' href='/css/footer.css ')
   title Profile - WorkLancers
-body
 include ./header.pug
+body
+  main.profile
     .container
       form#register-form()
-        .heading WorkLancers
-        h1 Get your free account
-        .right
-          a.google-plus(href='/auth/google')
-            p.fa.fa-google-plus(aria-hidden='true') Continue with Google
-          main
-            .separator
-            .connect or
-            .separator
-        .left
-          label(for='email')
-          br
-          // Este input text hay que quitarlo y poner un boton que lleve al formulario de registro
-          input#email(type='email' name='email' value='Work email addrees')
-          br
-          .emailbox
-            a(href='/register/email')
-              p.emailp(aria-hidden='true') Continue with Email
+        h2.title WorkLancers
         .footer
           // <button class="see_more_btn">See More</button> 
     section.top
       article
-        h1.title Profile
-        button(type="button" class="postButton" onclick="mostrarForm()") ! Edit your profile !
+        h1.profile Profile
+        button(type="button" class="postButton" onclick="mostrarForm()")
+          img.avatar(src=user.image)
       article
         div.hide_me(id="form")
           include ./userForm.pug
-      p=user.username
-      p=user.email
-      p=user.password
-      p=user.age
-      p=user.occupation
-      p=user.location
-      p=user.skills
-      img(src=user.image)
+      section.bottom 
+        hr
+        p(class="description") Username:
+          p(class="username")=user.username
+          hr
+        p(class="description") E-mail:
+          p(class="username")=user.email
+          hr
+        p(class="description") Location:
+          p(class="username")=user.location
+          hr
+        p(class="description") Ocupation:
+          p(class="username")=user.occupation
+          hr
+        p(class="description") Skills:
+          p(class="username")=user.skills
+        hr
 include ./footer.pug
 script
   include ../public/scripts/scripts.js

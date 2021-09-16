@@ -9,7 +9,7 @@ html(lang='en')
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     title Register - Worklancers
 include ./header.pug
-main
+main.register
     .container
       form#register-form()
         h1.title Get your free account
@@ -20,4 +20,6 @@ main
         .right
           a.email(href='/register/email')
             p(aria-hidden='true') Continue with Email
+    div.bottom-container
+    img.worker(src='/assets/img/worker.png')
 include ./footer.pug
