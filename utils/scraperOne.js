@@ -20,7 +20,7 @@ const extractJobs = (link, browser) => new Promise(async (resolve, reject) => {
 
         jobData['location'] = await page.$eval('#public-job-detail > table > tbody > tr:nth-child(3) > td', (location) => location.innerText)
 
-        jobData['jobBudget'] = await page.$eval('#public-job-detail > table > tbody > tr:nth-child(9) > td', (categories) => categories.innerText)
+        jobData['jobBudget'] = 'Negotiate Price'
 
         jobData['jobUrl'] = await page.url();
 

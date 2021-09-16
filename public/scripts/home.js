@@ -39,7 +39,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
                                   </div>
                                   <div class="separator"></div>
                                   <div class="job_footer">
-                                      <p class="job_price">${offer.jobBudget}</p><button class="see_more_btn" href="${offer.jobUrl}">See More</button>
+                                      <p class="job_price">${offer.jobBudget}</p><button class="see_more_btn"><a class="link_btn" href="${offer.jobUrl}">See Offer</a></button>
                                   </div>
                               </article>
                               <input type="hidden" value=${offer._id} class="hiddenInp">
@@ -48,7 +48,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
         });
       })
       .then(() => {
-        document.querySelectorAll('.see_more_btn').forEach(item => {
+        document.querySelectorAll('#fav_btn_empty').forEach(item => {
           item.addEventListener('click', () => {
             /*
             console.log(item);
