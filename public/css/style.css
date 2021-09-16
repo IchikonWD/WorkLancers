@@ -144,7 +144,7 @@ a {
 }
 .card__side--back {
   transform: rotateY(180deg);
-  background-color: rgb(38, 70, 83);
+  background-color: rgb(25, 46, 55);
 }
 .card:hover .card__side--front {
   transform: rotateY(-180deg);
