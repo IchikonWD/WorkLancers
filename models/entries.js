@@ -12,7 +12,9 @@ const entries = {
             `)
             result = await pool.query(sql_query, [email])
         } catch (err) {
-            console.log('Error al coger el email ---> ' + error);
+            console.log('Error al coger el email ---> ' + err);
+        } finally{
+            client.release();
         }
         return result;
     },
@@ -93,7 +95,7 @@ const entries = {
         try {
             client = await pool.connect();
             const sql_query =
-                "SELECT username, email, age, occupation, location, skills, favorites FROM users"
+                "SELECT username, email, age, occupation, location, skills FROM users"
             result = await pool.query(sql_query)
         } catch (error) {
             console.log('Error al sacar informacion de los users --> ' + error);
@@ -102,25 +104,26 @@ const entries = {
         }
         return result;
     },
-    delete_user: async (user_id) => {
+    delete_user: async (email) => {
         let client, result;
         try {
             client = await pool.connect();
             const sql_query =
-                "DELETE FROM users WHERE user_id=$1"
-            result = await pool.query(sql_query, [user_id])
+                "DELETE FROM users WHERE email=$1"
+            result = await pool.query(sql_query, [email])
         } catch (error) {
             console.log('Error al borrar el user --> ' + error);
         } finally {
             client.release();
         }
+        return result;
     },
     getInfo_byEmail: async (email) => {
         let client, result
         try {
             client = await pool.connect();
             const sql_query = (`
-            SELECT username, email, age, occupation, location, skills, favorites, image FROM users WHERE email=$1
+            SELECT username, email, age, occupation, location, skills, image FROM users WHERE email=$1
             `)
             result = await pool.query(sql_query, [email])
         } catch (error) {
@@ -128,6 +131,7 @@ const entries = {
         } finally {
             client.release();
         }
+        return result;
     },
     delete_user_byEmail: async(email) => {
         let client, result;

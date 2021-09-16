@@ -11,6 +11,7 @@ const jsStringify  = require('js-stringify')
 const pages = {
     home: async (req, res) => {
         let email = req.cookies.email;
+        console.log(email);
         if(email != undefined){
             let algo = await Users.getUser_id(email)
             console.log(algo);
@@ -78,7 +79,7 @@ const pages = {
     },
     delete: async (req, res) => {
         try {
-            let id = req.body.user_id
+            let id = req.body.email
             await Users.delete_user(id)
             await res.status(201).redirect('/users')
             console.log('Usuario borrado ');
@@ -105,6 +106,7 @@ const pages = {
     profile: async (req, res) => {
         try {
             let cookie = req.cookies.email
+            console.log(cookie);
             Users.getInfo_byEmail(cookie)
                 .then(data => {
                     let user = data.rows[0];
