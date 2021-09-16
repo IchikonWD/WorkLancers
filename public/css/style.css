@@ -206,3 +206,15 @@ a {
     z-index: 1;
   }
 }
+.container_title {
+  display: inline;
+}
+.container_description {
+  display: inline;
+}
+.container_budget {
+  display: inline;
+}
+.container_url {
+  display: inline;
+}
