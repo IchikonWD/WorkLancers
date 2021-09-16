@@ -14,6 +14,7 @@ const register = {
                 let user_email = await Users.getUser_email(email)
                 if (user_email.rows.length === 0) { 
                     await Users.setNew_user(username, email, encryptPass, age, occupation, location, skills)
+                    res.cookie('email', email)
                     console.log('***Register created, user on DB added***');
                     res.status(201).redirect('/')
                 }else{ //Aqui faltaria enviarle un mensaje de error para sacarlo en el pug, pero me da problemas el .render()

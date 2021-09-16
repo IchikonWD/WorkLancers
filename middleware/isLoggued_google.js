@@ -4,14 +4,17 @@ async function isLogguedIn(req, res, next) {
     if(req.user.rows != undefined) {
       let emailLocal = await req.user.rows[0].email
       await res.cookie('email', emailLocal)
+      req.user ? next() : res.sendStatus(401);
     }
-    if(req.user._json != undefined){
+    else if(req.user._json != undefined){
       let emailGoogle = await req.user._json.email
       await res.cookie('email', emailGoogle)
+      req.user ? next() : res.sendStatus(401);
+    }else{
+      res.status(400).send('Debes loguearte primero');
     }
-    req.user ? next() : res.sendStatus(401);
   } catch (error) {
-    res.status(401).send({ message: 'A error has ocurred ' + error})
+    res.status(401).send({ message: 'Debes loguearte primero' })
   }
 }
 
