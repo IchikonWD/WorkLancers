@@ -1,24 +1,25 @@
 //Aqui van los imports
 const Jobs = require('../models/models.jobs')
-const fetch = require('node-fetch')
-const isAdmin = require('../middleware/isAdmin');
-
 //Empezamos los pages
 const Users = require('../models/entries')
 // Archivos para Scraping
 const scraperTwo = require('../utils/scraperTwo')
 const scraperThree = require('../utils/scraperOne')
-const jsStringify  = require('js-stringify')
+const jsStringify = require('js-stringify')
 
 const pages = {
     home: async (req, res) => {
-        let email = req.cookies.email;
-        if(email != undefined){
-            let algo = await Users.getUser_id(email)
-            let tryAdmin = await Users.isAdmin(email)
-            res.status(200).render('home', { algo , jsStringify, tryAdmin })
-        }else{
-            res.status(200).render('home')
+        try {
+            let email = req.cookies.email;
+            if (email != undefined) {
+                let user = await Users.getUser_id(email)
+                let tryAdmin = await Users.isAdmin(email)
+                res.status(200).render('home', { user, jsStringify, tryAdmin })
+            } else {
+                res.status(200).render('home')
+            }
+        } catch (error) {
+            res.status(400).redirect('/login')
         }
     },
     register: (req, res) => {
@@ -28,19 +29,27 @@ const pages = {
         res.status(200).render('register2')
     },
     favorites: async (req, res) => {
-        let cookies = req.cookies.email
-        let id = await Users.getUser_id(cookies);
-        let data = await Users.getFav_jobs(id)
-        res.status(200).render('favorites', { data })
+        try {
+            let cookies = req.cookies.email
+            let id = await Users.getUser_id(cookies);
+            let data = await Users.getFav_jobs(id)
+            res.status(200).render('favorites', { data })
+        } catch (error) {
+            res.status(400).redirect('login')
+        }
     },
     login: (req, res) => {
         res.status(200).render('login')
     },
     dashboard: async (req, res) => {
-        let cookie = req.cookies.email
-        let data = await Jobs.find({ email: cookie }) //Saco los trabajos por el email que viene por la cookie
-        console.log(data);
-        res.status(200).render('dashboard', { data })
+        try {
+            let cookie = req.cookies.email
+            let data = await Jobs.find({ email: cookie }) //Saco los trabajos por el email que viene por la cookie
+            res.status(200).render('dashboard', { data })
+        } catch (error) {
+            console.log('Ha ocurrido un error en el dashborad -->  '  + error );
+            res.status(400).redirect('/')
+        }
     },
     upWork: async (req, res) => {
         try {
@@ -89,19 +98,23 @@ const pages = {
         }
     },
     scraperAll: async (req, res) => {
-        const searchInput = await req.body.search
-        if (searchInput === undefined) {
-            res.status(200).render('home')
-        }
-        else {
-            let mongoJobs = await Jobs.find();
-            let extractMongo_jobs = mongoJobs.map((param) => {
-                return param;
-            })
-            const scrapingUno = await scraperThree(`https://www.flexjobs.com/search?jobtypes%5B%5D=Freelance&location=&search=${searchInput}`)
-            const scrapingDos = await scraperTwo(`https://www.workana.com/jobs?language=es&query=${searchInput}`)
-            let todoElScraping = [...scrapingUno, ...scrapingDos, ...extractMongo_jobs]
-            res.status(200).json(todoElScraping)
+        try {
+            const searchInput = await req.body.search
+            if (searchInput === undefined) {
+                res.status(200).render('home')
+            }
+            else {
+                let mongoJobs = await Jobs.find();
+                let extractMongo_jobs = mongoJobs.map((param) => {
+                    return param;
+                })
+                const scrapingUno = await scraperThree(`https://www.flexjobs.com/search?jobtypes%5B%5D=Freelance&location=&search=${searchInput}`)
+                const scrapingDos = await scraperTwo(`https://www.workana.com/jobs?language=es&query=${searchInput}`)
+                let todoElScraping = [...scrapingUno, ...scrapingDos, ...extractMongo_jobs]
+                res.status(200).json(todoElScraping)
+            }
+        } catch (error) {
+            console.log('Ha ocurrido un error al hacer el scraping --->  ' + error);
         }
     },
     profile: async (req, res) => {
@@ -115,7 +128,7 @@ const pages = {
                     res.status(200).render('profile', { user })
                 })
         } catch (error) {
-            res.status(400).send('You need to LogIn first')
+            res.status(400).redirect('/login')
         }
     },
     editUser: async (req, res) => {
@@ -144,7 +157,6 @@ const pages = {
             }
         } catch (error) {
             res.status(400).send('A error has ocurred --> ' + error)
-
         }
     },
     deleteFavJob: async (req, res) => {

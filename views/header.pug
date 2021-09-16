@@ -7,7 +7,7 @@ html(lang="en")
     link(rel="stylesheet" href="/public/css/burguermenu.css")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
 header
-  p=check
+  
   nav.navBar
     h2.titleNav <a class="home" href="/">WorkLancers</a>
     div(class='mobile-container')
@@ -17,10 +17,11 @@ header
             i(class="fa fa-user")
           a(href='/favorites')
             i(class="fa fa-star")
-          a(href='/dashboard')
-            i(class="fa fa-columns")
-          a(href='/users')
-            i(class="fa fa-users")
+          if(tryAdmin == true)
+            a(href='/dashboard')
+              i(class="fa fa-columns")
+            a(href='/users')
+              i(class="fa fa-users")
           a(href='/logout') 
             i(class="fa fa-sign-out")
   a(href="javascript:void(0);" class="icon" onclick="menuBurguer()")
