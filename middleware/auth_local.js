@@ -4,14 +4,14 @@ const User = require('../models/entries');
 const encrypt = require('bcryptjs')
 
 
-passport.use('login', new localStrategy  ({
+passport.use('login', new localStrategy({
     usernameField: 'email',
     passwordField: 'password'
 }, async (email, password, done) => {
     try {
         const user = await User.getUser_email(email)
-        if(!user){
-            return done(null, false, { message: 'User not found'})
+        if (!user) {
+            return done(null, false, { message: 'User not found' })
         }
         const encryptPass = user.rows[0].password
         encrypt.compare(password, encryptPass, (err, result) => {
@@ -19,14 +19,14 @@ passport.use('login', new localStrategy  ({
                 throw new Error(err)
             }
             if (result) {
-                return done(null, user, { message: 'Login successfull'})
+                return done(null, user, { message: 'Login successfull' })
             } else {
-                return done(null, false, { message: 'User not found'})
+                return done(null, false, { message: 'User not found' })
             }
         })
-
     } catch (error) {
-        
+        return done(null, false);
+        console.log(error);
     }
 }));
 passport.serializeUser((user, done) => {

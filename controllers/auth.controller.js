@@ -22,12 +22,12 @@ const register = {
                     res.status(201).redirect('/register/email')
                 }
             } catch (error) {
-            console.log(error);
+            console.log('******************'+error);
             res.status(201).render("register2", error)
             }
         } catch (error) {
-            console.log(error);
-            res.status(201).render("register2", error)
+            let err = error.details[0].message
+            res.status(201).render("register2", { err })
         }
     },
     fail: async (req, res) => {

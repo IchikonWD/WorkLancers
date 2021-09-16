@@ -14,9 +14,9 @@ const pages = {
             if (email != undefined) {
                 let user = await Users.getUser_id(email)
                 let tryAdmin = await Users.isAdmin(email)
-                res.status(200).render('home', { user, jsStringify, tryAdmin })
+                res.status(200).render('home', { user, jsStringify, tryAdmin , email })
             } else {
-                res.status(200).render('home')
+                res.status(200).render('home',  { email })
             }
         } catch (error) {
             res.status(400).redirect('/login')
@@ -39,7 +39,8 @@ const pages = {
         }
     },
     login: (req, res) => {
-        res.status(200).render('login')
+        let logError = req.flash('error')
+        res.status(200).render('login', { logError })
     },
     dashboard: async (req, res) => {
         try {
@@ -150,7 +151,6 @@ const pages = {
                 let location = req.body.location
                 let skills = req.body.skills
                 let image = req.body.image
-
                 await Users.update_user(cookie, username, age, occupation, location, skills, image)
                 console.log('*** Profile Updated ***');
                 res.status(200).redirect('profile')

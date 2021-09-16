@@ -2,8 +2,6 @@
 
 const box = document.getElementById("cards");
 
-console.log(userApp);
-
 document.querySelector("form").addEventListener("submit", (event) => {
   box.innerHTML = ` 
                 <div id="contenedor_carga">
@@ -25,6 +23,9 @@ document.querySelector("form").addEventListener("submit", (event) => {
       .then((scrapData) => {
         document.getElementById("cards").innerHTML = "";
         scrapData.map((offer) => {
+
+          let description = offer.jobDescription.substr(0,70) + ' ...';
+
           box.innerHTML += `
           <div class="card">
         <div class="cardside cardside--front">
@@ -43,7 +44,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
                     <div class="container">&nbsp;&nbsp;&nbsp;&nbsp;<span
                             class="space red">Description</span><span class="cyan">:</span>
                         <div class="container_description"><span class="green">
-                                '${offer.jobDescription}'</span>,<br />
+                                '${description}'</span>,<br />
                             </div>
                     </div>
                     <div class="container">&nbsp;&nbsp;&nbsp;&nbsp;<span class="space red">Job Budget</span><span
