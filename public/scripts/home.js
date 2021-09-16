@@ -43,7 +43,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
                           class="space red">Job Budget</span><span class="cyan">:</span><span
                           class="green container_budget">'${offer.jobBudget}'</span>,<br /><span
                           class="space red">website</span><span class="cyan">:</span> <span class="green"><a
-                            class="container_url href="${offer.jobUrl}">'Haz click Aqui!'</a></span><br /> };</p>
+                            class="container_url" href="${offer.jobUrl}">'Haz click Aqui!'</a></span><br /> };</p>
               </div>
               <input type="hidden" value=${offer._id} class="hiddenInp">
           </div>
@@ -55,10 +55,10 @@ document.querySelector("form").addEventListener("submit", (event) => {
         document.querySelectorAll("#fav_btn_empty").forEach((item) => {
           item.addEventListener("click", () => {
 
-            console.log(item.parentNode.parentNode.querySelector('.container_title').innerText);
-            console.log(item.parentNode.parentNode.querySelector('.container_description').innerText);
-            console.log(item.parentNode.parentNode.querySelector('.container_budget').innerText);
-            console.log(item.parentNode.parentNode.querySelector('.container_url').getAttribute("href"));
+            // console.log(item.parentNode.parentNode.querySelector('.container_title').innerText);
+            // console.log(item.parentNode.parentNode.querySelector('.container_description').innerText);
+            // console.log(item.parentNode.parentNode.querySelector('.container_budget').innerText);
+            // console.log(item.parentNode.parentNode.querySelector('.container_url').getAttribute("href"));
            
 
             let title = item.parentNode.parentNode.querySelector('.container_title').innerText;
@@ -72,8 +72,8 @@ document.querySelector("form").addEventListener("submit", (event) => {
             console.log(objJob);
 
             fetch("/api/addFav", {
-              method: "POST",
-              headers: {
+            method: "POST",
+            headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify(objJob),
