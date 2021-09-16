@@ -27,39 +27,27 @@ document.querySelector("form").addEventListener("submit", (event) => {
         scrapData.map((offer) => {
           box.innerHTML += `
           <div class="card">
-        <div class="cardside cardside--front">
-            <div class="cardcont"><span class="blue">alert</span><span>(<span class="green">'New
-                        Job!'</span>)</span></div>
+          <div class="card__side card__side--front">
+              <!-- Front Content -->
+              <div class="card__cont"><span class="blue">alert</span><span>(<span class="green">'New
+                          Job!'</span>)</span></div>
+          </div>
+          <div class="card__side card__side--back">
+              <!-- Back Content -->
+              <div class="card__cta"><a class="icon_heart"><i class="fa fa-heart"
+                          id="fav_btn_empty"></i></a>
+                  <p><span class="purple">const</span> NewJob <span class="cyan">=</span> {<br /><span
+                          class="space red">Job Title</span><span class="cyan">:</span> <span
+                          class="green container_title">'${offer.jobTitle}'</span>,<br /><span class="space red">Description</span><span
+                          class="cyan">:</span> <span class="green container_description">'${offer.jobDescription}</span>',<br /><span
+                          class="space red">Job Budget</span><span class="cyan">:</span><span
+                          class="green container_budget">'${offer.jobBudget}'</span>,<br /><span
+                          class="space red">website</span><span class="cyan">:</span> <span class="green"><a
+                            class="container_url href="${offer.jobUrl}">'Haz click Aqui!'</a></span><br /> };</p>
+              </div>
+              <input type="hidden" value=${offer._id} class="hiddenInp">
+          </div>
         </div>
-        <div class="cardside cardside--back">
-            <div class="cardcta"><a class="icon_heart"><i class="fa fa-heart" id="fav_btn_empty"></i></a>
-                <div>
-                    <span class="purple">const</span> NewJob <span class="cyan">=</span> {<br /><br />
-                    <div class="container">&nbsp;&nbsp;&nbsp;&nbsp;<span class="space red">Job Title</span><span
-                            class="cyan">:</span>
-                        <span class="green container_title">'${offer.jobTitle}'</span>,<br />
-                    </div>
-                    </div>
-                    <div class="container">&nbsp;&nbsp;&nbsp;&nbsp;<span
-                            class="space red">Description</span><span class="cyan">:</span>
-                        <div class="container_description"><span class="green">
-                                '${offer.jobDescription}'</span>,<br />
-                            </div>
-                    </div>
-                    <div class="container">&nbsp;&nbsp;&nbsp;&nbsp;<span class="space red">Job Budget</span><span
-                            class="cyan">:</span>
-                        <div class="container_budget">
-                            <span class="green container">'${offer.jobBudget}'</span>,<br />
-                        </div>
-                    </div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="space red">website</span><span class="cyan">:</span>
-                    <div class="container">
-                        <span class="green"><a class="container_url" href="${offer.jobUrl}">'Haz click Aqui!'</a></span>
-                    </div>
-                    <br /> };</p>
-                </div>
-                <input type="hidden" value=${offer._id} class="hiddenInp">
-            </div>
                           `;
         });
       })
