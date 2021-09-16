@@ -59,6 +59,7 @@ router.post('/login', passport.authenticate('login', {
 router.post('/profile', pages.editUser)
 router.post('/users', pages.delete)
 router.post('/favorites', pages.deleteFavJob);
+router.post('/dashboard', pages.deleteJobMongo)
 
 
 module.exports = router;

@@ -25,18 +25,20 @@ body
         br
     section.bot
       each val in data
-        article.card 
-          div.insideCard
-            div.topCard 
-              h2.titleCard=val.jobTitle
-              a(href="#") 
-                img(src="/assets/img/choices.png" class="choicesImg")
-            div.midCard  
-            
-            div.botCard
-              p Duration:&nbsp; 
-                p.durationCard=val.jobTimer
-              p.salaryCard=val.jobBudget
+        form(method="POST")
+          article.card 
+            div.insideCard
+              div.topCard 
+                h2.titleCard=val.jobTitle
+                a(href="#") 
+                  img(src="/assets/img/choices.png" class="choicesImg")
+              div.midCard  
+              div.botCard
+                p Duration:&nbsp; 
+                  p.durationCard=val.jobTimer
+                p.salaryCard=val.jobBudget
+              input(type="hidden" value=val._id name="idMongo_job")
+              input(type="submit" value="Borrar")
       article
   include ./footer.pug
   script
