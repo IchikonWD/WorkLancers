@@ -1,8 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Pattaya&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Pattaya&display=swap");
 
 h2 {
-  font-family: 'Pattaya', sans-serif;
+  font-family: "Pattaya", sans-serif;
   font-size: 2.5rem;
+}
+.home {
+  font-family: "Pattaya", cursive;
+  font-size: 1em;
+  text-decoration: none;
+  color: #fff;
+}
+.home:visited {
+  color: #fff;
 }
 header {
   background: linear-gradient(to right, rgb(38, 70, 83), rgb(42, 157, 143));
@@ -25,7 +34,6 @@ header {
   width: 100%;
   margin-left: 1em;
   margin-right: 1.2em;
-
 }
 .icon {
   color: white;

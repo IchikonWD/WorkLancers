@@ -15,7 +15,8 @@ main {
   width: 100%;
   align-content: center;
   align-items: center;
-  margin-top: 5em;
+  margin-top: 4em;
+  margin-bottom: 4em;
 }
 .section1 {
   display: flex;
@@ -162,10 +163,14 @@ i.icon_search {
   width: 64px;
   height: 25px;
 }
-.fav_img {
-  width: 25px;
-  height: 30px;
+#fav_btn_empty {
+  width: 1em;
+  height: 1em;
+  color: rgb(244, 162, 97);
 }
+#fav_btn_empty:hover {
+    color: rgb(231, 111, 81);
+  }
 
 @media screen and (min-width: 768px) {
   i.icon_search {
