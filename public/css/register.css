@@ -124,3 +124,19 @@ h1 {
   }
 
 }
+
+@media (min-width: 1900px) {
+  .container {
+    margin-top: 5em;
+  }
+  .title {
+    font-size: 4em;
+  }
+  .right {
+    font-size: 3em;
+  }
+  .worker {
+    display: none;
+  }
+
+}
