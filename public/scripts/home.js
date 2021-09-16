@@ -2,8 +2,6 @@
 
 const box = document.getElementById("cards");
 
-console.log(userApp);
-
 document.querySelector("form").addEventListener("submit", (event) => {
   box.innerHTML = ` 
                 <div id="contenedor_carga">

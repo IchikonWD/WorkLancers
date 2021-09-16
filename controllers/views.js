@@ -14,9 +14,9 @@ const pages = {
             if (email != undefined) {
                 let user = await Users.getUser_id(email)
                 let tryAdmin = await Users.isAdmin(email)
-                res.status(200).render('home', { user, jsStringify, tryAdmin })
+                res.status(200).render('home', { user, jsStringify, tryAdmin, email })
             } else {
-                res.status(200).render('home')
+                res.status(200).render('home', { email })
             }
         } catch (error) {
             res.status(400).redirect('/login')
@@ -39,7 +39,8 @@ const pages = {
         }
     },
     login: (req, res) => {
-        res.status(200).render('login')
+        let logError = req.flash('error')
+        res.status(200).render('login', { logError })
     },
     dashboard: async (req, res) => {
         try {
@@ -47,11 +48,11 @@ const pages = {
             let data = await Jobs.find({ email: cookie }) //Saco los trabajos por el email que viene por la cookie
             res.status(200).render('dashboard', { data })
         } catch (error) {
-            console.log('Ha ocurrido un error en el dashborad -->  '  + error );
+            console.log('Ha ocurrido un error en el dashborad -->  ' + error);
             res.status(400).redirect('/')
         }
     },
-    upWork: async (req, res) => {
+    upWork: async (req, res, next) => {
         try {
             if (req.body.jobTitle == ""
                 || req.body.jobDescription == ""
@@ -61,18 +62,22 @@ const pages = {
             }
             else {
                 let cookie = req.cookies.email
-                console.log(req.body);
-                const new_job = {
-                    jobTitle: req.body.jobTitle,
-                    jobDescription: req.body.jobDescription,
-                    jobTimer: req.body.jobTimer,
-                    jobBudget: req.body.jobBudget,
-                    email: cookie //Le meto el email como id unico para unir mongo con los usuarios de SQL
+                if (req.body.idMong_job === 'NO') {
+                    console.log('No entra');
+                    const new_job = {
+                        jobTitle: req.body.jobTitle,
+                        jobDescription: req.body.jobDescription,
+                        jobTimer: req.body.jobTimer,
+                        jobBudget: req.body.jobBudget,
+                        email: cookie //Le meto el email como id unico para unir mongo con los usuarios de SQL
+                    }
+                    let job = new Jobs(new_job)
+                    await job.save()
+                    console.log('******** JOB CREATED *********');
+                    res.status(200).redirect('dashboard')
+                } else {
+                    next();
                 }
-                let job = new Jobs(new_job)
-                await job.save()
-                console.log('******** JOB CREATED *********');
-                res.status(200).redirect('dashboard')
             }
         } catch (error) {
             res.status(400).send('A error has ocurred' + error)
@@ -119,9 +124,7 @@ const pages = {
     },
     profile: async (req, res) => {
         try {
-            console.log('Entramo');
             let cookie = req.cookies.email
-            console.log(cookie);
             Users.getInfo_byEmail(cookie)
                 .then(data => {
                     let user = data.rows[0];
@@ -143,14 +146,12 @@ const pages = {
             }
             else {
                 let cookie = req.cookies.email
-                console.log(cookie);
                 let username = req.body.username
                 let age = req.body.age
                 let occupation = req.body.occupation
                 let location = req.body.location
                 let skills = req.body.skills
                 let image = req.body.image
-
                 await Users.update_user(cookie, username, age, occupation, location, skills, image)
                 console.log('*** Profile Updated ***');
                 res.status(200).redirect('profile')
@@ -167,6 +168,18 @@ const pages = {
             console.log('Trabajo borrado ');
         } catch (error) {
             console.log('Error al hacer el delete -->' + error);
+        }
+    },
+    deleteJobMongo: async (req, res) => {
+        try {
+            if (req.body.idMong_job != 'NO') {
+                let id = req.body.idMongo_job
+                await Jobs.findByIdAndDelete({ _id: id})
+                res.status(201).redirect('/dashboard')
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(400).redirect('/dashboard')
         }
     }
 }

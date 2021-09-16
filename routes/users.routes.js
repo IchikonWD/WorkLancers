@@ -37,6 +37,7 @@ router.get("/restablecerpassword");
 router.get('/auth/google', passport.authenticate('google', { scope: ['email', 'profile'] }))
 router.get('/google/callback', passport.authenticate('google', {
     failureRedirect: '/login',
+    failureFlash: true
 }), (req,res) =>{
     res.cookie('email', req.user.email)
     res.status(200).redirect('/')
@@ -47,7 +48,8 @@ router.get('/logout', user.logout)
 router.post('/dashboard', pages.upWork) //Formulario para postular trabajos siendo admin
 router.post('/register/email', user.register)
 router.post('/login', passport.authenticate('login', {
-    failureRedirect: '/login'
+    failureRedirect: '/login',
+    failureFlash: 'Invalid username or password'
 }), (req, res) => {
     let email = req.body.email
     console.log(email);
@@ -57,6 +59,7 @@ router.post('/login', passport.authenticate('login', {
 router.post('/profile', pages.editUser)
 router.post('/users', pages.delete)
 router.post('/favorites', pages.deleteFavJob);
+router.post('/dashboard', pages.deleteJobMongo)
 
 
 module.exports = router;
