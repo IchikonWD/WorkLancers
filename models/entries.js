@@ -12,7 +12,9 @@ const entries = {
             `)
             result = await pool.query(sql_query, [email])
         } catch (err) {
-            console.log('Error al coger el email ---> ' + error);
+            console.log('Error al coger el email ---> ' + err);
+        } finally{
+            client.release();
         }
         return result;
     },
@@ -86,14 +88,14 @@ const entries = {
         } finally {
             client.release();
         }
-        return result;
+        return result.rows[0].admin;
     },
     getInfo_allUsers: async () => {
         let client, result;
         try {
             client = await pool.connect();
             const sql_query =
-                "SELECT username, email, age, occupation, location, skills, favorites FROM users"
+                "SELECT username, email, age, occupation, location, skills FROM users"
             result = await pool.query(sql_query)
         } catch (error) {
             console.log('Error al sacar informacion de los users --> ' + error);
@@ -102,25 +104,26 @@ const entries = {
         }
         return result;
     },
-    delete_user: async (user_id) => {
+    delete_user: async (email) => {
         let client, result;
         try {
             client = await pool.connect();
             const sql_query =
-                "DELETE FROM users WHERE user_id=$1"
-            result = await pool.query(sql_query, [user_id])
+                "DELETE FROM users WHERE email=$1"
+            result = await pool.query(sql_query, [email])
         } catch (error) {
             console.log('Error al borrar el user --> ' + error);
         } finally {
             client.release();
         }
+        return result;
     },
     getInfo_byEmail: async (email) => {
         let client, result
         try {
             client = await pool.connect();
             const sql_query = (`
-            SELECT username, email, age, occupation, location, skills, favorites, image FROM users WHERE email=$1
+            SELECT username, email, age, occupation, location, skills, image FROM users WHERE email=$1
             `)
             result = await pool.query(sql_query, [email])
         } catch (error) {
@@ -128,6 +131,7 @@ const entries = {
         } finally {
             client.release();
         }
+        return result;
     },
     delete_user_byEmail: async(email) => {
         let client, result;
@@ -160,16 +164,16 @@ const entries = {
         }
         return result;
     },
-    insert_favJob: async (title, img, description, moreInfo, user_id) => {
+    insert_favJob: async (title, description, moreInfo, url ,user_id) => {
         let client, result;
         try {
             client = await pool.connect();
             const sql_query = (`
                 INSERT INTO public.jobs(
-	                    title, img, description, moreinfo, user_id)
+	                    title, description, moreinfo, url ,user_id)
 	                    VALUES ($1, $2, $3, $4, $5);
             `)
-            result = await pool.query(sql_query, [title, img, description, moreInfo, user_id])
+            result = await pool.query(sql_query, [title, description, moreInfo, url, user_id])
         } catch (error) {
             console.log('Ha ocurrido un error al meter un trabajo --' + erorr);
         } finally {
@@ -182,7 +186,7 @@ const entries = {
         try {
             client = await pool.connect();
             const sql_query = (`
-                SELECT job_id, title, img, description, moreInfo FROM jobs WHERE user_id=$1;
+                SELECT job_id, title, description, moreInfo, url FROM jobs WHERE user_id=$1;
             `)
             result = await pool.query(sql_query, [id])
         } catch (error) {

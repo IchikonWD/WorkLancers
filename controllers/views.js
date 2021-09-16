@@ -1,6 +1,8 @@
 //Aqui van los imports
 const Jobs = require('../models/models.jobs')
 const fetch = require('node-fetch')
+const isAdmin = require('../middleware/isAdmin');
+
 //Empezamos los pages
 const Users = require('../models/entries')
 // Archivos para Scraping
@@ -13,8 +15,8 @@ const pages = {
         let email = req.cookies.email;
         if(email != undefined){
             let algo = await Users.getUser_id(email)
-            console.log(algo);
-            res.status(200).render('home', { algo , jsStringify })
+            let tryAdmin = await Users.isAdmin(email)
+            res.status(200).render('home', { algo , jsStringify, tryAdmin })
         }else{
             res.status(200).render('home')
         }
@@ -78,7 +80,7 @@ const pages = {
     },
     delete: async (req, res) => {
         try {
-            let id = req.body.user_id
+            let id = req.body.email
             await Users.delete_user(id)
             await res.status(201).redirect('/users')
             console.log('Usuario borrado ');
@@ -104,7 +106,9 @@ const pages = {
     },
     profile: async (req, res) => {
         try {
+            console.log('Entramo');
             let cookie = req.cookies.email
+            console.log(cookie);
             Users.getInfo_byEmail(cookie)
                 .then(data => {
                     let user = data.rows[0];

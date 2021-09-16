@@ -58,8 +58,8 @@ const pages = {
         req.session.destroy();
         res.json('Goodbye!');
     },
-    deleteUser: async (req,res) => {
-        
+    deleteUser: async (req, res) => {
+
         try {
             let byEmail = req.body.email
             await Users.delete_user(email)
@@ -68,14 +68,13 @@ const pages = {
         } catch (error) {
             res.status(201).json({ error: error })
         }
-    
-    }, 
-    postFavJobs: async (req,res) =>{
+
+    },
+    postFavJobs: async (req, res) => {
         try {
             console.log('Job added to favorite');
-            const { title, img, description, moreInfo, user_id } = req.body
-            console.log(title, img, description, moreInfo, user_id);
-            await Users.insert_favJob(title, img, description, moreInfo, user_id)
+            const { title, description, moreInfo, url, user_id } = req.body
+            await Users.insert_favJob(title,  description, moreInfo, url ,user_id)
             res.status(201).json(addFav)
         } catch (error) {
             res.status(400).send(error)
@@ -87,7 +86,7 @@ const pages = {
         } catch (error) {
             console.log(error);
         }
-    }
+    },
 }
 
 module.exports = pages;

@@ -12,7 +12,7 @@ const pages = require("../controllers/api.controller")
 router.post("/user", pages.postRegister);
 router.post("/login", pages.postLogin);
 router.post("/logout", pages.postLogout);
-router.put("/api/user" );
+router.put("/api/user");
 router.delete("/user", pages.deleteUser);
 
 // Login

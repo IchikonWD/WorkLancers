@@ -14,19 +14,19 @@ html(lang="en")
         form(method="POST" )
           div.card
             p Username 
-              label(for=val.user_id)=val.Username
+              label(for=val.email)=val.Username
             p Email: 
-              label(for=val.user_id)=val.email
+              label(for=val.email)=val.email
             p Birthdate: 
-              label(for=val.user_id)=val.age
+              label(for=val.email)=val.age
             p Occupation:
-              label(for=val.user_id)=val.occupation
+              label(for=val.email)=val.occupation
             p Location: 
-              label(for=val.user_id)=val.location
+              label(for=val.email)=val.location
             p Skills:
-              label(for=val.user_id)=val.skills
-              input(type="hidden" value=val.user_id name='user_id')
-              input(type="submit" class="deleteBtn" value="Delete", user_id=val.user_id)
+              label(for=val.email)=val.skills
+              input(type="hidden" value=val.email name='email')
+              input(type="submit" class="deleteBtn" value="Delete", email=val.email)
 
 
       include ./footer

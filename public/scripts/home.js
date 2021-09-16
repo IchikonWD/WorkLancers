@@ -26,55 +26,60 @@ document.querySelector("form").addEventListener("submit", (event) => {
         document.getElementById("cards").innerHTML = "";
         scrapData.map((offer) => {
           box.innerHTML += `
-          <div class="content">
           <div class="card">
-              <div class="card__side card__side--front">
-                  <!-- Front Content -->
-                  <div class="card__cont"><span class="blue">alert</span><span>(<span class="green">'New
-                              Job!'</span>)</span></div>
-              </div>
-              <div class="card__side card__side--back">
-                  <!-- Back Content -->
-                  <div class="card__cta"><a class="icon_heart"><i class="fa fa-heart"
-                              id="fav_btn_empty"></i></a>
-                      <p><span class="purple">const</span> NewJob <span class="cyan">=</span> {<br /><span
-                              class="space red">Job Title</span><span class="cyan">:</span> <span
-                              class="green">'${offer.jobTitle}'</span>,<br /><span class="space red">Description</span><span
-                              class="cyan">:</span> <span class="green">'${offer.jobDescription}</span>',<br /><span
-                              class="space red">Job Budget</span><span class="cyan">:</span><span
-                              class="green">'${offer.jobBudget}'</span>,<br /><span
-                              class="space red">website</span><span class="cyan">:</span> <span class="green"><a
-                                  href="${offer.jobUrl}">'Haz click Aqui!'</a></span><br /> };</p>
-                  </div>
-              </div>
-              <input type="hidden" value=${offer._id} class="hiddenInp">
-          </div>
+        <div class="cardside cardside--front">
+            <div class="cardcont"><span class="blue">alert</span><span>(<span class="green">'New
+                        Job!'</span>)</span></div>
+        </div>
+        <div class="cardside cardside--back">
+            <div class="cardcta"><a class="icon_heart"><i class="fa fa-heart" id="fav_btn_empty"></i></a>
+                <div>
+                    <span class="purple">const</span> NewJob <span class="cyan">=</span> {<br /><br />
+                    <div class="container">&nbsp;&nbsp;&nbsp;&nbsp;<span class="space red">Job Title</span><span
+                            class="cyan">:</span>
+                        <span class="green container_title">'${offer.jobTitle}'</span>,<br />
+                    </div>
+                    </div>
+                    <div class="container">&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            class="space red">Description</span><span class="cyan">:</span>
+                        <div class="container_description"><span class="green">
+                                '${offer.jobDescription}'</span>,<br />
+                            </div>
+                    </div>
+                    <div class="container">&nbsp;&nbsp;&nbsp;&nbsp;<span class="space red">Job Budget</span><span
+                            class="cyan">:</span>
+                        <div class="container_budget">
+                            <span class="green container">'${offer.jobBudget}'</span>,<br />
+                        </div>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="space red">website</span><span class="cyan">:</span>
+                    <div class="container">
+                        <span class="green"><a class="container_url" href="${offer.jobUrl}">'Haz click Aqui!'</a></span>
+                    </div>
+                    <br /> };</p>
+                </div>
+                <input type="hidden" value=${offer._id} class="hiddenInp">
+            </div>
                           `;
         });
       })
       .then(() => {
         document.querySelectorAll("#fav_btn_empty").forEach((item) => {
           item.addEventListener("click", () => {
-            /*
-            console.log(item);
-            console.log(item.parentNode.parentNode);
-            console.log(item.parentNode.parentNode.childNodes[1].childNodes[1].innerText); // titlte
-            console.log(item.parentNode.parentNode.childNodes[5].childNodes[0].currentSrc); //Imagen empresa
-            console.log(item.parentNode.parentNode.childNodes[5].childNodes[2].innerText); //Descripcion
-            console.log(item.parentNode.parentNode.childNodes[9].childNodes[1].innerText); //more info
-            */
 
-            let title =
-              item.parentNode.parentNode.childNodes[1].childNodes[1].innerText;
-            let img =
-              item.parentNode.parentNode.childNodes[5].childNodes[0].currentSrc;
-            let description =
-              item.parentNode.parentNode.childNodes[5].childNodes[2].innerText;
-            let moreInfo =
-              item.parentNode.parentNode.childNodes[9].childNodes[1].innerText;
+            console.log(item.parentNode.parentNode.querySelector('.container_title').innerText);
+            console.log(item.parentNode.parentNode.querySelector('.container_description').innerText);
+            console.log(item.parentNode.parentNode.querySelector('.container_budget').innerText);
+            console.log(item.parentNode.parentNode.querySelector('.container_url').getAttribute("href"));
+           
+
+            let title = item.parentNode.parentNode.querySelector('.container_title').innerText;
+            let description = item.parentNode.parentNode.querySelector('.container_description').innerText;
+            let moreInfo = item.parentNode.parentNode.querySelector('.container_budget').innerText;
+            let url = item.parentNode.parentNode.querySelector('.container_url').getAttribute("href")
             let user_id = userApp;
 
-            const objJob = { title, img, description, moreInfo, user_id };
+            const objJob = { title, description, moreInfo, url , user_id };
 
             console.log(objJob);
 
