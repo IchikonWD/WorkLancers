@@ -1,0 +1,51 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/header.css ')
+  link(rel='stylesheet' href='/css/profile.css ')
+  link(rel='stylesheet' href='/css/footer.css ')
+  title Profile - WorkLancers
+body
+include ./header.pug
+    .container
+      form#register-form()
+        .heading WorkLancers
+        h1 Get your free account
+        .right
+          a.google-plus(href='/auth/google')
+            p.fa.fa-google-plus(aria-hidden='true') Continue with Google
+          main
+            .separator
+            .connect or
+            .separator
+        .left
+          label(for='email')
+          br
+          // Este input text hay que quitarlo y poner un boton que lleve al formulario de registro
+          input#email(type='email' name='email' value='Work email addrees')
+          br
+          .emailbox
+            a(href='/register/email')
+              p.emailp(aria-hidden='true') Continue with Email
+        .footer
+          // <button class="see_more_btn">See More</button> 
+    section.top
+      article
+        h1.title Profile
+        button(type="button" class="postButton" onclick="mostrarForm()") ! Edit your profile !
+      article
+        div.hide_me(id="form")
+          include ./userForm.pug
+      p=user.username
+      p=user.email
+      p=user.password
+      p=user.age
+      p=user.occupation
+      p=user.location
+      p=user.skills
+      img(src=user.image)
+include ./footer.pug
+script
+  include ../public/scripts/scripts.js

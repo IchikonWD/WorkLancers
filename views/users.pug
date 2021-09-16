@@ -1,0 +1,32 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet' href='/css/header.css ')
+        link(rel='stylesheet' href='/css/footer.css ')
+        link(rel="stylesheet" href="/css/users.css")
+        title Favorites - WorkLancers
+    body
+      include ./header
+      each val in hola
+        form(method="POST" )
+          div.card
+            p Username 
+              label(for=val.email)=val.Username
+            p Email: 
+              label(for=val.email)=val.email
+            p Birthdate: 
+              label(for=val.email)=val.age
+            p Occupation:
+              label(for=val.email)=val.occupation
+            p Location: 
+              label(for=val.email)=val.location
+            p Skills:
+              label(for=val.email)=val.skills
+              input(type="hidden" value=val.email name='email')
+              input(type="submit" class="deleteBtn" value="Delete", email=val.email)
+
+
+      include ./footer

@@ -1,0 +1,50 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+footer {
+  height: 3em;
+  width: 100%;
+  background: linear-gradient(to right, rgb(38, 70, 83), rgb(42, 157, 143));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  box-shadow: 0em 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.75);
+}
+
+.footerLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 1em;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+.git_logo {
+  width: 6em;
+  height: 2em;
+  margin-right: 1em;
+}
+
+@media screen and (min-width: 768px) {
+  footer {
+   height: 5em;
+  }
+  .footerLinks {
+    font-size: 2em;
+  }
+  .git_logo {
+    width: 6em;
+    height: 2.5em;
+  }
+ }
+ 
+ @media (min-width: 1200px) {
+
+ }

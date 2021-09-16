@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="/public/css/burguermenu.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+header
+  
+  nav.navBar
+    h2.titleNav <a class="home" href="/">WorkLancers</a>
+    div(class='mobile-container')
+      div.topnav
+        div#myLinks
+          if(email == undefined)
+            a(href='/register')
+              i(class="fa fa-user-plus")
+            a(href='/login')
+              i(class="fa fa-sign-in")
+          else if(email != undefined )
+            a(href='/profile')
+              i(class="fa fa-user")
+            a(href='/favorites')
+              i(class="fa fa-star")
+            a(href='/logout') 
+              i(class="fa fa-sign-out")
+          if(tryAdmin == true)
+            a(href='/dashboard')
+              i(class="fa fa-columns")
+            a(href='/users')
+              i(class="fa fa-users")
+  a(href="javascript:void(0);" class="icon" onclick="menuBurguer()")
+    i(class='fa fa-bars') 
+script(src='/scripts/scripts.js')

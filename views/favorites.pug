@@ -1,0 +1,38 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet' href='/css/header.css ')
+        link(rel='stylesheet' href='/css/footer.css ')
+        link(rel="stylesheet" href="/css/favorites.css")
+        title Favorites - WorkLancers
+    body
+        include ./header.pug    
+        main
+            section.section1
+                article.tittle
+                    h1 My Jobs
+            section.section2
+                article.options
+                    //Aqui iria una especie de boton que imprimiera las tarjetas con las candidaturas y los trabajos favoritos
+                    h2 Candidaturas
+                    h2 Favoritos
+            each val in data
+             form(method="POST")
+                article.trabajo
+                    div.topCard
+                        img.job_img(src=val.img)
+                        div.topCardText
+                            h2=val.title
+                            p=val.moreInfo
+                        div.topCardIcons
+                            img.fav_img(src='/assets/img/favorite.png') 
+                            input(type="hidden" value=val.job_id name='job_id')
+                            input(type="submit" class="deleteBtn" value="Delete", user_id=val.job_id)
+                    .separator
+                    div.botCard
+                        p=val.description
+
+        include ./footer.pug

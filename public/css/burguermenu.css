@@ -1,0 +1,59 @@
+/* .mobile-container {
+  max-width: 480px;
+  margin: auto;
+  height: 500px;
+  color: white;
+  border-radius: 10px;
+} */
+
+.topnav {
+  overflow: hidden;
+  background: linear-gradient(to right,rgb(41, 139, 130),rgb(42, 157, 143));
+  position: absolute;
+  top: 4em;
+  right: 0em;
+  border-radius: 0em 0em 0em 1em;
+}
+
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav a {
+  text-align: center;
+  color: white;
+  padding: 0.43em 0.6em;
+  text-decoration: none;
+  font-size: 2em;
+  display: block;
+}
+
+.topnav a.icon {
+  background: white;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.topnav a:hover {
+  color: rgb(233, 196, 106);
+}
+
+@media screen and (min-width: 768px) {
+  .topnav {
+    top: 0em;
+    right: 4em;
+    background: none;
+  }
+
+  .topnav a {
+    padding: 0.4em 0.6em;
+    display: inline-block;
+    font-size: 3em;
+  }
+}
+
+@media (min-width: 1200px) {
+
+}

@@ -1,0 +1,284 @@
+@import url("https://fonts.googleapis.com/css2?family=Pattaya&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+body {
+  height: 100%;
+  width: 100%;
+}
+main {
+  align-content: flex-start;
+  margin-top: 4em;
+  margin-bottom: 4em;
+  justify-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.section1 {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgb(244, 162, 97);
+  font-size: 1.2em;
+  width: 100%;
+}
+.description {
+  margin: 1em;
+  font-size: 1em;
+  color: #fff;
+}
+.sectionForm {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchForm {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: transparent;
+  border: 0.3em solid rgb(42, 157, 143);
+  border-radius: 0.3em;
+  width: 18em;
+  height: 3em;
+}
+.searchBox {
+  width: 85%;
+  font-size: 1.5em;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  resize: none;
+}
+.searchBox:active {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  resize: none;
+}
+
+i.icon_search {
+  color: rgb(231, 111, 81);
+  width: 1em;
+  height: 1em;
+  margin-right: 0.7em;
+}
+.topDescription {
+  text-align: center;
+}
+.title {
+  font-family: "Pattaya", cursive;
+  font-size: 2em;
+  text-align: center;
+}
+.bottomDescription {
+  text-align: start;
+}
+.logo404 {
+  width: 100%;
+  height: 100%;
+}
+
+* {
+  font-family: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console",
+    "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
+    "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
+    monospace;
+}
+a {
+  text-decoration: none;
+  color: #9ccc65;
+}
+a.title {
+  text-decoration: none;
+  color: white;
+  font-size: 1.5em;
+}
+.blue {
+  color: #29b6f6;
+}
+.green {
+  color: #9ccc65;
+}
+.purple {
+  color: #ba68c8;
+}
+.cyan {
+  color: #4dd0e1;
+}
+.red {
+  color: #ef5350;
+}
+#cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: -5em;
+  flex-direction: column;
+  align-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+.content {
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+.card {
+  perspective: 45em;
+  margin-top: 7em;
+  margin-left: 1.6em;
+  margin-bottom: 9em;
+}
+.card__side {
+  height: 15rem;
+  transition: all 0.8s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+  width: 20rem;
+  backface-visibility: hidden;
+  border-radius: 3px;
+  overflow: hidden;
+  border-radius: 1em;
+}
+.card__side--front {
+  background-color: #1c1c1c;
+}
+.card__side--back {
+  transform: rotateY(180deg);
+  background-color: rgb(25, 46, 55);
+}
+.card:hover .card__side--front {
+  transform: rotateY(-180deg);
+}
+.card:hover .card__side--back {
+  transform: rotateY(0deg);
+}
+.card__cont {
+  height: 15rem;
+  background-color: rgb(38, 70, 83);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.card__cta {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  color: white;
+  font-size: 0.8em;
+}
+.card__cta p {
+  margin-left: 1rem;
+}
+.card__cta p > .space {
+  margin-left: 2rem;
+}
+#fav_btn_empty {
+  font-size: 2em;
+  color: rgb(244, 162, 97);
+  position: absolute;
+  top: -0.5em;
+  right: 0;
+  z-index: 1;
+}
+#fav_btn_empty:hover {
+  font-size: 2.5em;
+  color: rgb(231, 111, 81);
+}
+
+@media screen and (min-width: 768px) {
+  main {
+    margin-top: 5em;
+  }
+  .topDescription {
+    font-size: 1.5em;
+  }
+  .title {
+    font-size: 4em;
+  }
+  .bottomDescription {
+    font-size: 1.5em;
+  }
+  .searchForm {
+    width: 30em;
+  }
+  i.icon_search {
+    font-size: 1.8em;
+    margin-right: 0.8em;
+  }
+  .card__side {
+    width: 54rem;
+    height: 32rem;
+  }
+  .card__cta {
+    font-size: 1.9em;
+  }
+  .card__cont {
+    width: 54rem;
+    height: 32rem;
+    font-size: 2em;
+  }
+  #cards {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: -5em;
+    align-content: stretch;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    padding-bottom: 6em;
+  }
+  .card {
+    display: inline-block;
+    perspective: 150em;
+    margin-top: 7em;
+    margin-left: 5em;
+    margin-right: 31em;
+    margin-bottom: 27em;
+  }
+}
+
+@media (min-width: 1200px) {
+    #cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: row;
+    padding-bottom: 10em;
+  }
+  .card {
+    display: inline-block;
+    margin-top: 8em;
+    margin-left: 1em;
+    align-items: center;
+    margin-bottom: 11em;
+  }
+  .card__side {
+    width: 30rem;
+    height: 16rem;
+  }
+  .card__cta {
+    font-size: 0.95em;
+  }
+  .card__cont {
+    width: 30rem;
+    height: 16rem;
+    font-size: 1em;
+  }
+}
