@@ -128,6 +128,7 @@ const entries = {
         } finally {
             client.release();
         }
+        return result;
     },
     delete_user_byEmail: async(email) => {
         let client, result;
