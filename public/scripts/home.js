@@ -23,9 +23,8 @@ document.querySelector("form").addEventListener("submit", (event) => {
       .then((scrapData) => {
         document.getElementById("cards").innerHTML = "";
         scrapData.map((offer) => {
-
-          let description = offer.jobDescription.substr(0,70) + ' ...';
-
+          let jobtitle = offer.jobTitle.substr(0,25) + ' ...';
+          let description = offer.jobDescription.substr(0,200) + ' ...';
           box.innerHTML += `
           <div class="card">
           <div class="card__side card__side--front">

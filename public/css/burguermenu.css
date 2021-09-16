@@ -50,18 +50,21 @@
   .topnav a {
     padding: 0.4em 0.6em;
     display: inline-block;
+    font-size: 3em;
   }
 }
 
 @media (min-width: 1200px) {
   .topnav {
     top: 0em;
-    right: 4em;
+    right: 12em;
     background: none;
   }
 
   .topnav a {
-    padding: 0.42em 0.6em;
+    padding: 0.42em 0.62em;
     display: inline-block;
+    font-size: 6em;
   }
+
 }
