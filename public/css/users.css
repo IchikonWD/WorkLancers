@@ -1,3 +1,88 @@
+main{
+    width: 100%;
+    margin-top: 5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.separator{
+    display: flex;
+    background-color: black;
+    width: 20em;
+    height: 0.1em;
+    margin-top: 20px;
+}
+.section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center ;
+    width: 100%;
+}
+article{
+    margin-top: -5em;
+    width: 85%;
+}
 .card{
-    background-color: cadetblue;
+    background-color: #264653;
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+p{
+    margin: 1.2em;
+    display: flex;
+    margin-top: 10px;
+}
+.deleteBtn{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 10em;
+    height: 2.5em;
+    align-self: center;
+    justify-content: center;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1em;
+    line-height: 1.5;
+    border: 0.3em solid rgb(244, 162, 97);
+    border-radius: 1em;
+    background-color: rgb(244, 162, 97);
+    color: white;
+    outline: none;
+    transition: all 0.3s;
+}
+.deleteBtn:hover {
+    border-color: rgb(231, 111, 81);
+    background-color: rgb(231, 111, 81);
+  }
+
+@media screen and (min-width: 768px) {
+
+    article{
+        margin-top: -20em;
+    }
+
+}
+
+@media screen and (min-width: 1200px) {
+
+    main{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+    article{
+        margin-top: -5em;
+    }
+    section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
 }
