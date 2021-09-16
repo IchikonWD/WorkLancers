@@ -40,7 +40,7 @@ const register = {
         req.logout();
         res.clearCookie('email');
         req.session.destroy();
-        res.send('Goodbye!');
+        res.redirect('/');
     },
 }
 module.exports = register;

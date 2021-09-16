@@ -74,7 +74,7 @@ const pages = {
         try {
             console.log('Job added to favorite');
             const { title, description, moreInfo, url, user_id } = req.body
-            await Users.insert_favJob(title,  description, moreInfo, url ,user_id)
+            await Users.insert_favJob(title, description, moreInfo, url ,user_id)
             res.status(201).json(addFav)
         } catch (error) {
             res.status(400).send(error)
