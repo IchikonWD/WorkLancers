@@ -6,7 +6,7 @@ html(lang='en')
     link(rel='stylesheet' href='/css/login.css')
     title LogIn
   body
-    .container
+include ./header.pug
     form#login-form(action='#' method="POST")
       .heading WorkLancers
       h1 Log in to WorkLancers
@@ -30,4 +30,4 @@ html(lang='en')
         .connect Don't have an WorkLancers account ?
         .signup
           a(href="/register")
-      .footer
+include ./footer.pug

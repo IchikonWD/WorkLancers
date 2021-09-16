@@ -7,6 +7,7 @@ console.log(userApp);
 document.querySelector("form").addEventListener("submit", (event) => {
   box.innerHTML = ` 
                 <div id="contenedor_carga">
+                      <h2 id="loadingText">Cargando...</h2>
                       <div id="carga"></div>
                 </div>
   `; //Se genera el spinner cada vez que llamamos al formulario
@@ -30,7 +31,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
                           <section class="section2">
                               <article class="job1">
                                   <div class="job_header">
-                                      <h2 class="jobTitle">${offer.jobTitle}</h2><b class="newAlert">NEW</b>
+                                      <h2 class="jobTitle">${offer.jobTitle}</h2><i class="fa fa-heart" id="fav_btn_empty"></i>
                                   </div>
                                   <div class="separator"></div>
                                   <div class="job_body"><img class="job_img" src="/assets/img/default_img.jpg" alt="">
@@ -38,8 +39,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
                                   </div>
                                   <div class="separator"></div>
                                   <div class="job_footer">
-                                      <p class="job_price">${offer.jobBudget}</p><button class="see_more_btn">See More</button><img
-                                          class="fav_img" id="fav_btn_empty" src="/assets/img/favorite.png">
+                                      <p class="job_price">${offer.jobBudget}</p><button class="see_more_btn" href="${offer.jobUrl}">See More</button>
                                   </div>
                               </article>
                               <input type="hidden" value=${offer._id} class="hiddenInp">
