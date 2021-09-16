@@ -1,16 +1,16 @@
 const express = require("express");
-const favicon = require('serve-favicon');
+const favicon = require("serve-favicon");
 require("dotenv").config();
 require("./utils/mongo-db");
 require("./utils/sql-db");
-const cors = require('cors')
-const session = require('express-session')
-const flash = require('connect-flash')
+const cors = require("cors");
+const session = require("express-session");
+const flash = require("connect-flash");
 const routes_users = require("./routes/users.routes");
 const routes_api = require("./routes/api.routes");
-const passport = require('passport')
-const path = require('path');
-const cookieParser = require('cookie-parser')
+const passport = require("passport");
+const path = require("path");
+const cookieParser = require("cookie-parser");
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -23,28 +23,31 @@ app.use(
 );
 app.use(express.json());
 app.use(cors());
-app.use(express.static('public')) //Para que el pug coja el CSS e imagenes
+app.use(express.static("public")); //Para que el pug coja el CSS e imagenes
 app.use(flash());
 app.use(cookieParser());
 
 //Passport
-app.use(session({ secret: process.env.SECRET_SESSION,
-  resave: true,
-  saveUninitialized: false,
-}))
-app.use(passport.initialize())
-app.use(passport.session())
+app.use(
+  session({
+    secret: process.env.SECRET_SESSION,
+    resave: true,
+    saveUninitialized: false,
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Global variables (para pasar mensajes a cualquier lado con el flash)
 
 app.use((req, res, next) => {
-  res.locals.fail_login = req.flash('fail_login')
-  res.locals.unauthorized = req.flash('unauthorized')
+  res.locals.fail_login = req.flash("fail_login");
+  res.locals.unauthorized = req.flash("unauthorized");
   next();
-})
+});
 
-app.use("/public", express.static(path.join(__dirname, 'public')));
-app.use(favicon(__dirname + '/public/assets/img/lance.png'));
+app.use("/public", express.static(path.join(__dirname, "public")));
+app.use(favicon(__dirname + "/public/assets/img/lance.png"));
 
 //View Engine
 
@@ -57,12 +60,14 @@ app.use("/", routes_users);
 app.use("/api", routes_api);
 
 app.get("*", (req, res) => {
-  res.status(404).send("404");
+  res.status(404);
+  if (req.accepts("html")) {
+    res.render("404", { url: req.url });
+  } else {
+    res.type("txt").send("Not found");
+  }
 });
 
 app.listen(port, () => {
   console.log(`Server working on: http://localhost:${port}`);
 });
-
-
-
