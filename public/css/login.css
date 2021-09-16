@@ -145,9 +145,6 @@ p.connect {
   }
 }
 
-@media (min-width: 1200px) {
-}
-
 @media (min-width: 1900px) {
   .title {
     font-size: 2.5em;
