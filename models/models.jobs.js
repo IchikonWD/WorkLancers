@@ -1,11 +1,12 @@
+const { string } = require('joi')
 const mongoose = require('mongoose')
 
 let jobsSchema = new mongoose.Schema({
 
-    jobTitle:String,
-    jobDescription:String,
-    jobTimer:String,
-    jobBudget:String,
+    title:String,
+    description:String,
+    moreinfo:String,
+    url: String,
     email:String,
 })
 
