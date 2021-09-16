@@ -6,10 +6,10 @@ html(lang='en')
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     title LogIn
 include ./header.pug
-main
+main.main
     form#login-form(action='#' method="POST")
-      h1 Log in to WorkLancers
-      .container
+      h1.title Log in to WorkLancers
+      .main
         h3=logError
         label(for='email')
         br
@@ -23,7 +23,7 @@ main
 
         // Mensaje de error de login, hay que darle estilo
         span=fail_login
-      .right
+      .bottom-container
         a.google-plus(href='/auth/google')
           span.fontawesome-google-plus
           p.fa.fa-google-plus(aria-hidden='true') Continue with Google
