@@ -28,8 +28,8 @@ router.get("/register/email", pages.register2);
 router.get("/favorites", pages.favorites);
 router.get("/login", pages.login);
 router.get("/profile", isLogguedIn, pages.profile);
-router.get("/users", isAdmin, pages.users);
-router.get("/dashboard", isAdmin, pages.dashboard)
+router.get("/users", /*isAdmin,*/ pages.users);
+router.get("/dashboard",/*isAdmin, */ pages.dashboard)
 router.get("/recuperarpassword");
 router.get("/restablecerpassword");
 

@@ -1,0 +1,57 @@
+<div class="card">
+  <div class="card__side card__side--front">
+    <!-- Front Content -->
+    <div class="card__cont">
+      <span class="blue">alert</span
+      ><span>(<span class="green">'New Job!'</span>)</span>
+    </div>
+  </div>
+  <div class="card__side card__side--back">
+    <!-- Back Content -->
+    <div class="card__cta">
+      <a class="icon_heart"><i class="fa fa-heart" id="fav_btn_empty"></i></a>
+      <p>
+        <span class="purple">const</span> NewJob
+        <span class="cyan">=</span> {<br /><span class="space red"
+          >Job Title</span
+        ><span class="cyan">:</span>
+        <span class="green container_title">'${jobtitle}'</span>,<br /><span
+          class="space red"
+          >Description</span
+        ><span class="cyan">:</span>
+        <span class="green container_description">'${description}</span
+        >',<br /><span class="space red">Job Budget</span
+        ><span class="cyan">:</span
+        ><span class="green container_budget">'${offer.jobBudget}'</span
+        >,<br /><span class="space red">website</span
+        ><span class="cyan">:</span>
+        <span class="green"
+          ><a class="container_url" href="${offer.jobUrl}"
+            >'Haz click Aqui!'</a
+          ></span
+        ><br />
+        };
+      </p>
+    </div>
+    <input type="hidden" value="${offer._id}" class="hiddenInp" />
+  </div>
+</div>
+
+<!-- 
+
+     article.card 
+            div.insideCard
+              div.topCard 
+                h2.titleCard=val.jobTitle
+                a(href="#") 
+                  img(src="/assets/img/choices.png" class="choicesImg")
+              div.midCard  
+              div.botCard
+                p Duration:&nbsp; 
+                  p.durationCard=val.jobTimer
+                p.salaryCard=val.jobBudget
+              input(type="hidden" value=val._id name="idMongo_job")
+              input(type="submit" value="Borrar")
+
+
+-->

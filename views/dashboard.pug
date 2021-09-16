@@ -3,15 +3,17 @@ head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  link(rel='stylesheet' href='/css/style.css ')
   link(rel='stylesheet' href='/css/header.css ')
   link(rel='stylesheet' href='/css/footer.css ')
   link(rel='stylesheet' href='/css/dashboard.css ')
-  title Document
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+  title Favorites
 body
   include ./header.pug
   main
     section.top
-      article
+      article(class="article1")
         h1.title Dashboard
         button(type="button" class="postButton" onclick="mostrarForm()") !Post a Job!
       article
@@ -26,20 +28,11 @@ body
     section.bot
       each val in data
         form(method="POST")
-          article.card 
-            div.insideCard
-              div.topCard 
-                h2.titleCard=val.jobTitle
-                a(href="#") 
-                  img(src="/assets/img/choices.png" class="choicesImg")
-              div.midCard  
-              div.botCard
-                p Duration:&nbsp; 
-                  p.durationCard=val.jobTimer
-                p.salaryCard=val.jobBudget
-              input(type="hidden" value=val._id name="idMongo_job")
-              input(type="submit" value="Borrar")
-      article
+        article
+          
+      
+        input(type="hidden" value=val._id name="idMongo_job")
+        input(type="submit" value="Borrar")
   include ./footer.pug
   script
     include ../public/scripts/scripts.js
