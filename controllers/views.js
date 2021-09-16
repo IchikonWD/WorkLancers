@@ -168,7 +168,19 @@ const pages = {
         } catch (error) {
             console.log('Error al hacer el delete -->' + error);
         }
+    },
+    deleteDashPost: async (req, res) => {
+        try {
+            let id = req.body.post_id
+            console.log(id);
+            await Users.deleteDashPost(id)
+            await res.status(201).redirect('/dashboard')
+            console.log('Post borrado ');
+        } catch (error) {
+            console.log('Error al hacer el delete -->' + error);
+        }
     }
+    
 }
 
 module.exports = pages

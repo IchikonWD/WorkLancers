@@ -14,6 +14,7 @@ body
       article
         h1.title Dashboard
         button(type="button" class="postButton" onclick="mostrarForm()") !Post a Job!
+        
       article
         div.hide_me(id="form")
           include ./upWork.pug
@@ -34,10 +35,16 @@ body
             div.midCard  
             
             div.botCard
+              
+              
               p Duration:&nbsp; 
                 p.durationCard=val.jobTimer
               p.salaryCard=val.jobBudget
       article
+      article
+       input(type="submit" class="deletePost" value="Delete Post" name="post_id")
+
+      
   include ./footer.pug
   script
     include ../public/scripts/scripts.js
