@@ -19,15 +19,16 @@ main.main
         br
         input#pass(type='password' name='password' value='Password')
         br
-        <input type="submit" value="Sign In" />
-
+        <input id="submit" type="submit" value="Sign In" />
         // Mensaje de error de login, hay que darle estilo
         span=fail_login
       .bottom-container
         a.google-plus(href='/auth/google')
           span.fontawesome-google-plus
-          p.fa.fa-google-plus(aria-hidden='true') Continue with Google
-        .connect Don't have an WorkLancers account ?
-        .signup
-          a(href="/register")
+          p.fa.fa-google-plus(aria-hidden='true')  Continue with Google
+        .connect 
+          p Don't have an WorkLancers account ?
+      .signup
+        a.register(href="/register") 
+          button.button Register
 include ./footer.pug
