@@ -88,7 +88,7 @@ const entries = {
         } finally {
             client.release();
         }
-        return result;
+        return result.rows[0].admin;
     },
     getInfo_allUsers: async () => {
         let client, result;
@@ -164,16 +164,16 @@ const entries = {
         }
         return result;
     },
-    insert_favJob: async (title, img, description, moreInfo, user_id) => {
+    insert_favJob: async (title, description, moreInfo, url ,user_id) => {
         let client, result;
         try {
             client = await pool.connect();
             const sql_query = (`
                 INSERT INTO public.jobs(
-	                    title, img, description, moreinfo, user_id)
+	                    title, description, moreinfo, url ,user_id)
 	                    VALUES ($1, $2, $3, $4, $5);
             `)
-            result = await pool.query(sql_query, [title, img, description, moreInfo, user_id])
+            result = await pool.query(sql_query, [title, description, moreInfo, url, user_id])
         } catch (error) {
             console.log('Ha ocurrido un error al meter un trabajo --' + erorr);
         } finally {
@@ -186,7 +186,7 @@ const entries = {
         try {
             client = await pool.connect();
             const sql_query = (`
-                SELECT job_id, title, img, description, moreInfo FROM jobs WHERE user_id=$1;
+                SELECT job_id, title, description, moreInfo, url FROM jobs WHERE user_id=$1;
             `)
             result = await pool.query(sql_query, [id])
         } catch (error) {

@@ -1,6 +1,8 @@
 //Aqui van los imports
 const Jobs = require('../models/models.jobs')
 const fetch = require('node-fetch')
+const isAdmin = require('../middleware/isAdmin');
+
 //Empezamos los pages
 const Users = require('../models/entries')
 // Archivos para Scraping
@@ -11,11 +13,10 @@ const jsStringify  = require('js-stringify')
 const pages = {
     home: async (req, res) => {
         let email = req.cookies.email;
-        console.log(email);
         if(email != undefined){
             let algo = await Users.getUser_id(email)
-            console.log(algo);
-            res.status(200).render('home', { algo , jsStringify })
+            let tryAdmin = await Users.isAdmin(email)
+            res.status(200).render('home', { algo , jsStringify, tryAdmin })
         }else{
             res.status(200).render('home')
         }
