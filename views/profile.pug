@@ -8,6 +8,7 @@ head
   link(rel='stylesheet' href='/css/footer.css ')
   title Profile - WorkLancers
 body
+include ./header.pug
     .container
       form#register-form()
         .heading WorkLancers
@@ -30,9 +31,6 @@ body
               p.emailp(aria-hidden='true') Continue with Email
         .footer
           // <button class="see_more_btn">See More</button> 
-
-  include ./header.pug
-  main
     section.top
       article
         h1.title Profile
@@ -40,15 +38,14 @@ body
       article
         div.hide_me(id="form")
           include ./userForm.pug
-  p=user.username
-  p=user.email
-  p=user.password
-  p=user.age
-  p=user.occupation
-  p=user.location
-  p=user.skills
-  img(src=user.image)
-
-  include ./footer.pug
-  script
-    include ../public/scripts/scripts.js
+      p=user.username
+      p=user.email
+      p=user.password
+      p=user.age
+      p=user.occupation
+      p=user.location
+      p=user.skills
+      img(src=user.image)
+include ./footer.pug
+script
+  include ../public/scripts/scripts.js

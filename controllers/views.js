@@ -104,7 +104,9 @@ const pages = {
     },
     profile: async (req, res) => {
         try {
+            console.log('Entramo');
             let cookie = req.cookies.email
+            console.log(cookie);
             Users.getInfo_byEmail(cookie)
                 .then(data => {
                     let user = data.rows[0];
