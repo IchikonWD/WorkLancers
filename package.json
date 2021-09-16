@@ -28,6 +28,7 @@
     "express-session": "^1.17.2",
     "helmet": "^4.6.0",
     "joi": "^17.4.2",
+    "js-stringify": "^1.0.2",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.1.1",
     "mongoose": "^6.0.4",

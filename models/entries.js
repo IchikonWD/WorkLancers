@@ -44,7 +44,7 @@ const entries = {
         } finally {
             client.release();
         }
-        return result;
+        return result.rows[0].user_id;
     },
     setNew_user: async (username, email, password, age, occupation, location, skills) => {
         let client, result
@@ -144,7 +144,7 @@ const entries = {
         return result;
     },
     update_user: async (email, username, age, occupation, location, skills, image) => {
-        let client, result; 
+        let client, result;
         try {
             client = await pool.connect();
             const sql_query = (`
@@ -154,10 +154,57 @@ const entries = {
             `)
             result = await pool.query(sql_query, [email, username, age, occupation, location, skills, image])
         } catch (error) {
-            console.log('Error al editar el usuario --> ' + error );
+            console.log('Error al editar el usuario --> ' + error);
+        } finally {
+            client.release();
         }
         return result;
-    }
+    },
+    insert_favJob: async (title, img, description, moreInfo, user_id) => {
+        let client, result;
+        try {
+            client = await pool.connect();
+            const sql_query = (`
+                INSERT INTO public.jobs(
+	                    title, img, description, moreinfo, user_id)
+	                    VALUES ($1, $2, $3, $4, $5);
+            `)
+            result = await pool.query(sql_query, [title, img, description, moreInfo, user_id])
+        } catch (error) {
+            console.log('Ha ocurrido un error al meter un trabajo --' + erorr);
+        } finally {
+            client.release();
+        }
+        return result;
+    },
+    getFav_jobs: async (id) => {
+        let client, result;
+        try {
+            client = await pool.connect();
+            const sql_query = (`
+                SELECT job_id, title, img, description, moreInfo FROM jobs WHERE user_id=$1;
+            `)
+            result = await pool.query(sql_query, [id])
+        } catch (error) {
+            console.log('Error al obtener trabajo favorito ---- ' + error);
+        } finally {
+            client.release();
+        }
+        return result.rows;
+    },
+    delete_favJob: async (job_id) => {
+        let client, result;
+        try {
+            client = await pool.connect();
+            const sql_query =
+                "DELETE FROM jobs WHERE job_id=$1"
+            result = await pool.query(sql_query, [job_id])
+        } catch (error) {
+            console.log('Error al borrar el trabajo --> ' + error);
+        } finally {
+            client.release();
+        }
+    },
 
 }
 

@@ -72,13 +72,16 @@ const pages = {
     }, 
     postFavJobs: async (req,res) =>{
         try {
-            let addFav = req.body
+            console.log('Job added to favorite');
+            const { title, img, description, moreInfo, user_id } = req.body
+            console.log(title, img, description, moreInfo, user_id);
+            await Users.insert_favJob(title, img, description, moreInfo, user_id)
             res.status(201).json(addFav)
         } catch (error) {
             res.status(400).send(error)
         }
     },
-    getFavs: async (req,res) => {
+    getFavs: async (req, res) => {
         try {
             res.status(200).json()
         } catch (error) {

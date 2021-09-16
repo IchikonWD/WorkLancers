@@ -19,30 +19,20 @@ html(lang="en")
                     //Aqui iria una especie de boton que imprimiera las tarjetas con las candidaturas y los trabajos favoritos
                     h2 Candidaturas
                     h2 Favoritos
+            each val in data
+             form(method="POST")
                 article.trabajo
                     div.topCard
-                        img.job_img(src='/assets/img/default_img.jpg' alt='')
+                        img.job_img(src=val.img)
                         div.topCardText
-                            h2 Se busca chapero por Chamartin
-                            p Category: AAAAAA
+                            h2=val.title
+                            p=val.moreInfo
                         div.topCardIcons
                             img.fav_img(src='/assets/img/favorite.png') 
-                            button.see_more_btn See More
+                            input(type="hidden" value=val.job_id name='job_id')
+                            input(type="submit" class="deleteBtn" value="Delete", user_id=val.job_id)
                     .separator
                     div.botCard
-                        p Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
-                article.trabajo
-                    div.topCard
-                        img.job_img(src='/assets/img/default_img.jpg' alt='')
-                        div.topCardText
-                            h2 Se busca chapero por Chamartin
-                            p Category: AAAAAA
-                        div.topCardIcons
-                            img.fav_img(src='/assets/img/favorite.png') 
-                            button.see_more_btn See More
-                    .separator
-                    div.botCard
-                        p Lorem Ipsum is simply dummy text of the printing and typesetting industry. 
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                        p=val.description
+
         include ./footer.pug

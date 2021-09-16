@@ -26,5 +26,7 @@ main
       input#search.searchBox(type='text' name='search' placeholder='Search')
   section#cards
 include ./footer.pug
+script. 
+  const userApp=!{JSON.stringify(algo)}
 script(src='./scripts/home.js')
 
