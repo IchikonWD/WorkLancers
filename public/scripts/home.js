@@ -25,6 +25,8 @@ document.querySelector("form").addEventListener("submit", (event) => {
       .then((scrapData) => {
         document.getElementById("cards").innerHTML = "";
         scrapData.map((offer) => {
+          let jobtitle = offer.jobTitle.substr(0,25) + ' ...';
+          let description = offer.jobDescription.substr(0,200) + ' ...';
           box.innerHTML += `
           <div class="card">
           <div class="card__side card__side--front">
@@ -38,8 +40,8 @@ document.querySelector("form").addEventListener("submit", (event) => {
                           id="fav_btn_empty"></i></a>
                   <p><span class="purple">const</span> NewJob <span class="cyan">=</span> {<br /><span
                           class="space red">Job Title</span><span class="cyan">:</span> <span
-                          class="green container_title">'${offer.jobTitle}'</span>,<br /><span class="space red">Description</span><span
-                          class="cyan">:</span> <span class="green container_description">'${offer.jobDescription}</span>',<br /><span
+                          class="green container_title">'${jobtitle}'</span>,<br /><span class="space red">Description</span><span
+                          class="cyan">:</span> <span class="green container_description">'${description}</span>',<br /><span
                           class="space red">Job Budget</span><span class="cyan">:</span><span
                           class="green container_budget">'${offer.jobBudget}'</span>,<br /><span
                           class="space red">website</span><span class="cyan">:</span> <span class="green"><a

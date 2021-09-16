@@ -31,3 +31,29 @@ footer {
   height: 2em;
   margin-right: 1em;
 }
+
+@media screen and (min-width: 768px) {
+  footer {
+   height: 5em;
+  }
+  .footerLinks {
+    font-size: 2em;
+  }
+  .git_logo {
+    width: 6em;
+    height: 2.5em;
+  }
+ }
+ 
+ @media (min-width: 1200px) {
+  footer {
+    height: 10em;
+   }
+   .footerLinks {
+     font-size: 4em;
+   }
+   .git_logo {
+     width: 8em;
+     height: 3em;
+   }
+ }

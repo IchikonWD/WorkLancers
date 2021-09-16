@@ -6,13 +6,10 @@
   font-family: sans-serif;
 }
 body {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 main {
-  width: 100%;
-  height: 100%;
-  display: flex;
   align-content: flex-start;
   margin-top: 4em;
   margin-bottom: 4em;
@@ -81,10 +78,9 @@ i.icon_search {
 .bottomDescription {
   text-align: start;
 }
-.logo404{
+.logo404 {
   width: 100%;
   height: 100%;
-
 }
 
 * {
@@ -122,10 +118,11 @@ a.title {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  margin-top: 1em;
+  margin-top: -5em;
   flex-direction: column;
   align-content: space-between;
-  margin-right: 20em;
+  height: 100%;
+  width: 100%;
 }
 .content {
   color: white;
@@ -133,10 +130,10 @@ a.title {
   flex-wrap: wrap;
 }
 .card {
-  perspective: 150em;
-  margin-top: 22em;
-  margin-left: -44em;
-  margin-bottom: -5em;
+  perspective: 45em;
+  margin-top: 7em;
+  margin-left: 2em;
+  margin-bottom: 9em;
 }
 .card__side {
   height: 15rem;
@@ -200,21 +197,118 @@ a.title {
 }
 
 @media screen and (min-width: 768px) {
+  main {
+    margin-top: 6em;
+  }
+  .topDescription {
+    font-size: 1.5em;
+  }
+  .title {
+    font-size: 4em;
+  }
+  .bottomDescription {
+    font-size: 1.5em;
+  }
+  .searchForm {
+    width: 30em;
+  }
+  i.icon_search {
+    font-size: 1.8em;
+    margin-right: 0.8em;
+  }
+  .card__side {
+    width: 54rem;
+    height: 32rem;
+  }
+  .card__cta {
+    font-size: 1.9em;
+  }
+  .card__cont {
+    width: 54rem;
+    height: 32rem;
+    font-size: 2em;
+  }
+  #cards {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: -5em;
+    align-content: stretch;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    padding-bottom: 6em;
+  }
+  .card {
+    display: inline-block;
+    perspective: 150em;
+    margin-top: 7em;
+    margin-left: 5em;
+    margin-right: 31em;
+    margin-bottom: 27em;
+  }
 }
 
 @media (min-width: 1200px) {
+  main {
+    margin-top: 12em;
+  }
+  .topDescription {
+    font-size: 4em;
+  }
+  .title {
+    font-size: 8em;
+  }
+  .bottomDescription {
+    font-size: 4em;
+    margin-bottom: 0.8em;
+  }
+  .searchForm {
+    width: 140em;
+    height: 7em;
+    border: 0.6em solid rgb(42, 157, 143);
+    margin-top: 0.8em;
+  }
+  .searchBox {
+    font-size: 4em;
+    font-weight: 600;
+    width: 89%;
+  }
+  i.icon_search {
+    font-size: 4em;
+    margin-right: 1em;
+  }
+  #cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -5em;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+    flex-direction: row;
+    padding-bottom: 8em;
+  }
+  .card {
+    display: inline-block;
+    perspective: 150em;
+    margin-top: 10em;
+    margin-left: 8em;
+    margin-right: 127em;
+    margin-bottom: 47em;
+  }
   .card__side {
-    width: 30rem;
+    width: 120rem;
+    height: 50rem;
   }
   .card__cta {
-    font-size: 0.8em;
-  }
-  #fav_btn_empty {
     font-size: 3em;
-    color: rgb(244, 162, 97);
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1;
+  }
+  .card__cont {
+    width: 120rem;
+    height: 50rem;
+    font-size: 5em;
   }
 }
