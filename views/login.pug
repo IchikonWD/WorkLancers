@@ -10,7 +10,7 @@ main.main
     form#login-form(action='#' method="POST")
       h1.title Log in to WorkLancers
       .main
-        h3=logError
+        p(class="error")=logError
         label(for='email')
         br
         input#email(type='email' name='email' value='Email')
@@ -32,3 +32,4 @@ main.main
       a.register(href="/register") 
         button.button Register
 include ./footer.pug
+script(src='./scripts/home.js')
