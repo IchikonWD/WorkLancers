@@ -14,45 +14,46 @@ main
     section#cards
         each val in data
             .card
-                div(class='card__side card__side--front')
-                    div(class='card__cont')
-                        span.blue 
-                            span.green
-                                | favorite
-                                | Job!
-                div(class='card__side card__side--back')
-                    div(class='card__cta')
-                        a(class='')
-                            i.fa.fa-heart(id='fav_btn_empty')
-                        p(class="texto")
-                            span.purple 
-                            | 
-                            span.cyan 
-                            |
-                            br
-                            span.space.red Job Title
-                            span.cyan :
-                            span(class='green container_title')=val.title
-                            |, 
-                            br
-                            span.space.red Description
-                            span.cyan :
-                            span(class='green container_description')=val.description
-                            |, 
-                            br
-                            span.space.red Job Budget
-                            span.cyan :
-                            span(class='green container_budget')=val.moreinfo
-                            |, 
-                            br
-                            span.space.red website
-                            span.cyan :
-                            span.green
-                                a(class='container_url' href=val.url) 'Haz click Aqui!'
-                                    input(type="hidden" value=val.job_id name='job_id')
-                            |,
-                            a(class="medueleunhuevo")
-                                i(class="fa fa-trash")
-                                input(type="submit" class="deleteBtn" value="Delete", user_id=val.job_id)
-                    input.hiddenInp(type='hidden' value='${offer._id}')
+                form(method="POST")
+                    div(class='card__side card__side--front')
+                        div(class='card__cont')
+                            span.blue 
+                                span.green
+                                    | favorite
+                                    | Job!
+                    div(class='card__side card__side--back')
+                        div(class='card__cta')
+                            a(class='')
+                                i.fa.fa-heart(id='fav_btn_empty')
+                            p(class="texto")
+                                span.purple 
+                                | 
+                                span.cyan 
+                                |
+                                br
+                                span.space.red Job Title
+                                span.cyan :
+                                span(class='green container_title')=val.title
+                                |, 
+                                br
+                                span.space.red Description
+                                span.cyan :
+                                span(class='green container_description')=val.description
+                                |, 
+                                br
+                                span.space.red Job Budget
+                                span.cyan :
+                                span(class='green container_budget')=val.moreinfo
+                                |, 
+                                br
+                                span.space.red website
+                                span.cyan :
+                                span.green
+                                    a(class='container_url' href=val.url) 'Haz click Aqui!'
+                                        input(type="hidden" value=val.job_id name='job_id')
+                                |,
+                                a(class="medueleunhuevo")
+                                    i(class="fa fa-trash")
+                                    input(type="submit" class="deleteBtn" value="Delete", user_id=val.job_id)
+                        input.hiddenInp(type='hidden' value='${offer._id}')
 include ./footer.pug
