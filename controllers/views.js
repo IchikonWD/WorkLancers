@@ -33,7 +33,6 @@ const pages = {
             let cookies = req.cookies.email
             let id = await Users.getUser_id(cookies);
             let data = await Users.getFav_jobs(id)
-            console.log(data);
             res.status(200).render('favorites', { data })
         } catch (error) {
             res.status(400).redirect('login')
