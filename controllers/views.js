@@ -23,30 +23,38 @@ const pages = {
         }
     },
     register: (req, res) => {
-        res.status(200).render('register')
+        let email = req.cookies.email;
+
+        res.status(200).render('register', { email })
     },
     register2: (req, res) => {
-        res.status(200).render('register2')
+        let email = req.cookies.email;
+
+        res.status(200).render('register2', { email })
     },
     favorites: async (req, res) => {
         try {
+            let email = req.cookies.email;
             let cookies = req.cookies.email
             let id = await Users.getUser_id(cookies);
             let data = await Users.getFav_jobs(id)
-            res.status(200).render('favorites', { data })
+            res.status(200).render('favorites', { data, email })
         } catch (error) {
             res.status(400).redirect('login')
         }
     },
     login: (req, res) => {
         let logError = req.flash('error')
-        res.status(200).render('login', { logError })
+        let email = req.cookies.email;
+
+        res.status(200).render('login', { logError, email })
     },
     dashboard: async (req, res) => {
         try {
             let cookie = req.cookies.email
             let data = await Jobs.find({ email: cookie }) //Saco los trabajos por el email que viene por la cookie
-            res.status(200).render('dashboard', { data })
+            let email = req.cookies.email;
+            res.status(200).render('dashboard', { data, email })
         } catch (error) {
             console.log('Ha ocurrido un error en el dashborad -->  ' + error);
             res.status(400).redirect('/')
@@ -87,7 +95,9 @@ const pages = {
         try {
             const result = await Users.getInfo_allUsers()
             let hola = result.rows
-            res.status(200).render('users', { hola })
+            let email = req.cookies.email;
+
+            res.status(200).render('users', { hola, email })
         } catch (error) {
             console.log(error);
         }
@@ -125,10 +135,12 @@ const pages = {
     profile: async (req, res) => {
         try {
             let cookie = req.cookies.email
+            let email = req.cookies.email;
+
             Users.getInfo_byEmail(cookie)
                 .then(data => {
                     let user = data.rows[0];
-                    res.status(200).render('profile', { user })
+                    res.status(200).render('profile', { user, email })
                 })
         } catch (error) {
             res.status(400).redirect('/login')
@@ -174,7 +186,7 @@ const pages = {
         try {
             if (req.body.idMong_job != 'NO') {
                 let id = req.body.idMongo_job
-                await Jobs.findByIdAndDelete({ _id: id})
+                await Jobs.findByIdAndDelete({ _id: id })
                 res.status(201).redirect('/dashboard')
             }
         } catch (error) {

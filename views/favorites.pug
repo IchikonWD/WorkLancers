@@ -6,84 +6,56 @@ html(lang="en")
         meta(name="viewport" content="width=device-width, initial-scale=1.0")
         link(rel='stylesheet' href='/css/header.css ')
         link(rel='stylesheet' href='/css/footer.css ')
-        link(rel="stylesheet" href="/css/favorites.css")
+        link(rel="stylesheet" href="/css/style.css")
+        link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
         title Favorites - WorkLancers
-body
-    include ./header.pug 
-    .card
-        div(class='card__side card__side--front')
-            // Front Content
-            div(class='card__cont')
-                span.blue 
-                span 
-                    span.green
-                        | favorite
-                        | Job!
-                    | 
-        div(class='card__side card__side--back')
-            // Back Content
-
-            div(class='card__cta')
-            each val in data
-
-
-                a(class='')
-                    i.fa.fa-heart(id='fav_btn_empty')
-                p
-                    span.purple 
-                    | 
-                    span.cyan 
-                    | 
-                    br
-                    span.space.red Job Title
-                    span.cyan :
-                    span(class='green container_title')=val.title
-                    | 
-                    br
-                    span.space.red Description
-                    span.cyan :
-                    span(class='green container_description')=val.description
-                    | 
-                    br
-                    span.space.red Job Budget
-                    span.cyan :
-                    span(class='green container_budget')=val.moreInfo
-                    | 
-                    br
-                    span.space.red website
-                    span.cyan :
-                    span.green
-                        a(class='container_url' href='${offer.jobUrl}') 'Haz click Aqui!'
-                      
-                        input(type="hidden" value=val.job_id name='job_id')
-                        input(type="submit" class="deleteBtn" value="Delete", user_id=val.job_id)
-                    br
-                    |
-            input.hiddenInp(type='hidden' value='${offer._id}')
-
-    include ./footer.pug
-        //- main
-        //-     section.section1
-        //-         article.tittle
-        //-             h1 My Jobs
-        //-     section.section2
-        //-         article.options
-        //-             //Aqui iria una especie de boton que imprimiera las tarjetas con las candidaturas y los trabajos favoritos
-        //-             h2 Candidaturas
-        //-             h2 Favoritos
-        //-     each val in data
-        //-      form(method="POST")
-        //-         article.trabajo
-        //-             div.topCard
-        //-                 img.job_img(src=val.img)
-        //-                 div.topCardText
-        //-                     h2=val.title
-        //-                     p=val.moreInfo
-        //-                 div.topCardIcons
-        //-                     img.fav_img(src='/assets/img/favorite.png') 
-        //-                     input(type="hidden" value=val.job_id name='job_id')
-        //-                     input(type="submit" class="deleteBtn" value="Delete", user_id=val.job_id)
-        //-             .separator
-        //-             div.botCard
-        //-                 p=val.description
-
+include ./header.pug 
+main
+    h2(class="title") Favorites
+    section#cards
+        each val in data
+            .card
+                form(method="POST")
+                    div(class='card__side card__side--front')
+                        div(class='card__cont')
+                            span.blue 
+                                | favorite
+                            span.white(class='white') {
+                            span.green
+                                | Job!
+                            span.white(class='white') }   
+                    div(class='card__side card__side--back')
+                        div(class='card__cta')
+                            a(class='')
+                                i.fa.fa-heart(id='fav_btn_empty')
+                            p(class="texto")
+                                span.purple 
+                                | 
+                                span.cyan 
+                                |
+                                br
+                                span.space.red Job Title
+                                span.cyan :
+                                span(class='green container_title')=val.title
+                                |, 
+                                br
+                                span.space.red Description
+                                span.cyan :
+                                span(class='green container_description')=val.description
+                                |, 
+                                br
+                                span.space.red Job Budget
+                                span.cyan :
+                                span(class='green container_budget')=val.moreinfo
+                                |, 
+                                br
+                                span.space.red website
+                                span.cyan :
+                                span.green
+                                    a(class='container_url' href=val.url) 'Haz click Aqui!'
+                                        input(type="hidden" value=val.job_id name='job_id')
+                                |,
+                                br
+                                input(type="submit" class="deleteBtn" value="Delete", user_id=val.job_id)
+                        input.hiddenInp(type='hidden' value='${offer._id}')
+include ./footer.pug

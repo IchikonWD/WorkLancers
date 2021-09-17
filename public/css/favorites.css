@@ -113,6 +113,9 @@ a.title {
 .red {
   color: #ef5350;
 }
+.white {
+  color: #FFF;
+}
 #cards {
   display: flex;
   flex-wrap: wrap;
@@ -136,7 +139,7 @@ a.title {
   margin-bottom: 9em;
 }
 .card__side {
-  height: 15rem;
+  height: 19rem;
   transition: all 0.8s ease;
   position: absolute;
   top: 0;
@@ -162,7 +165,7 @@ a.title {
   transform: rotateY(0deg);
 }
 .card__cont {
-  height: 15rem;
+  height: 19rem;
   background-color: rgb(38, 70, 83);
   display: flex;
   align-items: center;
@@ -194,14 +197,20 @@ a.title {
   font-size: 2.5em;
   color: rgb(231, 111, 81);
 }
-.deleteBtn{
-    width: 70px;
-    height: 20px;
-    background-color: #78B0D4;
-    border-radius: 5px;
-    border: 0px;
-    color: white;
-    font-size: 20px;
+.deleteBtn {
+  width: 5em;
+  height: 1.5em;
+  background-color: rgb(231, 111, 81);
+  border-radius: 0.3em;
+  border: 0px;
+  color: white;
+  font-size: 1em;
+}
+.texto{
+    margin-left: 2em;
+}
+.title {
+  color: black;
 }
 
 @media screen and (min-width: 768px) {
@@ -242,6 +251,7 @@ a.title {
     justify-content: center;
     align-items: center;
     margin-top: -5em;
+    margin-left: -5em;
     align-content: stretch;
     height: 100%;
     width: 100%;
@@ -257,7 +267,6 @@ a.title {
     margin-bottom: 27em;
   }
 }
-
 @media (min-width: 1200px) {
     #cards {
     display: flex;
@@ -290,4 +299,13 @@ a.title {
     height: 13.7rem;
     font-size: 1em;
   }
+  .deleteBtn{
+    width: 75px;
+    height: 20px;
+    background-color: rgb(231, 111, 81);;
+    border-radius: 3px;
+    border: 0px;
+    color: white;
+    font-size: 20px;
+}
 }

@@ -9,8 +9,8 @@ head
   link(rel='stylesheet' href='/css/dashboard.css ')
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
   title Dashboard - Worklancers
+include ./header.pug
 body
-  include ./header.pug
   main
     section.top
       article(class="article1")
@@ -22,17 +22,57 @@ body
       article
         div.mid
           .separator
-          h2 My Postings
+          h2 My Jobs
           .separator
         br
     section.bot
       each val in data
-        form(method="POST")
-        article
-          
-      
-        input(type="hidden" value=val._id name="idMongo_job")
-        input(type="submit" value="Borrar")
-  include ./footer.pug
-  script
-    include ../public/scripts/scripts.js
+        .card
+          form(method="POST")
+            div(class='card__side card__side--front')
+              div(class='card__cont')
+                span.blue 
+                  | myNew
+                span.white(class='white') {
+                span.green
+                  | Job!
+                span.white(class='white') }    
+            div(class='card__side card__side--back')
+              div(class='card__cta')
+                a(class='')
+                  i.fa.fa-heart(id='fav_btn_empty')
+                p(class="texto")
+                  span.purple 
+                  | 
+                  span.cyan 
+                  |
+                  br
+                  span.space.red Job Title
+                  span.cyan :
+                  span(class='green container_title')=val.title
+                  |, 
+                  br
+                  span.space.red Description
+                  span.cyan :
+                  span(class='green container_description')=val.description
+                  |, 
+                  br
+                  span.space.red Job Budget
+                  span.cyan :
+                  span(class='green container_budget')=val.moreinfo
+                  |, 
+                  br
+                  span.space.red website
+                  span.cyan :
+                  span.green
+                    a(class='container_url' href=val.url) 'Haz click Aqui!' 
+                      input(type="hidden" value=val.job_id name='job_id')
+                  |,
+                  br
+                  br
+                  input(type="submit" class="deleteBtn" value="Borrar")
+              input.hiddenInp(type='hidden' value='${offer._id}')
+              input(type="hidden" value=val._id name="idMongo_job")
+include ./footer.pug
+script
+  include ../public/scripts/scripts.js
