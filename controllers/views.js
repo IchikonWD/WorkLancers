@@ -65,10 +65,10 @@ const pages = {
                 if (req.body.idMong_job === 'NO') {
                     console.log('No entra');
                     const new_job = {
-                        jobTitle: req.body.jobTitle,
-                        jobDescription: req.body.jobDescription,
-                        jobTimer: req.body.jobTimer,
-                        jobBudget: req.body.jobBudget,
+                        title: req.body.jobTitle,
+                        description: req.body.jobDescription,
+                        moreinfo: req.body.jobBudget,
+                        url: req.body.url,
                         email: cookie //Le meto el email como id unico para unir mongo con los usuarios de SQL
                     }
                     let job = new Jobs(new_job)
