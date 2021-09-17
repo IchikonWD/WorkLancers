@@ -9,9 +9,8 @@ head
   link(rel='stylesheet' href='/css/dashboard.css ')
   link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
   title Dashboard - Worklancers
-body
-  include ./header.pug
-  main
+include ./header.pug
+main.dashboard
     section.top
       article(class="article1")
         h1.title Dashboard
@@ -29,10 +28,8 @@ body
       each val in data
         form(method="POST")
         article
-          
-      
         input(type="hidden" value=val._id name="idMongo_job")
         input(type="submit" value="Borrar")
-  include ./footer.pug
+include ./footer.pug
   script
     include ../public/scripts/scripts.js

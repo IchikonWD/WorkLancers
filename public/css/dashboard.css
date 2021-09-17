@@ -1,4 +1,4 @@
-main {
+main.dashboard {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,15 +13,10 @@ main {
 }
 
 .top {
-    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.bot {
-    width: 100%;
 }
 
 form {
