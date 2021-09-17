@@ -1,6 +1,6 @@
 main{
     width: 100%;
-    margin-top: 5em;
+    margin-top: 6em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +10,7 @@ main{
     background-color: black;
     width: 20em;
     height: 0.1em;
-    margin-top: 20px;
+    margin-top: 1em;
 }
 .section{
     display: flex;
@@ -26,20 +26,20 @@ article{
 .card{
     background-color: #264653;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 1em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 }
 p{
-    margin: 1.2em;
+    margin: 0.8em;
     display: flex;
-    margin-top: 10px;
+    margin-top: 1em;
 }
 .deleteBtn{
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 1em;
+    margin-bottom: 1em;
     width: 10em;
     height: 2.5em;
     align-self: center;
@@ -75,14 +75,18 @@ p{
         flex-direction: column;
         align-items: center;
         flex-wrap: nowrap;
+        margin-top: 10em;
     }
     article{
         margin-top: -5em;
+        margin-bottom: -8em;
     }
     section{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
 }

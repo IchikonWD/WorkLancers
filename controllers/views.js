@@ -109,13 +109,13 @@ const pages = {
                 res.status(200).render('home')
             }
             else {
-                let mongoJobs = await Jobs.find();
-                let extractMongo_jobs = mongoJobs.map((param) => {
-                    return param;
-                })
+                // let mongoJobs = await Jobs.find();
+                // let extractMongo_jobs = mongoJobs.map((param) => {
+                //     return param;
+                // })
                 const scrapingUno = await scraperThree(`https://www.flexjobs.com/search?jobtypes%5B%5D=Freelance&location=&search=${searchInput}`)
                 const scrapingDos = await scraperTwo(`https://www.workana.com/jobs?language=es&query=${searchInput}`)
-                let todoElScraping = [...scrapingUno, ...scrapingDos, ...extractMongo_jobs]
+                let todoElScraping = [...scrapingUno, ...scrapingDos/*, ...extractMongo_jobs*/]
                 res.status(200).json(todoElScraping)
             }
         } catch (error) {

@@ -17,6 +17,17 @@ main {
   flex-direction: column;
   flex-wrap: wrap;
 }
+.error{
+  width: 100%;
+  background-color: red;
+  color: white;
+  font-size: 1em;
+  font-family: Montserrat, sans-serif;
+  text-align: center;
+  padding: 0.2em;
+  position: relative;
+  top: 0;
+}
 .section1 {
   display: flex;
   align-items: center;

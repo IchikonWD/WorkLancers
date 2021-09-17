@@ -120,7 +120,7 @@ h1 {
     font-size: 3em;
   }
   .worker {
-    width: 34%;
+    display: none;
   }
 
 }
