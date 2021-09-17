@@ -11,6 +11,7 @@ html(lang="en")
         title Favorites - WorkLancers
 include ./header.pug 
 main
+    h2(class="title") Favorites
     section#cards
         each val in data
             .card
@@ -18,9 +19,11 @@ main
                     div(class='card__side card__side--front')
                         div(class='card__cont')
                             span.blue 
-                                span.green
-                                    | favorite
-                                    | Job!
+                                | favorite
+                            span.white(class='white')| {
+                            span.green
+                                | Job!
+                            span.white(class='white')| }    
                     div(class='card__side card__side--back')
                         div(class='card__cta')
                             a(class='')
@@ -52,8 +55,7 @@ main
                                     a(class='container_url' href=val.url) 'Haz click Aqui!'
                                         input(type="hidden" value=val.job_id name='job_id')
                                 |,
-                                a(class="medueleunhuevo")
-                                    i(class="fa fa-trash")
-                                    input(type="submit" class="deleteBtn" value="Delete", user_id=val.job_id)
+                                br
+                                input(type="submit" class="deleteBtn" value="Delete", user_id=val.job_id)
                         input.hiddenInp(type='hidden' value='${offer._id}')
 include ./footer.pug
