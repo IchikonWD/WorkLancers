@@ -23,8 +23,8 @@ document.querySelector("form").addEventListener("submit", (event) => {
       .then((scrapData) => {
         document.getElementById("cards").innerHTML = "";
         scrapData.map((offer) => {
-          let jobtitle = offer.jobTitle.substr(0,25) + ' ...';
-          let description = offer.jobDescription.substr(0,200) + ' ...';
+          let jobtitle = offer.jobTitle.substr(0, 25) + " ...";
+          let description = offer.jobDescription.substr(0, 200) + " ...";
           box.innerHTML += `
           <div class="card">
           <div class="card__side card__side--front">
@@ -54,26 +54,34 @@ document.querySelector("form").addEventListener("submit", (event) => {
       .then(() => {
         document.querySelectorAll("#fav_btn_empty").forEach((item) => {
           item.addEventListener("click", () => {
-
             // console.log(item.parentNode.parentNode.querySelector('.container_title').innerText);
             // console.log(item.parentNode.parentNode.querySelector('.container_description').innerText);
             // console.log(item.parentNode.parentNode.querySelector('.container_budget').innerText);
             // console.log(item.parentNode.parentNode.querySelector('.container_url').getAttribute("href"));
-           
 
-            let title = item.parentNode.parentNode.querySelector('.container_title').innerText;
-            let description = item.parentNode.parentNode.querySelector('.container_description').innerText;
-            let moreInfo = item.parentNode.parentNode.querySelector('.container_budget').innerText;
-            let url = item.parentNode.parentNode.querySelector('.container_url').getAttribute("href")
+            let title =
+              item.parentNode.parentNode.querySelector(
+                ".container_title"
+              ).innerText;
+            let description = item.parentNode.parentNode.querySelector(
+              ".container_description"
+            ).innerText;
+            let moreInfo =
+              item.parentNode.parentNode.querySelector(
+                ".container_budget"
+              ).innerText;
+            let url = item.parentNode.parentNode
+              .querySelector(".container_url")
+              .getAttribute("href");
             let user_id = userApp;
 
-            const objJob = { title, description, moreInfo, url , user_id };
+            const objJob = { title, description, moreInfo, url, user_id };
 
             console.log(objJob);
 
             fetch("/api/addFav", {
-            method: "POST",
-            headers: {
+              method: "POST",
+              headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify(objJob),
@@ -87,3 +95,14 @@ document.querySelector("form").addEventListener("submit", (event) => {
   };
   paintResults();
 });
+
+const alert = document.querySelector("p.error");
+
+function showError() {
+  if (alert.innerText === "") {
+    alert.style.display === "none"
+      ? (alert.style.display = "block")
+      : (alert.style.display = "none");
+  }
+}
+showError();
